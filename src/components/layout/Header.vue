@@ -123,16 +123,15 @@ onUnmounted(() => {
       <div class="flex items-center justify-between">
         <!-- Left: Logo & Company Name -->
         <div class="flex items-center space-x-3">
-          <!-- Circular Logo -->
-          <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-full flex items-center justify-center shadow-md">
-            <span class="text-white text-lg font-bold">E</span>
-          </div>
-          
-          <!-- Company Info -->
-          <div>
-            <h1 class="text-lg font-bold text-gray-900 leading-tight">{{ companyInfo.name }}</h1>
-            <p class="text-xs text-gray-600 leading-tight">{{ companyInfo.tagline }}</p>
-          </div>
+                     <!-- Circular Logo -->
+           <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-green-600 rounded-full flex items-center justify-center shadow-md">
+             <span class="text-white text-sm font-bold">E</span>
+           </div>
+           
+           <!-- Company Info -->
+           <div>
+             <h1 class="text-base font-bold text-gray-900 leading-tight">{{ companyInfo.name }}</h1>
+           </div>
         </div>
 
         <!-- Right: Language Switcher & Hamburger Button -->
@@ -141,13 +140,13 @@ onUnmounted(() => {
           <div class="relative" @click.stop>
                          <button
                @click="toggleLanguageDropdown"
-               class="flex items-center space-x-3 px-4 py-2 bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 border border-gray-200 w-24"
-               :class="{ 'bg-blue-50 border-blue-300': isLanguageDropdownOpen }"
+               class="flex items-center space-x-3 pl-2 pr-1 py-2 bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 w-auto min-w-[4.5rem]"
+               :class="{ 'bg-blue-50': isLanguageDropdownOpen }"
              >
-              <!-- Flag Icon -->
-              <img :src="getFlagUrl(currentLanguage.flag)" alt="Flag" class="w-5 h-4 rounded-sm">
-              <!-- Language Code -->
-              <span class="font-medium text-sm text-gray-700">{{ currentLanguage.code }}</span>
+                             <!-- Flag Icon -->
+               <img :src="getFlagUrl(currentLanguage.flag)" alt="Flag" class="w-4 h-3 rounded-sm">
+               <!-- Language Code -->
+               <span class="font-medium text-xs text-gray-700">{{ currentLanguage.code }}</span>
               <!-- Dropdown Arrow -->
               <svg 
                 class="w-4 h-4 text-gray-500 transition-transform duration-200"
@@ -175,8 +174,8 @@ onUnmounted(() => {
                 class="w-full flex items-center space-x-3 px-4 py-2 text-left transition-colors duration-150"
                 :class="{ 'text-blue-700': currentLanguage.code === lang.code, 'text-gray-700 hover:text-blue-600': currentLanguage.code !== lang.code }"
               >
-                <img :src="getFlagUrl(lang.flag)" alt="Flag" class="w-5 h-4 rounded-sm">
-                <span class="font-medium text-sm">{{ lang.code }}</span>
+                                 <img :src="getFlagUrl(lang.flag)" alt="Flag" class="w-4 h-3 rounded-sm">
+                 <span class="font-medium text-xs">{{ lang.code }}</span>
               </button>
             </div>
           </div>
