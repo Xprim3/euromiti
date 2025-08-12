@@ -1,0 +1,123 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Agregar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "refresh": "Actualizar",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "reset": "Restablecer",
+    "confirm": "Confirmar",
+    "yes": "Sí",
+    "no": "No",
+    "ok": "OK",
+    "error": "Error",
+    "success": "Éxito",
+    "warning": "Advertencia",
+    "info": "Información"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "dashboard": "Panel",
+    "profile": "Perfil",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión",
+    "login": "Iniciar sesión",
+    "register": "Registrarse"
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "register": "Registrarse",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "fullName": "Nombre completo",
+    "username": "Nombre de usuario",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "rememberMe": "Recordarme",
+    "loginSuccess": "Inicio de sesión exitoso",
+    "loginFailed": "Error en el inicio de sesión",
+    "logoutSuccess": "Sesión cerrada exitosamente",
+    "registerSuccess": "Registro exitoso",
+    "registerFailed": "Error en el registro",
+    "passwordMismatch": "Las contraseñas no coinciden",
+    "invalidCredentials": "Credenciales inválidas",
+    "userNotFound": "Usuario no encontrado",
+    "emailAlreadyExists": "El correo ya existe"
+  },
+  "user": {
+    "profile": "Perfil de usuario",
+    "guestUser": "Usuario invitado",
+    "notAuthenticated": "No autenticado",
+    "authenticated": "Autenticado",
+    "role": "Rol",
+    "adminAccess": "Acceso de administrador",
+    "user": "Usuario",
+    "admin": "Administrador",
+    "moderator": "Moderador"
+  },
+  "app": {
+    "theme": "Tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "language": "Idioma",
+    "notifications": "Notificaciones",
+    "sidebar": "Barra lateral",
+    "toggleSidebar": "Alternar barra lateral",
+    "themeChanged": "Tema cambiado",
+    "switchedTo": "Cambiado a tema {theme}"
+  },
+  "home": {
+    "title": "¡Tailwind CSS está funcionando!",
+    "tailwindWorking": "Si ves esta caja amarilla con esquinas redondeadas y un borde izquierdo, ¡Tailwind CSS está funcionando!",
+    "buttonsWithTailwind": "Botones con Tailwind",
+    "inputAndDropdown": "Entrada y menú desplegable",
+    "tailwindTest": "Prueba de Tailwind CSS",
+    "originalComponent": "Componente original",
+    "stateManagement": "Gestión de estado Pinia",
+    "stateManagementDescription": "Esto demuestra las tiendas Pinia para:",
+    "authStore": "Tienda de autenticación: Inicio/cierre de sesión, roles, permisos",
+    "appStore": "Tienda de aplicación: Cambio de tema, notificaciones, estado de barra lateral",
+    "reactiveState": "Estado reactivo: Actualizaciones en tiempo real entre componentes",
+    "tryIt": "¡Pruébalo: Haz clic en el botón de inicio de sesión, alterna el tema y activa las notificaciones!"
+  },
+  "about": {
+    "title": "Acerca de este proyecto",
+    "description": "Esta es una aplicación Vue 3 moderna construida con tecnologías de vanguardia:",
+    "frontend": "Frontend",
+    "uiComponents": "Componentes de UI",
+    "backToHome": "Volver al inicio"
+  },
+  "notifications": {
+    "demoNotifications": "Notificaciones de demostración",
+    "successMessage": "Este es un mensaje de éxito",
+    "errorMessage": "Este es un mensaje de error",
+    "warningMessage": "Este es un mensaje de advertencia",
+    "infoMessage": "Este es un mensaje informativo"
+  },
+  "forms": {
+    "name": "Nombre",
+    "city": "Ciudad",
+    "selectCity": "Seleccionar una ciudad",
+    "enterName": "Ingresa tu nombre"
+  },
+  "cities": {
+    "newYork": "Nueva York",
+    "london": "Londres",
+    "paris": "París",
+    "tokyo": "Tokio"
+  }
+}

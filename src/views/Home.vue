@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import HelloWorld from '../components/HelloWorld.vue'
+import UserProfile from '../components/UserProfile.vue'
 import Button from 'primevue/button'
 import Card from 'primevue/card'
 import InputText from 'primevue/inputtext'
 import Dropdown from 'primevue/dropdown'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const selectedCity = ref()
 const cities = [
-  { name: 'New York', code: 'NY' },
-  { name: 'London', code: 'LDN' },
-  { name: 'Paris', code: 'PRS' },
-  { name: 'Tokyo', code: 'TKY' },
+  { name: t('cities.newYork'), code: 'NY' },
+  { name: t('cities.london'), code: 'LDN' },
+  { name: t('cities.paris'), code: 'PRS' },
+  { name: t('cities.tokyo'), code: 'TKY' },
 ]
 </script>
 
@@ -19,7 +23,7 @@ const cities = [
   <div
     class="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 p-8"
   >
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-6xl mx-auto">
       <!-- Header with obvious Tailwind test -->
       <Card class="mb-6 shadow-2xl border-4 border-blue-500">
         <template #title>
@@ -37,7 +41,7 @@ const cities = [
             <h1
               class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"
             >
-              🎉 Tailwind CSS is Working! 🎉
+              🎉 {{ $t('home.title') }} 🎉
             </h1>
           </div>
         </template>
@@ -45,11 +49,47 @@ const cities = [
           <p
             class="text-lg text-gray-700 bg-yellow-200 p-4 rounded-lg border-l-4 border-yellow-500"
           >
-            ✅ If you see this yellow box with rounded corners and a left
-            border, Tailwind CSS is working!
+            ✅ {{ $t('home.tailwindWorking') }}
           </p>
         </template>
       </Card>
+
+      <!-- State Management Demo -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <UserProfile />
+        
+        <Card class="bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200">
+          <template #title>
+            <span class="text-indigo-700 font-bold">🚀 {{ $t('home.stateManagement') }}</span>
+          </template>
+          <template #content>
+            <div class="space-y-4">
+              <p class="text-gray-700">
+                {{ $t('home.stateManagementDescription') }}
+              </p>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                  <strong>{{ $t('home.authStore') }}</strong>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                  <strong>{{ $t('home.appStore') }}</strong>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                  <strong>{{ $t('home.reactiveState') }}</strong>
+                </li>
+              </ul>
+              <div class="p-3 bg-indigo-100 rounded-lg">
+                <p class="text-xs text-indigo-700">
+                  💡 <strong>{{ $t('home.tryIt') }}</strong>
+                </p>
+              </div>
+            </div>
+          </template>
+        </Card>
+      </div>
 
       <!-- PrimeVue Components Demo with Tailwind styling -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -58,7 +98,7 @@ const cities = [
         >
           <template #title>
             <span class="text-green-600 font-bold"
-              >🎨 Buttons with Tailwind</span
+              >🎨 {{ $t('home.buttonsWithTailwind') }}</span
             >
           </template>
           <template #content>
@@ -92,28 +132,28 @@ const cities = [
           class="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200"
         >
           <template #title>
-            <span class="text-purple-700 font-bold">📝 Input & Dropdown</span>
+            <span class="text-purple-700 font-bold">{{ $t('home.inputAndDropdown') }}</span>
           </template>
           <template #content>
             <div class="space-y-4">
               <div>
                 <label class="block text-sm font-medium text-red-500 mb-2"
-                  >Name</label
+                  >{{ $t('forms.name') }}</label
                 >
                 <InputText
-                  placeholder="Enter your name"
+                  :placeholder="$t('forms.enterName')"
                   class="w-full border-2 border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                 />
               </div>
               <div>
                 <label class="block text-sm font-medium text-blue-500 mb-2"
-                  >City</label
+                  >{{ $t('forms.city') }}</label
                 >
                 <Dropdown
                   v-model="selectedCity"
                   :options="cities"
                   optionLabel="name"
-                  placeholder="Select a city"
+                  :placeholder="$t('forms.selectCity')"
                   class="w-full border-2 border-blue-300 focus:border-blue-500"
                 />
               </div>
@@ -127,7 +167,7 @@ const cities = [
         class="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-200"
       >
         <template #title>
-          <span class="text-green-700 font-bold">🧪 Tailwind CSS Test</span>
+          <span class="text-green-700 font-bold">{{ $t('home.tailwindTest') }}</span>
         </template>
         <template #content>
           <div class="space-y-4">
@@ -153,9 +193,9 @@ const cities = [
 
       <!-- Original HelloWorld component -->
       <Card class="mt-6 bg-gradient-to-r from-gray-50 to-gray-100">
-        <template #title>Original Component</template>
+        <template #title>{{ $t('home.originalComponent') }}</template>
         <template #content>
-          <HelloWorld msg="Vite + Vue + PrimeVue + Tailwind CSS" />
+          <HelloWorld msg="Vite + Vue + PrimeVue + Tailwind CSS + Pinia + I18n" />
         </template>
       </Card>
     </div>

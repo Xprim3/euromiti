@@ -1,0 +1,64 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "save": "Sauvegarder",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "refresh": "Actualiser",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "submit": "Soumettre",
+    "reset": "Réinitialiser",
+    "confirm": "Confirmer",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "OK",
+    "error": "Erreur",
+    "success": "Succès",
+    "warning": "Avertissement",
+    "info": "Information"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "settings": "Paramètres",
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "register": "S'inscrire"
+  },
+  "home": {
+    "title": "Tailwind CSS fonctionne !",
+    "tailwindWorking": "Si vous voyez cette boîte jaune avec des coins arrondis et une bordure gauche, Tailwind CSS fonctionne !",
+    "buttonsWithTailwind": "Boutons avec Tailwind",
+    "inputAndDropdown": "Saisie et menu déroulant",
+    "tailwindTest": "Test Tailwind CSS",
+    "originalComponent": "Composant original",
+    "stateManagement": "Gestion d'état Pinia",
+    "stateManagementDescription": "Ceci démontre les stores Pinia pour :",
+    "authStore": "Store d'authentification : Connexion/déconnexion, rôles, permissions",
+    "appStore": "Store d'application : Changement de thème, notifications, état de la barre latérale",
+    "reactiveState": "État réactif : Mises à jour en temps réel entre composants",
+    "tryIt": "Essayez-le : Cliquez sur le bouton de connexion, basculez le thème et déclenchez les notifications !"
+  },
+  "forms": {
+    "name": "Nom",
+    "city": "Ville",
+    "selectCity": "Sélectionner une ville",
+    "enterName": "Entrez votre nom"
+  },
+  "cities": {
+    "newYork": "New York",
+    "london": "Londres",
+    "paris": "Paris",
+    "tokyo": "Tokyo"
+  }
+}

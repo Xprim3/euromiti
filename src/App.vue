@@ -1,5 +1,7 @@
 <script setup lang="ts">
 // App.vue is now just a router container
+import NotificationSystem from './components/NotificationSystem.vue'
+import LanguageSwitcher from './components/LanguageSwitcher.vue'
 </script>
 
 <template>
@@ -15,21 +17,24 @@
             <h1 class="text-xl font-bold">Euromiti</h1>
           </div>
 
-          <div class="flex space-x-6">
+          <div class="flex items-center space-x-6">
             <router-link
               to="/"
               class="hover:text-blue-200 transition-colors duration-200"
               active-class="text-blue-200 font-semibold"
             >
-              🏠 Home
+              🏠 {{ $t('navigation.home') }}
             </router-link>
             <router-link
               to="/about"
               class="hover:text-blue-200 transition-colors duration-200"
               active-class="text-blue-200 font-semibold"
             >
-              ℹ️ About
+              ℹ️ {{ $t('navigation.about') }}
             </router-link>
+            
+            <!-- Language Switcher -->
+            <LanguageSwitcher />
           </div>
         </div>
       </div>
@@ -37,6 +42,9 @@
 
     <!-- Router View -->
     <router-view />
+
+    <!-- Global Notification System -->
+    <NotificationSystem />
   </div>
 </template>
 
