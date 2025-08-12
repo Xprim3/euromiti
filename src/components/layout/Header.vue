@@ -99,21 +99,26 @@ const handleNavigationClick = (route: string) => {
         <div class="flex-shrink-0">
           <button
             @click="toggleMobileMenu"
-            class="w-11 h-11 flex items-center justify-center bg-white hover:bg-gray-50 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm border border-gray-200"
-            :class="{ 'bg-blue-50 border-blue-200': isMobileMenuOpen }"
+            class="w-10 h-10 flex items-center justify-center bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 shadow-sm border border-gray-200 hover:shadow-md"
+            :class="{ 'bg-blue-50 border-blue-300 shadow-md': isMobileMenuOpen }"
           >
-            <!-- Hamburger Icon with Animation -->
+            <!-- Classic Hamburger Icon -->
             <div class="relative w-5 h-5">
+              <!-- Top line -->
               <span 
-                class="absolute w-5 h-0.5 bg-gray-600 rounded-full transition-all duration-300"
+                class="absolute top-0.5 left-0 w-5 h-0.5 bg-gray-700 rounded-full transition-all duration-200"
                 :class="{ 'rotate-45 translate-y-1.5 bg-blue-600': isMobileMenuOpen }"
               ></span>
+              
+              <!-- Middle line -->
               <span 
-                class="absolute w-5 h-0.5 bg-gray-600 rounded-full transition-all duration-300 top-2"
+                class="absolute top-1/2 left-0 w-5 h-0.5 bg-gray-700 rounded-full transition-all duration-200 -translate-y-1/2"
                 :class="{ 'opacity-0': isMobileMenuOpen }"
               ></span>
+              
+              <!-- Bottom line -->
               <span 
-                class="absolute w-5 h-0.5 bg-gray-600 rounded-full transition-all duration-300 top-4"
+                class="absolute bottom-0.5 left-0 w-5 h-0.5 bg-gray-700 rounded-full transition-all duration-200"
                 :class="{ '-rotate-45 -translate-y-1.5 bg-blue-600': isMobileMenuOpen }"
               ></span>
             </div>
@@ -134,7 +139,7 @@ const handleNavigationClick = (route: string) => {
         </div>
         <button
           @click="closeMobileMenu"
-          class="w-10 h-10 flex items-center justify-center bg-white rounded-full"
+          class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition-all duration-200 shadow-sm border border-gray-200"
         >
           <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
