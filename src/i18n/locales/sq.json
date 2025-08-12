@@ -1,0 +1,144 @@
+{
+  "common": {
+    "loading": "Duke ngarkuar...",
+    "save": "Ruaj",
+    "cancel": "Anulo",
+    "delete": "Fshi",
+    "edit": "Redakto",
+    "add": "Shto",
+    "search": "Kërko",
+    "filter": "Filtro",
+    "sort": "Rendit",
+    "refresh": "Rifresko",
+    "close": "Mbyll",
+    "back": "Kthehu",
+    "next": "Tjetra",
+    "previous": "E mëparshmja",
+    "submit": "Paraqit",
+    "reset": "Rivendos",
+    "confirm": "Konfirmo",
+    "yes": "Po",
+    "no": "Jo",
+    "ok": "OK",
+    "error": "Gabim",
+    "success": "Sukses",
+    "warning": "Paralajmërim",
+    "info": "Informacion"
+  },
+  "navigation": {
+    "home": "Kryesore",
+    "about": "Rreth nesh",
+    "dashboard": "Paneli",
+    "profile": "Profili",
+    "settings": "Cilësimet",
+    "logout": "Dil",
+    "login": "Hyr",
+    "register": "Regjistrohu"
+  },
+  "auth": {
+    "login": "Hyr",
+    "logout": "Dil",
+    "register": "Regjistrohu",
+    "email": "Email",
+    "password": "Fjalëkalimi",
+    "confirmPassword": "Konfirmo fjalëkalimin",
+    "firstName": "Emri",
+    "lastName": "Mbiemri",
+    "fullName": "Emri i plotë",
+    "username": "Emri i përdoruesit",
+    "forgotPassword": "Keni harruar fjalëkalimin?",
+    "rememberMe": "Më mbaj mend",
+    "loginSuccess": "Hyrja u krye me sukses",
+    "loginFailed": "Hyrja dështoi",
+    "logoutSuccess": "Dilja u krye me sukses",
+    "registerSuccess": "Regjistrimi u krye me sukses",
+    "registerFailed": "Regjistrimi dështoi",
+    "passwordMismatch": "Fjalëkalimet nuk përputhen",
+    "invalidCredentials": "Kredencialet janë të pavlefshme",
+    "userNotFound": "Përdoruesi nuk u gjet",
+    "emailAlreadyExists": "Emaili ekziston tashmë"
+  },
+  "user": {
+    "profile": "Profili i përdoruesit",
+    "guestUser": "Përdorues i mirëmbajtur",
+    "notAuthenticated": "Nuk është autentifikuar",
+    "authenticated": "Autentifikuar",
+    "role": "Roli",
+    "adminAccess": "Qasja e administratorit",
+    "user": "Përdorues",
+    "admin": "Administrator",
+    "moderator": "Moderator"
+  },
+  "app": {
+    "theme": "Tema",
+    "light": "E ndritshme",
+    "dark": "E errët",
+    "language": "Gjuha",
+    "notifications": "Njoftimet",
+    "sidebar": "Shiriti anësor",
+    "toggleSidebar": "Ndrysho shiritin anësor",
+    "themeChanged": "Tema u ndryshua",
+    "switchedTo": "U ndryshua në temën {theme}"
+  },
+  "home": {
+    "title": "Tailwind CSS po funksionon!",
+    "tailwindWorking": "Nëse shihni këtë kuti të verdhë me qoshe të rrumbullakosura dhe një kufi të majtë, Tailwind CSS po funksionon!",
+    "buttonsWithTailwind": "Butonat me Tailwind",
+    "inputAndDropdown": "Hyrja dhe menuja rënëse",
+    "tailwindTest": "Testi i Tailwind CSS",
+    "originalComponent": "Komponenti origjinal",
+    "stateManagement": "Menaxhimi i gjendjes Pinia",
+    "stateManagementDescription": "Kjo demonstron dyqanet Pinia për:",
+    "authStore": "Dyqani i autentifikimit: Hyrja/dilja, rolet, lejet",
+    "appStore": "Dyqani i aplikacionit: Ndryshimi i temës, njoftimet, gjendja e shiritit anësor",
+    "reactiveState": "Gjendja reaktive: Përditësime në kohë reale midis komponentëve",
+    "tryIt": "Provoje: Klikoni butonin e hyrjes, ndryshoni temën dhe aktivizoni njoftimet!"
+  },
+  "about": {
+    "title": "Rreth këtij projekti",
+    "description": "Ky është një aplikacion modern Vue 3 i ndërtuar me teknologji të avancuara:",
+    "frontend": "Frontend",
+    "uiComponents": "Komponentët e UI",
+    "backToHome": "Kthehu në kryesore"
+  },
+  "notifications": {
+    "demoNotifications": "Njoftimet e demonstrimit",
+    "successMessage": "Ky është një mesazh suksesi",
+    "errorMessage": "Ky është një mesazh gabimi",
+    "warningMessage": "Ky është një mesazh paralajmërimi",
+    "infoMessage": "Ky është një mesazh informacioni"
+  },
+  "forms": {
+    "name": "Emri",
+    "city": "Qyteti",
+    "selectCity": "Zgjidhni një qytet",
+    "enterName": "Shkruani emrin tuaj"
+  },
+  "cities": {
+    "newYork": "New York",
+    "london": "Londra",
+    "paris": "Paris",
+    "tokyo": "Tokio"
+  },
+  "validation": {
+    "required": "Kjo fushë është e detyrueshme",
+    "email": "Ju lutemi shkruani një adresë email të vlefshme",
+    "minLength": "Gjatësia minimale është {min} karaktere",
+    "maxLength": "Gjatësia maksimale është {max} karaktere",
+    "passwordStrength": "Fjalëkalimi duhet të jetë së paku 8 karaktere i gjatë"
+  },
+  "errors": {
+    "general": "Diçka shkoi keq",
+    "network": "Gabim rrjeti. Ju lutemi kontrolloni lidhjen tuaj",
+    "unauthorized": "Nuk jeni të autorizuar për të kryer këtë veprim",
+    "forbidden": "Qasja e ndaluar",
+    "notFound": "Burimi nuk u gjet",
+    "serverError": "Gabim serveri. Ju lutemi provoni më vonë"
+  },
+  "success": {
+    "saved": "Ndryshimet u ruajtën me sukses",
+    "deleted": "Artikulli u fshi me sukses",
+    "created": "Artikulli u krijua me sukses",
+    "updated": "Artikulli u përditësua me sukses"
+  }
+}

@@ -13,13 +13,6 @@ const currentLocale = computed(() => {
 const handleLocaleChange = (newLocale: Locale) => {
   locale.value = newLocale
   localStorage.setItem('locale', newLocale)
-  
-  // Update document direction for RTL languages
-  if (newLocale === 'ar') {
-    document.documentElement.dir = 'rtl'
-  } else {
-    document.documentElement.dir = 'ltr'
-  }
 }
 
 const localeOptions = availableLocales.map(locale => ({
@@ -35,8 +28,8 @@ const localeOptions = availableLocales.map(locale => ({
       :options="localeOptions"
       optionLabel="label"
       optionValue="value"
-      :placeholder="`${currentLocale.flag} ${currentLocale.name}`"
-      class="w-48"
+      :placeholder="currentLocale.flag"
+      class="w-auto"
       @change="handleLocaleChange"
     />
   </div>
@@ -44,6 +37,6 @@ const localeOptions = availableLocales.map(locale => ({
 
 <style scoped>
 .language-switcher {
-  min-width: 120px;
+  min-width: auto;
 }
 </style>
