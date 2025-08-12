@@ -15,7 +15,7 @@ const isMobileMenuOpen = ref(false)
 
 // Navigation items
 const navigationItems = [
-  { label: 'Ballina', route: '/' },
+  { label: 'BALLINA', route: '/' },
   { 
     label: 'RRETH NESH', 
     route: '/about',
@@ -37,18 +37,24 @@ const navigationItems = [
 // Submenu state
 const openSubmenu = ref<string | null>(null)
 
+// Track which item was last clicked
+const clickedItem = ref<string | null>(null)
+
 // Toggle submenu
 const toggleSubmenu = (itemLabel: string) => {
   if (openSubmenu.value === itemLabel) {
     openSubmenu.value = null
+    clickedItem.value = null
   } else {
     openSubmenu.value = itemLabel
+    clickedItem.value = itemLabel
   }
 }
 
 // Close submenu
 const closeSubmenu = () => {
   openSubmenu.value = null
+  clickedItem.value = null
 }
 
 // Toggle mobile menu
@@ -65,6 +71,7 @@ const closeMobileMenu = () => {
 // Handle navigation click
 const handleNavigationClick = (route: string) => {
   router.push(route)
+  clickedItem.value = route
   closeMobileMenu()
 }
 </script>
@@ -127,9 +134,11 @@ const handleNavigationClick = (route: string) => {
         </div>
         <button
           @click="closeMobileMenu"
-          class="w-10 h-10 flex items-center justify-center bg-white hover:bg-gray-50 rounded-full transition-all duration-200 shadow-sm border border-gray-200"
+          class="w-10 h-10 flex items-center justify-center bg-white rounded-full"
         >
-          <span class="text-gray-500 text-xl font-light">×</span>
+          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
@@ -146,7 +155,7 @@ const handleNavigationClick = (route: string) => {
               @click="item.hasSubmenu ? toggleSubmenu(item.label) : handleNavigationClick(item.route)"
               class="w-full flex items-center px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 text-left group"
               :class="{ 
-                'text-blue-700 bg-blue-50': $route.path === item.route || (item.hasSubmenu && openSubmenu === item.label),
+                'text-blue-700 bg-blue-50': clickedItem === item.route || (item.hasSubmenu && openSubmenu === item.label),
                 'hover:text-blue-700 hover:bg-blue-50': !item.hasSubmenu || openSubmenu !== item.label
               }"
             >
@@ -183,7 +192,7 @@ const handleNavigationClick = (route: string) => {
                   :key="subItem.route"
                   @click="handleNavigationClick(subItem.route)"
                   class="w-full flex items-center px-4 py-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-blue-100 transition-all duration-200 text-left text-xs"
-                  :class="{ 'text-blue-600 bg-blue-100': $route.path === subItem.route }"
+                  :class="{ 'text-blue-600 bg-blue-100': clickedItem === subItem.route }"
                 >
                   <span class="font-medium">{{ subItem.label }}</span>
                 </button>
