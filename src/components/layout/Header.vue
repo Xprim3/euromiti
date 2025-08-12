@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -60,6 +60,9 @@ const closeSubmenu = () => {
 // Toggle mobile menu
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
+  if (isMobileMenuOpen.value) {
+    closeLanguageDropdown()
+  }
 }
 
 // Close mobile menu
@@ -74,6 +77,43 @@ const handleNavigationClick = (route: string) => {
   clickedItem.value = route
   closeMobileMenu()
 }
+
+// Language Switcher
+const isLanguageDropdownOpen = ref(false)
+const currentLanguage = ref({ flag: 'al', code: 'AL', name: 'Albanian' })
+const availableLanguages = [
+  { flag: 'al', code: 'AL', name: 'Albanian' },
+  { flag: 'gb', code: 'EN', name: 'English' },
+  { flag: 'rs', code: 'SR', name: 'Serbian' }
+]
+
+const toggleLanguageDropdown = () => {
+  isLanguageDropdownOpen.value = !isLanguageDropdownOpen.value
+}
+
+const selectLanguage = (lang: { flag: string; code: string; name: string }) => {
+  currentLanguage.value = lang
+  isLanguageDropdownOpen.value = false
+}
+
+// Get flag URL from CDN
+const getFlagUrl = (countryCode: string) => {
+  return `https://flagcdn.com/w40/${countryCode}.png`
+}
+
+// Close language dropdown when clicking outside
+const closeLanguageDropdown = () => {
+  isLanguageDropdownOpen.value = false
+}
+
+// Global click listener to close dropdown
+onMounted(() => {
+  document.addEventListener('click', closeLanguageDropdown)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', closeLanguageDropdown)
+})
 </script>
 
 <template>
@@ -95,34 +135,81 @@ const handleNavigationClick = (route: string) => {
           </div>
         </div>
 
-        <!-- Right: Hamburger Button -->
-        <div class="flex-shrink-0">
-          <button
-            @click="toggleMobileMenu"
-            class="w-11 h-11 sm:w-10 sm:h-10 flex items-center justify-center bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 shadow-sm border border-gray-200 hover:shadow-md active:scale-95"
-            :class="{ 'bg-blue-50 border-blue-300 shadow-md': isMobileMenuOpen }"
-          >
-            <!-- Mobile-Optimized Hamburger Icon -->
-            <div class="relative w-5 h-5">
-              <!-- Top line -->
-              <span 
-                class="absolute top-0.5 left-0 w-5 h-0.5 bg-gray-700 rounded-full transition-all duration-200"
-                :class="{ 'rotate-45 translate-y-1.5 bg-blue-600': isMobileMenuOpen }"
-              ></span>
-              
-              <!-- Middle line -->
-              <span 
-                class="absolute top-1/2 left-0 w-5 h-0.5 bg-gray-700 rounded-full transition-all duration-200 -translate-y-1/2"
-                :class="{ 'opacity-0': isMobileMenuOpen }"
-              ></span>
-              
-              <!-- Bottom line -->
-              <span 
-                class="absolute bottom-0.5 left-0 w-5 h-0.5 bg-gray-700 rounded-full transition-all duration-200"
-                :class="{ '-rotate-45 -translate-y-1.5 bg-blue-600': isMobileMenuOpen }"
-              ></span>
+        <!-- Right: Language Switcher & Hamburger Button -->
+        <div class="flex items-center space-x-3">
+          <!-- Language Switcher -->
+          <div class="relative" @click.stop>
+                         <button
+               @click="toggleLanguageDropdown"
+               class="flex items-center space-x-3 px-4 py-2 bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 border border-gray-200 w-24"
+               :class="{ 'bg-blue-50 border-blue-300': isLanguageDropdownOpen }"
+             >
+              <!-- Flag Icon -->
+              <img :src="getFlagUrl(currentLanguage.flag)" alt="Flag" class="w-5 h-4 rounded-sm">
+              <!-- Language Code -->
+              <span class="font-medium text-sm text-gray-700">{{ currentLanguage.code }}</span>
+              <!-- Dropdown Arrow -->
+              <svg 
+                class="w-4 h-4 text-gray-500 transition-transform duration-200"
+                :class="{ 'rotate-180': isLanguageDropdownOpen }"
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            
+            <!-- Language Dropdown -->
+            <div
+              class="absolute top-full left-0 right-0 mt-1 w-full bg-white shadow-lg border border-gray-200 py-2 z-50 transform transition-all duration-300 ease-out rounded-lg"
+              :class="{ 
+                'translate-y-0 opacity-100 scale-100 bg-blue-50 border-blue-300 shadow-md': isLanguageDropdownOpen,
+                '-translate-y-2 opacity-0 scale-95 pointer-events-none': !isLanguageDropdownOpen
+              }"
+            >
+              <button
+                v-for="lang in availableLanguages"
+                :key="lang.code"
+                @click="selectLanguage(lang)"
+                class="w-full flex items-center space-x-3 px-4 py-2 text-left transition-colors duration-150"
+                :class="{ 'text-blue-700': currentLanguage.code === lang.code, 'text-gray-700 hover:text-blue-600': currentLanguage.code !== lang.code }"
+              >
+                <img :src="getFlagUrl(lang.flag)" alt="Flag" class="w-5 h-4 rounded-sm">
+                <span class="font-medium text-sm">{{ lang.code }}</span>
+              </button>
             </div>
-          </button>
+          </div>
+
+          <!-- Hamburger Button -->
+          <div class="flex-shrink-0">
+            <button
+              @click="toggleMobileMenu"
+              class="w-10 h-10 flex items-center justify-center bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 shadow-sm border border-gray-200 hover:shadow-md"
+              :class="{ 'bg-blue-50 border-blue-300 shadow-md': isMobileMenuOpen }"
+            >
+              <!-- Classic Hamburger Icon -->
+              <div class="relative w-5 h-5">
+                <!-- Top line -->
+                <span 
+                  class="absolute top-0.5 left-0 w-5 h-0.5 bg-gray-700 rounded-full transition-all duration-200"
+                  :class="{ 'rotate-45 translate-y-1.5 bg-blue-600': isMobileMenuOpen }"
+                ></span>
+                
+                <!-- Middle line -->
+                <span 
+                  class="absolute top-1/2 left-0 w-5 h-0.5 bg-gray-700 rounded-full transition-all duration-200 -translate-y-1/2"
+                  :class="{ 'opacity-0': isMobileMenuOpen }"
+                ></span>
+                
+                <!-- Bottom line -->
+                <span 
+                  class="absolute bottom-0.5 left-0 w-5 h-0.5 bg-gray-700 rounded-full transition-all duration-200"
+                  :class="{ '-rotate-45 -translate-y-1.5 bg-blue-600': isMobileMenuOpen }"
+                ></span>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -133,7 +220,7 @@ const handleNavigationClick = (route: string) => {
       :class="{ 'translate-x-0': isMobileMenuOpen, 'translate-x-full': !isMobileMenuOpen }"
     >
       <!-- Header with close button -->
-      <div class="flex items-center justify-between p-6 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <div class="flex items-center justify-between p-6 border-b border-gray-100 bg-gray-50">
         <div>
           <h2 class="text-xl font-bold text-gray-900">Menu</h2>
         </div>
