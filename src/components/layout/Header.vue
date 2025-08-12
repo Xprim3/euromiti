@@ -99,10 +99,10 @@ const handleNavigationClick = (route: string) => {
         <div class="flex-shrink-0">
           <button
             @click="toggleMobileMenu"
-            class="w-10 h-10 flex items-center justify-center bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 shadow-sm border border-gray-200 hover:shadow-md"
+            class="w-11 h-11 sm:w-10 sm:h-10 flex items-center justify-center bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 shadow-sm border border-gray-200 hover:shadow-md active:scale-95"
             :class="{ 'bg-blue-50 border-blue-300 shadow-md': isMobileMenuOpen }"
           >
-            <!-- Classic Hamburger Icon -->
+            <!-- Mobile-Optimized Hamburger Icon -->
             <div class="relative w-5 h-5">
               <!-- Top line -->
               <span 
