@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
-const { t } = useI18n()
 const router = useRouter()
 
 // Company info
@@ -148,8 +146,7 @@ const handleNavigationClick = (route: string) => {
               @click="item.hasSubmenu ? toggleSubmenu(item.label) : handleNavigationClick(item.route)"
               class="w-full flex items-center px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 text-left group"
               :class="{ 
-                'text-blue-700 bg-blue-50': $route.path === item.route,
-                'text-blue-700 bg-blue-50': item.hasSubmenu && openSubmenu === item.label,
+                'text-blue-700 bg-blue-50': $route.path === item.route || (item.hasSubmenu && openSubmenu === item.label),
                 'hover:text-blue-700 hover:bg-blue-50': !item.hasSubmenu || openSubmenu !== item.label
               }"
             >
