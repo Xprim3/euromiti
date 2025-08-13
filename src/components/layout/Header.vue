@@ -301,42 +301,42 @@ onUnmounted(() => {
 
     <!-- Sliding Dropdown from Right (Hidden on desktop) -->
     <div 
-      class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform transition-transform duration-300 ease-out z-50 lg:hidden"
+      class="fixed top-0 right-0 h-full w-72 bg-white shadow-2xl transform transition-transform duration-300 ease-out z-50 lg:hidden"
       :class="{ 'translate-x-0': isMobileMenuOpen, 'translate-x-full': !isMobileMenuOpen }"
     >
       <!-- Header with close button -->
-      <div class="flex items-center justify-between p-6 border-b border-gray-100 bg-gray-50">
+      <div class="flex items-center justify-between p-4 border-b border-gray-100 bg-gray-50">
         <div>
-          <h2 class="text-xl font-bold text-gray-900">Menu</h2>
+          <h2 class="text-lg font-bold text-gray-900">Menu</h2>
         </div>
         <button
           @click="closeMobileMenu"
-          class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition-all duration-200 shadow-sm border border-gray-200"
+          class="w-8 h-8 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition-all duration-200 shadow-sm border border-gray-200"
         >
-          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
 
       <!-- Navigation Items -->
-      <nav class="p-6">
-        <div class="space-y-1">
+      <nav class="p-4">
+        <div class="space-y-0.5">
           <div
             v-for="item in navigationItems"
             :key="item.route"
-            class="space-y-1"
+            class="space-y-0.5"
           >
             <!-- Main Navigation Button -->
             <button
               @click="item.hasSubmenu ? toggleSubmenu(item.label) : handleNavigationClick(item.route)"
-              class="w-full flex items-center px-4 py-3 rounded-lg text-gray-700 transition-all duration-200 text-left group"
+              class="w-full flex items-center px-3 py-2.5 rounded-md text-gray-700 transition-all duration-200 text-left group"
               :class="{ 
                 'text-blue-700 bg-blue-50': clickedItem === item.route || (item.hasSubmenu && openSubmenu === item.label),
                 'hover:text-blue-700 hover:bg-blue-50': !item.hasSubmenu || openSubmenu !== item.label
               }"
             >
-              <span class="font-medium text-sm tracking-wide">{{ item.label }}</span>
+              <span class="font-medium text-sm">{{ item.label }}</span>
               <!-- Submenu Indicator -->
               <div v-if="item.hasSubmenu" class="ml-auto flex items-center">
                 <svg 
@@ -361,14 +361,14 @@ onUnmounted(() => {
             <div 
               v-if="item.hasSubmenu"
               class="overflow-hidden transition-all duration-300 ease-out"
-              :class="{ 'max-h-32 opacity-100': openSubmenu === item.label, 'max-h-0 opacity-0': openSubmenu !== item.label }"
+              :class="{ 'max-h-28 opacity-100': openSubmenu === item.label, 'max-h-0 opacity-0': openSubmenu !== item.label }"
             >
-              <div class="ml-4 space-y-1 py-1">
+              <div class="ml-3 space-y-0.5 py-1">
                 <button
                   v-for="subItem in item.submenuItems"
                   :key="subItem.route"
                   @click="handleNavigationClick(subItem.route)"
-                  class="w-full flex items-center px-4 py-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-blue-100 transition-all duration-200 text-left text-xs"
+                  class="w-full flex items-center px-3 py-1.5 rounded text-gray-600 hover:text-blue-600 hover:bg-blue-100 transition-all duration-200 text-left text-xs"
                   :class="{ 'text-blue-600 bg-blue-100': clickedItem === subItem.route }"
                 >
                   <span class="font-medium">{{ subItem.label }}</span>
@@ -380,7 +380,7 @@ onUnmounted(() => {
       </nav>
 
       <!-- Simple Footer -->
-      <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-100 bg-gray-50">
+      <div class="absolute bottom-0 left-0 right-0 p-3 border-t border-gray-100 bg-gray-50">
         <div class="text-center">
           <p class="text-xs text-gray-500">
             Powered by <span class="font-medium text-blue-600">EUROMITI</span>
