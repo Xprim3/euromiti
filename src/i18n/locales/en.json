@@ -33,7 +33,19 @@
     "settings": "Settings",
     "logout": "Logout",
     "login": "Login",
-    "register": "Register"
+    "register": "Register",
+    "ballina": "HOME",
+    "rrethNesh": "ABOUT US",
+    "sherbimet": "SERVICES",
+    "lajme": "NEWS",
+    "pikatEShitjes": "SALES POINTS",
+    "mundesiPunesimi": "CAREERS",
+    "shperblimet": "PRICING",
+    "kontakti": "CONTACT",
+    "historiaJone": "Our History",
+    "misioniVizioni": "Mission & Vision",
+    "ekipiDrejtues": "Leadership Team",
+    "menu": "Menu"
   },
   "auth": {
     "login": "Login",

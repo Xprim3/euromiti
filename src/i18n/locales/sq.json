@@ -33,7 +33,19 @@
     "settings": "Cilësimet",
     "logout": "Dil",
     "login": "Hyr",
-    "register": "Regjistrohu"
+    "register": "Regjistrohu",
+    "ballina": "BALLINA",
+    "rrethNesh": "RRETH NESH",
+    "sherbimet": "SHERBIMET",
+    "lajme": "LAJME",
+    "pikatEShitjes": "PIKAT E SHITJES",
+    "mundesiPunesimi": "MUNDESI PUNESIMI",
+    "shperblimet": "SHPERBLIMET",
+    "kontakti": "KONTAKTI",
+    "historiaJone": "Historia Jonë",
+    "misioniVizioni": "Misioni & Vizioni",
+    "ekipiDrejtues": "Ekipi Drejtues",
+    "menu": "Menu"
   },
   "auth": {
     "login": "Hyr",

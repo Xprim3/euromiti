@@ -33,7 +33,19 @@
     "settings": "Podešavanja",
     "logout": "Odjavi se",
     "login": "Prijavi se",
-    "register": "Registruj se"
+    "register": "Registruj se",
+    "ballina": "POČETNA",
+    "rrethNesh": "O NAMA",
+    "sherbimet": "USLUGE",
+    "lajme": "VESTI",
+    "pikatEShitjes": "TAČKE PRODAJE",
+    "mundesiPunesimi": "KARIJERA",
+    "shperblimet": "CENOVNIK",
+    "kontakti": "KONTAKT",
+    "historiaJone": "Naša Istorija",
+    "misioniVizioni": "Misija & Vizija",
+    "ekipiDrejtues": "Rukovodeći Tim",
+    "menu": "Meni"
   },
   "auth": {
     "login": "Prijavi se",
