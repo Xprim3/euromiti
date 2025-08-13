@@ -122,7 +122,7 @@ const getActiveButtonWidth = () => {
 }
 
 // Handle button hover
-const handleButtonHover = (item: any, event: MouseEvent) => {
+const handleButtonHover = (item: any) => {
   hoveredButton.value = item.label
 }
 
@@ -299,8 +299,8 @@ onUnmounted(() => {
               v-for="(item, index) in navigationItems"
               :key="item.route"
               class="relative group"
-              :ref="el => { if (el) navButtonRefs[index] = el }"
-              @mouseenter="handleButtonHover(item, $event)"
+              :ref="(el: any) => { if (el) navButtonRefs[index] = el }"
+              @mouseenter="handleButtonHover(item)"
               @mouseleave="handleButtonLeave()"
             >
               <!-- Main Navigation Button -->
