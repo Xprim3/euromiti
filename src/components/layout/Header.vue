@@ -427,7 +427,7 @@ onUnmounted(() => {
 
     <!-- Sliding Dropdown from Right (Hidden on desktop) -->
     <div 
-      class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform transition-transform duration-300 ease-out z-50 xl:hidden"
+      class="fixed top-0 right-0 h-full w-auto bg-white shadow-2xl transform transition-transform duration-300 ease-out z-50 xl:hidden"
       :class="{ 'translate-x-0': isMobileMenuOpen, 'translate-x-full': !isMobileMenuOpen }"
     >
       <!-- Header with close button -->
@@ -447,11 +447,10 @@ onUnmounted(() => {
 
       <!-- Navigation Items -->
       <nav class="p-6">
-        <div class="space-y-1">
+        <div>
           <div
             v-for="item in navigationItems"
             :key="item.route"
-            class="space-y-1"
           >
             <!-- Main Navigation Button -->
             <button
@@ -489,7 +488,7 @@ onUnmounted(() => {
               class="overflow-hidden transition-all duration-300 ease-out"
               :class="{ 'max-h-32 opacity-100': openSubmenu === item.label, 'max-h-0 opacity-0': openSubmenu !== item.label }"
             >
-              <div class="ml-4 space-y-1 py-1">
+              <div class="ml-4 py-1">
                 <button
                   v-for="subItem in item.submenuItems"
                   :key="subItem.route"
