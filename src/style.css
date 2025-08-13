@@ -5,6 +5,53 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global mobile double-tap zoom prevention */
+/* Prevents unwanted zoom on double-tap while maintaining manual pinch-zoom */
+
+/* All buttons and button-like elements */
+button,
+.btn,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* All clickable/interactive elements */
+a,
+.clickable,
+.interactive,
+[tabindex],
+[onclick] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Form inputs and interactive form elements */
+input,
+textarea,
+select,
+[contenteditable="true"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom components that might be interactive */
+.card,
+.card-interactive,
+.nav-item,
+.menu-item {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure the page itself can still be zoomed manually */
+html, body {
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
 /* Prevent layout shift when scrollbar appears/disappears */
 html {
   scrollbar-gutter: stable;
