@@ -5,6 +5,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent layout shift when scrollbar appears/disappears */
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  overflow-y: scroll;
+}
+
 /* ===================================
    EUROMITI PETROL COMPANY
    Global Styles Integration

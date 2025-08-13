@@ -118,35 +118,85 @@ onUnmounted(() => {
 
 <template>
   <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-    <!-- Main Header Bar -->
+        <!-- Main Header Bar -->
     <div class="px-4 py-3">
       <div class="flex items-center justify-between">
         <!-- Left: Logo & Company Name -->
         <div class="flex items-center space-x-3">
-                     <!-- Circular Logo -->
-           <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-green-600 rounded-full flex items-center justify-center shadow-md">
-             <span class="text-white text-sm font-bold">E</span>
-           </div>
-           
-           <!-- Company Info -->
-           <div>
-             <h1 class="text-base font-bold text-gray-900 leading-tight">{{ companyInfo.name }}</h1>
-           </div>
+          <!-- Circular Logo -->
+          <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-green-600 rounded-full flex items-center justify-center shadow-md">
+            <span class="text-white text-sm font-bold">E</span>
+          </div>
+          
+          <!-- Company Info -->
+          <div>
+            <h1 class="text-base font-bold text-gray-900 leading-tight">{{ companyInfo.name }}</h1>
+          </div>
         </div>
+
+        <!-- Center: Desktop Navigation (Always present, hidden on mobile) -->
+        <nav class="hidden lg:flex items-center space-x-1 min-w-0 flex-1 justify-center">
+          <div class="flex items-center space-x-1">
+            <div
+              v-for="item in navigationItems"
+              :key="item.route"
+              class="relative group"
+            >
+              <!-- Main Navigation Button -->
+              <button
+                @click="item.hasSubmenu ? toggleSubmenu(item.label) : handleNavigationClick(item.route)"
+                class="flex items-center space-x-1 px-4 py-2 rounded-lg text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition-all duration-200 font-medium text-sm whitespace-nowrap"
+                :class="{ 'text-blue-700 bg-blue-50': clickedItem === item.route || (item.hasSubmenu && openSubmenu === item.label) }"
+              >
+                <span>{{ item.label }}</span>
+                <!-- Submenu Indicator -->
+                <svg 
+                  v-if="item.hasSubmenu"
+                  class="w-3 h-3 text-gray-500 transition-transform duration-200" 
+                  :class="{ 'rotate-180': openSubmenu === item.label }"
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+
+              <!-- Desktop Submenu Dropdown -->
+              <div 
+                v-if="item.hasSubmenu"
+                class="absolute top-full left-0 mt-1 w-48 bg-white shadow-lg border border-gray-200 py-2 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+              >
+                <button
+                  v-for="subItem in item.submenuItems"
+                  :key="subItem.route"
+                  @click="handleNavigationClick(subItem.route)"
+                  class="w-full flex items-center px-4 py-2 text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition-all duration-200 text-left text-sm"
+                  :class="{ 'text-blue-700 bg-blue-50': clickedItem === subItem.route }"
+                >
+                  <span class="font-medium">{{ subItem.label }}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Mobile Navigation Placeholder (Hidden on desktop) -->
+        <div class="flex-1 lg:hidden"></div>
 
         <!-- Right: Language Switcher & Hamburger Button -->
         <div class="flex items-center space-x-3">
           <!-- Language Switcher -->
           <div class="relative" @click.stop>
-                         <button
-               @click="toggleLanguageDropdown"
-               class="flex items-center space-x-3 pl-2 pr-1 py-2 bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 w-auto min-w-[4.5rem]"
-               :class="{ 'bg-blue-50': isLanguageDropdownOpen }"
-             >
-                             <!-- Flag Icon -->
-               <img :src="getFlagUrl(currentLanguage.flag)" alt="Flag" class="w-4 h-3 rounded-sm">
-               <!-- Language Code -->
-               <span class="font-medium text-xs text-gray-700">{{ currentLanguage.code }}</span>
+            <button
+              @click="toggleLanguageDropdown"
+              class="flex items-center justify-center space-x-2 pl-3 pr-3 py-2 bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 w-20"
+              :class="{ 'bg-blue-50': isLanguageDropdownOpen }"
+            >
+              <!-- Flag Icon -->
+              <img :src="getFlagUrl(currentLanguage.flag)" alt="Flag" class="w-4 h-3 rounded-sm">
+              <!-- Language Code -->
+              <span class="font-medium text-xs text-gray-700">{{ currentLanguage.code }}</span>
               <!-- Dropdown Arrow -->
               <svg 
                 class="w-4 h-4 text-gray-500 transition-transform duration-200"
@@ -174,14 +224,14 @@ onUnmounted(() => {
                 class="w-full flex items-center space-x-3 px-4 py-2 text-left transition-colors duration-150"
                 :class="{ 'text-blue-700': currentLanguage.code === lang.code, 'text-gray-700 hover:text-blue-600': currentLanguage.code !== lang.code }"
               >
-                                 <img :src="getFlagUrl(lang.flag)" alt="Flag" class="w-4 h-3 rounded-sm">
-                 <span class="font-medium text-xs">{{ lang.code }}</span>
+                <img :src="getFlagUrl(lang.flag)" alt="Flag" class="w-4 h-3 rounded-sm">
+                <span class="font-medium text-xs">{{ lang.code }}</span>
               </button>
             </div>
           </div>
 
-          <!-- Hamburger Button -->
-          <div class="flex-shrink-0">
+          <!-- Hamburger Button (Hidden on desktop) -->
+          <div class="flex-shrink-0 lg:hidden">
             <button
               @click="toggleMobileMenu"
               class="w-10 h-10 flex items-center justify-center bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 shadow-sm border border-gray-200 hover:shadow-md"
@@ -213,9 +263,9 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- Sliding Dropdown from Right -->
+    <!-- Sliding Dropdown from Right (Hidden on desktop) -->
     <div 
-      class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform transition-transform duration-300 ease-out z-50"
+      class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform transition-transform duration-300 ease-out z-50 lg:hidden"
       :class="{ 'translate-x-0': isMobileMenuOpen, 'translate-x-full': !isMobileMenuOpen }"
     >
       <!-- Header with close button -->
@@ -303,11 +353,11 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- Backdrop -->
+    <!-- Backdrop (Hidden on desktop) -->
     <div 
       v-if="isMobileMenuOpen"
       @click="closeMobileMenu"
-      class="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm z-40 transition-opacity duration-300"
+      class="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm z-40 transition-opacity duration-300 lg:hidden"
     ></div>
   </header>
 </template>
