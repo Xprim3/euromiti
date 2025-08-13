@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -57,11 +57,33 @@ const closeSubmenu = () => {
   clickedItem.value = null
 }
 
+// Scroll locking functions
+const lockScroll = () => {
+  document.body.style.overflow = 'hidden'
+  document.body.style.position = 'fixed'
+  document.body.style.width = '100%'
+  document.body.style.top = `-${window.scrollY}px`
+}
+
+const unlockScroll = () => {
+  const scrollY = document.body.style.top
+  document.body.style.overflow = ''
+  document.body.style.position = ''
+  document.body.style.width = ''
+  document.body.style.top = ''
+  if (scrollY) {
+    window.scrollTo(0, parseInt(scrollY || '0') * -1)
+  }
+}
+
 // Toggle mobile menu
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
   if (isMobileMenuOpen.value) {
     closeLanguageDropdown()
+    lockScroll()
+  } else {
+    unlockScroll()
   }
 }
 
@@ -69,7 +91,17 @@ const toggleMobileMenu = () => {
 const closeMobileMenu = () => {
   isMobileMenuOpen.value = false
   closeSubmenu() // Close any open submenus
+  unlockScroll()
 }
+
+// Watch for mobile menu state changes to handle scroll locking
+watch(isMobileMenuOpen, (newValue) => {
+  if (newValue) {
+    lockScroll()
+  } else {
+    unlockScroll()
+  }
+})
 
 // Handle navigation click
 const handleNavigationClick = (route: string) => {
@@ -113,6 +145,10 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener('click', closeLanguageDropdown)
+  // Ensure scroll is unlocked when component is unmounted
+  if (isMobileMenuOpen.value) {
+    unlockScroll()
+  }
 })
 </script>
 
