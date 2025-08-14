@@ -825,18 +825,13 @@ html {
   background-color: white !important;
 }
 
-/* AGGRESSIVE DROPDOWN STYLING - FIX BLACK BACKGROUNDS */
+/* Custom PrimeVue styling to match brand colors - FIX BLACK DROPDOWN BACKGROUNDS */
 :deep(.p-dropdown) {
   border-radius: 0.5rem;
   border: 1px solid #e5e7eb;
   height: 48px;
   background-color: white !important;
   transition: all 0.2s;
-}
-
-:deep(.p-dropdown *),
-:deep(.p-dropdown *) {
-  background-color: white !important;
 }
 
 :deep(.p-dropdown .p-dropdown-label) {
@@ -850,11 +845,6 @@ html {
 :deep(.p-dropdown .p-dropdown-trigger) {
   width: 3rem;
   border-left: 1px solid #e5e7eb;
-  background-color: white !important;
-}
-
-:deep(.p-dropdown .p-dropdown-trigger *),
-:deep(.p-dropdown .p-dropdown-trigger *) {
   background-color: white !important;
 }
 
@@ -905,6 +895,42 @@ html {
 
 :deep(.p-dropdown-item.p-highlight:hover) {
   background-color: #1d4ed8 !important;
+}
+
+/* Force white backgrounds on ALL dropdown elements */
+:deep(.p-dropdown *),
+:deep(.p-dropdown * *) {
+  background-color: white !important;
+}
+
+:deep(.p-dropdown .p-dropdown-label),
+:deep(.p-dropdown .p-dropdown-trigger),
+:deep(.p-dropdown .p-dropdown-trigger *),
+:deep(.p-dropdown .p-dropdown-trigger * *) {
+  background-color: white !important;
+  background: white !important;
+}
+
+:deep(.p-dropdown .p-dropdown-panel),
+:deep(.p-dropdown .p-dropdown-items),
+:deep(.p-dropdown .p-dropdown-item) {
+  background-color: white !important;
+  background: white !important;
+}
+
+:deep(.p-dropdown .p-dropdown-item:hover) {
+  background-color: #f3f4f6 !important;
+  background: #f3f4f6 !important;
+}
+
+:deep(.p-dropdown .p-dropdown-item.p-highlight) {
+  background-color: #2563eb !important;
+  background: #2563eb !important;
+}
+
+:deep(.p-dropdown .p-dropdown-item.p-highlight:hover) {
+  background-color: #1d4ed8 !important;
+  background: #1d4ed8 !important;
 }
 
 /* Calendar styling */
