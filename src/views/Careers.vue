@@ -178,7 +178,7 @@
                   <div class="mt-6 flex justify-center">
                     <nav class="flex items-center space-x-2">
                       <button 
-                        @click="currentPage = Math.max(1, currentPage - 1)"
+                        @click="changePage(Math.max(1, currentPage - 1))"
                         :disabled="currentPage === 1"
                         class="px-3 py-2 text-sm font-medium text-brand-gray bg-brand-white border border-brand-light-gray rounded-lg hover:bg-brand-light/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                       >
@@ -188,7 +188,7 @@
                       <button 
                         v-for="page in visiblePages" 
                         :key="page"
-                        @click="currentPage = page"
+                        @click="changePage(page)"
                         :class="[
                           'px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200',
                           currentPage === page 
@@ -200,7 +200,7 @@
                       </button>
                       
                       <button 
-                        @click="currentPage = Math.min(totalPages, currentPage + 1)"
+                        @click="changePage(Math.min(totalPages, currentPage + 1))"
                         :disabled="currentPage === totalPages"
                         class="px-3 py-2 text-sm font-medium text-brand-gray bg-brand-white border border-brand-light-gray rounded-lg hover:bg-brand-light/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                       >
@@ -735,6 +735,18 @@ const submitApplication = async () => {
     isSubmitting.value = false
   }
 }
+
+// Handle page change with smooth scrolling
+const changePage = (page: number) => {
+  currentPage.value = page
+  // Smooth scroll to top of job listings on mobile
+  if (window.innerWidth <= 768) {
+    const jobSection = document.getElementById('positions')
+    if (jobSection) {
+      jobSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -753,60 +765,74 @@ html {
   border-radius: 0.5rem;
   border: 1px solid #e5e7eb;
   transition: all 0.2s;
-  height: 40px;
+  height: 48px;
   padding: 0.75rem 1rem;
+  background-color: white !important;
+  color: #374151 !important;
 }
 
 :deep(.p-inputtext:focus) {
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  background-color: white !important;
 }
 
 :deep(.p-dropdown) {
   border-radius: 0.5rem;
   border: 1px solid #e5e7eb;
-  height: 40px;
+  height: 48px;
+  background-color: white !important;
 }
 
 :deep(.p-dropdown:not(.p-disabled):hover) {
   border-color: #2563eb;
+  background-color: white !important;
 }
 
 :deep(.p-dropdown:not(.p-disabled).p-focus) {
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  background-color: white !important;
 }
 
 :deep(.p-dropdown .p-dropdown-label) {
   padding: 0.75rem 1rem;
-  height: 40px;
+  height: 48px;
   line-height: 1.5rem;
+  background-color: white !important;
+  color: #374151 !important;
 }
 
 :deep(.p-calendar) {
   border-radius: 0.5rem;
-  height: 40px;
+  height: 48px;
+  background-color: white !important;
 }
 
 :deep(.p-calendar input) {
   border-radius: 0.5rem;
   border: 1px solid #e5e7eb;
-  height: 40px;
+  height: 48px;
   padding: 0.75rem 1rem;
+  background-color: white !important;
+  color: #374151 !important;
 }
 
 :deep(.p-calendar:not(.p-disabled):hover input) {
   border-color: #2563eb;
+  background-color: white !important;
 }
 
 :deep(.p-calendar:not(.p-disabled).p-focus input) {
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  background-color: white !important;
 }
 
 :deep(.p-fileupload) {
   border-radius: 0.5rem;
-  height: 40px;
+  height: 48px;
+  background-color: white !important;
 }
 
 :deep(.p-fileupload .p-button) {
@@ -815,7 +841,7 @@ html {
   color: #374151;
   border-radius: 0.5rem;
   transition: all 0.2s;
-  height: 40px;
+  height: 48px;
   padding: 0.75rem 1rem;
 }
 
@@ -829,6 +855,7 @@ html {
   border: 1px solid #e5e7eb;
   width: 1.25rem;
   height: 1.25rem;
+  background-color: white !important;
 }
 
 :deep(.p-checkbox .p-checkbox-box.p-highlight) {
@@ -842,7 +869,7 @@ html {
   border-radius: 0.75rem;
   font-weight: 600;
   transition: all 0.3s;
-  height: 48px;
+  height: 56px;
 }
 
 :deep(.p-button:hover) {
@@ -891,5 +918,17 @@ html {
 :deep(.p-fileupload),
 :deep(.p-inputtext) {
   margin-bottom: 0;
+}
+
+/* Fix mobile pagination shift */
+@media (max-width: 768px) {
+  :deep(.p-dropdown-panel) {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90vw !important;
+    max-width: 400px !important;
+  }
 }
 </style>
