@@ -782,6 +782,7 @@ html {
   border: 1px solid #e5e7eb;
   height: 48px;
   background-color: white !important;
+  transition: all 0.2s;
 }
 
 :deep(.p-dropdown:not(.p-disabled):hover) {
@@ -801,6 +802,49 @@ html {
   line-height: 1.5rem;
   background-color: white !important;
   color: #374151 !important;
+}
+
+:deep(.p-dropdown .p-dropdown-trigger) {
+  width: 3rem;
+  background-color: white !important;
+  border-left: 1px solid #e5e7eb;
+}
+
+:deep(.p-dropdown .p-dropdown-trigger-icon) {
+  color: #6b7280 !important;
+}
+
+:deep(.p-dropdown-panel) {
+  background-color: white !important;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+:deep(.p-dropdown-items) {
+  background-color: white !important;
+}
+
+:deep(.p-dropdown-item) {
+  background-color: white !important;
+  color: #374151 !important;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s;
+}
+
+:deep(.p-dropdown-item:hover) {
+  background-color: #f3f4f6 !important;
+  color: #1f2937 !important;
+}
+
+:deep(.p-dropdown-item.p-highlight) {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
+:deep(.p-dropdown-item.p-highlight:hover) {
+  background-color: #1d4ed8 !important;
+  color: white !important;
 }
 
 :deep(.p-calendar) {
@@ -829,10 +873,60 @@ html {
   background-color: white !important;
 }
 
+:deep(.p-calendar .p-datepicker) {
+  background-color: white !important;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+:deep(.p-calendar .p-datepicker-header) {
+  background-color: white !important;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+:deep(.p-calendar .p-datepicker-calendar) {
+  background-color: white !important;
+}
+
+:deep(.p-calendar .p-datepicker-calendar th) {
+  background-color: #f9fafb !important;
+  color: #374151 !important;
+}
+
+:deep(.p-calendar .p-datepicker-calendar td) {
+  background-color: white !important;
+}
+
+:deep(.p-calendar .p-datepicker-calendar td > span) {
+  background-color: white !important;
+  color: #374151 !important;
+}
+
+:deep(.p-calendar .p-datepicker-calendar td > span:hover) {
+  background-color: #f3f4f6 !important;
+}
+
+:deep(.p-calendar .p-datepicker-calendar td.p-datepicker-today > span) {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
+:deep(.p-calendar .p-datepicker-calendar td.p-datepicker-today > span:hover) {
+  background-color: #1d4ed8 !important;
+}
+
 :deep(.p-fileupload) {
   border-radius: 0.5rem;
   height: 48px;
   background-color: white !important;
+}
+
+:deep(.p-fileupload .p-fileupload-buttonbar) {
+  background-color: white !important;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0;
 }
 
 :deep(.p-fileupload .p-button) {
@@ -850,17 +944,40 @@ html {
   border-color: #d1d5db;
 }
 
+:deep(.p-fileupload .p-fileupload-content) {
+  background-color: white !important;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+}
+
 :deep(.p-checkbox .p-checkbox-box) {
   border-radius: 0.25rem;
   border: 1px solid #e5e7eb;
   width: 1.25rem;
   height: 1.25rem;
   background-color: white !important;
+  transition: all 0.2s;
 }
 
 :deep(.p-checkbox .p-checkbox-box.p-highlight) {
   background-color: #2563eb;
   border-color: #2563eb;
+}
+
+:deep(.p-checkbox .p-checkbox-box:hover) {
+  border-color: #2563eb;
+  background-color: white !important;
+}
+
+:deep(.p-checkbox .p-checkbox-box.p-highlight:hover) {
+  background-color: #1d4ed8 !important;
+  border-color: #1d4ed8;
+}
+
+:deep(.p-checkbox .p-checkbox-icon) {
+  color: white !important;
+  font-size: 0.75rem;
 }
 
 :deep(.p-button) {
@@ -895,6 +1012,33 @@ html {
   font-size: 0.75rem;
   margin-top: 0.25rem;
   display: block;
+}
+
+/* Additional form element styling */
+:deep(.p-component) {
+  font-family: inherit;
+}
+
+:deep(.p-placeholder) {
+  color: #9ca3af !important;
+}
+
+/* Ensure all form elements have consistent backgrounds */
+:deep(.p-inputtext),
+:deep(.p-dropdown),
+:deep(.p-calendar),
+:deep(.p-fileupload),
+:deep(.p-checkbox .p-checkbox-box) {
+  background-color: white !important;
+}
+
+/* Focus states for all form elements */
+:deep(.p-inputtext:focus),
+:deep(.p-dropdown:not(.p-disabled).p-focus),
+:deep(.p-calendar:not(.p-disabled).p-focus input) {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
+  background-color: white !important;
 }
 
 /* Form spacing improvements */
