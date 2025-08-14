@@ -1,12 +1,184 @@
-/* Import brand system */
+/* Import brand system - must be first */
 @import './styles/brand.css';
+
+/* ===================================
+   CSS RESET & BASE STYLES
+   =================================== */
+
+/* Reset all elements to ensure consistent styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure proper document flow */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  scrollbar-gutter: stable;
+  background-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  color: #000000;
+  overflow-y: scroll;
+}
+
+/* ===================================
+   GLOBAL WEBSITE BACKGROUND
+   =================================== */
+
+/* Global white background for entire website */
+html, body, #app {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Ensure all main containers have white background */
+#app {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #ffffff !important;
+}
+
+/* Force white background on all devices and viewport sizes */
+@media (max-width: 640px), (max-width: 768px), (max-width: 1024px), (max-width: 1280px) {
+  html, body, #app {
+    background-color: #ffffff !important;
+  }
+}
+
+/* ===================================
+   HERO SECTION PROTECTION
+   =================================== */
+
+/* Protect hero sections from global background overrides */
+.hero-background,
+[class*="hero"],
+[style*="background-image"] {
+  background-image: inherit !important;
+  background-size: inherit !important;
+  background-position: inherit !important;
+  background-repeat: inherit !important;
+}
+
+/* More specific hero background protection */
+.hero-background {
+  background-image: url('/Media/contact.jpg') !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Ensure hero sections are not affected by global white background */
+.hero-background,
+.hero-background * {
+  background-color: transparent !important;
+}
+
+/* Maximum specificity for hero background */
+div.hero-background,
+div[class*="hero-background"] {
+  background-image: url('/Media/contact.jpg') !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+}
+
+/* ===================================
+   CRITICAL CSS - LOADS IMMEDIATELY
+   =================================== */
+
+/* Critical background fixes that must load first */
+.bg-brand-white,
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+/* Ensure app container has proper background */
+#app {
+  background-color: #ffffff !important;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Force white background on all viewport sizes */
+@media (max-width: 768px), (max-width: 1024px), (max-width: 1280px) {
+  html, body, #app {
+    background-color: #ffffff !important;
+  }
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Global mobile double-tap zoom prevention */
-/* Prevents unwanted zoom on double-tap while maintaining manual pinch-zoom */
+/* ===================================
+   GLOBAL WHITE BACKGROUND UTILITIES
+   =================================== */
+
+/* Global white background class */
+.global-bg-white {
+  background-color: #ffffff !important;
+}
+
+/* Ensure all page containers inherit white background */
+.page-container,
+.main-content,
+.content-wrapper {
+  background-color: #ffffff !important;
+}
+
+/* Force white background on all sections unless explicitly overridden */
+section, div, main, article {
+  background-color: inherit;
+}
+
+/* ===================================
+   MOBILE BACKGROUND FIXES
+   =================================== */
+
+/* Ensure proper background colors on all devices */
+html, body {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+#app {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  min-height: 100vh;
+}
+
+/* Force white background on mobile */
+@media (max-width: 768px) {
+  html, body, #app {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+  }
+  
+  /* Ensure all sections have proper backgrounds */
+  .bg-brand-white {
+    background-color: #ffffff !important;
+  }
+  
+  /* Fix any potential black backgrounds */
+  div[class*="bg-"] {
+    background-color: inherit !important;
+  }
+}
+
+/* ===================================
+   GLOBAL MOBILE DOUBLE-TAP ZOOM PREVENTION
+   =================================== */
 
 /* All buttons and button-like elements */
 button,

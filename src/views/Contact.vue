@@ -1,7 +1,7 @@
 <template>
   <div class="bg-brand-white">
     <!-- Hero Section -->
-    <div class="relative h-[300px] md:h-[400px] bg-cover bg-center bg-no-repeat" style="background-image: url('/Media/contact.jpg'); background-size: cover; background-position: center top;">
+    <div class="relative h-[300px] md:h-[400px] bg-cover bg-center bg-no-repeat hero-background">
       <!-- Reusable Dark Shadow Overlay -->
       <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/20"></div>
       
@@ -204,9 +204,29 @@ const businessLocations = [
 <style scoped>
 /* Professional, clean styling */
 
-/* Hero section styling */
+/* Critical mobile background fixes */
+@media (max-width: 768px) {
+  .bg-brand-white {
+    background-color: #ffffff !important;
+  }
+  
+  /* Ensure all sections have white background on mobile */
+  div[class*="bg-"] {
+    background-color: inherit !important;
+  }
+}
+
+/* Hero section styling - ensure background image works */
 .hero-section {
   height: 400px !important;
+}
+
+/* Force hero background image to work */
+.hero-background {
+  background-image: url('/Media/contact.jpg') !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
 }
 
 /* Reusable Shadow Overlay System */
