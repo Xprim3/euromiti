@@ -20,7 +20,9 @@ const cities = [
 </script>
 
 <template>
-  <div class="min-h-screen bg-white p-8">
+  <div
+    class="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 p-8"
+  >
     <div class="max-w-6xl mx-auto">
       <!-- Header with obvious Tailwind test -->
       <Card class="mb-6 shadow-2xl border-4 border-blue-500">

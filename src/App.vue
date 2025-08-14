@@ -5,7 +5,7 @@ import Header from './components/layout/Header.vue'
 </script>
 
 <template>
-  <div id="app" class="bg-white min-h-screen">
+  <div id="app">
     <!-- Mobile-First Header -->
     <Header />
 
@@ -19,14 +19,4 @@ import Header from './components/layout/Header.vue'
 
 <style scoped>
 /* App-level styles */
-#app {
-  background-color: #ffffff !important;
-  min-height: 100vh;
-  width: 100%;
-}
-
-/* Ensure global white background */
-:deep(html), :deep(body) {
-  background-color: #ffffff !important;
-}
 </style>

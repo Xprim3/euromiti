@@ -1,7 +1,7 @@
 <template>
   <div class="bg-brand-white">
     <!-- Hero Section -->
-    <div class="relative h-[300px] md:h-[400px] bg-cover bg-center bg-no-repeat hero-background">
+    <div class="relative h-[300px] md:h-[400px] bg-cover bg-center bg-no-repeat" style="background-image: url('/Media/contact.jpg'); background-size: cover; background-position: center top;">
       <!-- Reusable Dark Shadow Overlay -->
       <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/20"></div>
       
@@ -158,13 +158,136 @@
         </div>
       </div>
     </div>
+
+    <!-- Contact Form Section -->
+    <div class="py-8 md:py-16 bg-brand-white">
+      <div class="max-w-7xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-8 md:mb-12">
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand-black mb-3 md:mb-4">{{ $t('contact.form.title') }}</h2>
+          <p class="text-base md:text-lg text-brand-gray max-w-2xl mx-auto">{{ $t('contact.form.subtitle') }}</p>
+        </div>
+
+        <!-- Contact Form Card -->
+        <div class="bg-brand-white border border-brand-light-gray rounded-xl p-6 md:p-8 lg:p-12 max-w-4xl mx-auto shadow-lg">
+          <form @submit.prevent="handleSubmit" class="space-y-4 md:space-y-6">
+            <!-- Name Fields -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              <div>
+                <label for="firstName" class="block text-sm font-semibold text-brand-dark-gray mb-2">
+                  {{ $t('contact.form.firstName') }}
+                </label>
+                <input
+                  id="firstName"
+                  v-model="form.firstName"
+                  type="text"
+                  required
+                  class="w-full px-3 md:px-4 py-2 md:py-3 border border-brand-light-gray rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors duration-200 bg-brand-white text-sm md:text-base"
+                  :placeholder="$t('contact.form.firstNamePlaceholder')"
+                >
+              </div>
+
+              <div>
+                <label for="lastName" class="block text-sm font-semibold text-brand-dark-gray mb-2">
+                  {{ $t('contact.form.lastName') }}
+                </label>
+                <input
+                  id="lastName"
+                  v-model="form.lastName"
+                  type="text"
+                  required
+                  class="w-full px-3 md:px-4 py-2 md:py-3 border border-brand-light-gray rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors duration-200 bg-brand-white text-sm md:text-base"
+                  :placeholder="$t('contact.form.lastNamePlaceholder')"
+                >
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-semibold text-brand-dark-gray mb-2">
+                {{ $t('contact.form.email') }}
+              </label>
+              <input
+                id="email"
+                v-model="form.email"
+                type="email"
+                required
+                class="w-full px-3 md:px-4 py-2 md:py-3 border border-brand-light-gray rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors duration-200 bg-brand-white text-sm md:text-base"
+                :placeholder="$t('contact.form.emailPlaceholder')"
+              >
+            </div>
+
+            <!-- Subject -->
+            <div>
+              <label for="subject" class="block text-sm font-semibold text-brand-dark-gray mb-2">
+                {{ $t('contact.form.subject') }}
+              </label>
+              <select
+                id="subject"
+                v-model="form.subject"
+                required
+                class="w-full px-3 md:px-4 py-2 md:py-3 border border-brand-light-gray rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors duration-200 bg-brand-white text-sm md:text-base"
+              >
+                <option value="">{{ $t('contact.form.subjectPlaceholder') }}</option>
+                <option value="general">{{ $t('contact.form.subjects.general') }}</option>
+                <option value="support">{{ $t('contact.form.subjects.support') }}</option>
+                <option value="business">{{ $t('contact.form.subjects.business') }}</option>
+                <option value="partnership">{{ $t('contact.form.subjects.partnership') }}</option>
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="message" class="block text-sm font-semibold text-brand-dark-gray mb-2">
+                {{ $t('contact.form.message') }}
+              </label>
+              <textarea
+                id="message"
+                v-model="form.message"
+                rows="4"
+                required
+                class="w-full px-3 md:px-4 py-2 md:py-3 border border-brand-light-gray rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors duration-200 resize-none bg-brand-white text-sm md:text-base"
+                :placeholder="$t('contact.form.messagePlaceholder')"
+              ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center pt-4 md:pt-6">
+              <button
+                type="submit"
+                :disabled="isSubmitting"
+                class="inline-flex items-center px-6 md:px-10 py-3 md:py-4 bg-brand-primary hover:bg-brand-primary/90 disabled:bg-brand-gray text-brand-white font-bold text-base md:text-lg rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 w-full md:w-auto"
+              >
+                <svg v-if="isSubmitting" class="animate-spin -ml-1 mr-3 h-4 w-4 md:h-5 md:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                {{ isSubmitting ? $t('contact.form.sending') : $t('contact.form.send') }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+
+// Form data
+const form = reactive({
+  firstName: '',
+  lastName: '',
+  email: '',
+  subject: '',
+  message: ''
+})
+
+// Form submission state
+const isSubmitting = ref(false)
 
 // Business locations
 const businessLocations = [
@@ -195,38 +318,40 @@ const businessLocations = [
     address: 'Rr. 300, Vlorë, Albania',
     phone: '+355 12 345 680',
     email: 'distribution@euromiti.al', // Added email
-    imagePath: '/Media/gjilan.jpg', // Changed to use Gjilan image
+    imagePath: '/Media/gjilan.jpg', // Added Gjilan image
     imagePlaceholder: 'Distribution Center'
   }
 ]
+
+// Handle form submission
+const handleSubmit = async () => {
+  isSubmitting.value = true
+  
+  // Simulate API call
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  
+  // Reset form
+  Object.assign(form, {
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
+  
+  isSubmitting.value = false
+  
+  // Show success message (you can integrate with your notification system)
+  alert(t('contact.form.success'))
+}
 </script>
 
 <style scoped>
 /* Professional, clean styling */
 
-/* Critical mobile background fixes */
-@media (max-width: 768px) {
-  .bg-brand-white {
-    background-color: #ffffff !important;
-  }
-  
-  /* Ensure all sections have white background on mobile */
-  div[class*="bg-"] {
-    background-color: inherit !important;
-  }
-}
-
-/* Hero section styling - ensure background image works */
+/* Hero section styling */
 .hero-section {
   height: 400px !important;
-}
-
-/* Force hero background image to work */
-.hero-background {
-  background-image: url('/Media/contact.jpg') !important;
-  background-size: cover !important;
-  background-position: center top !important;
-  background-repeat: no-repeat !important;
 }
 
 /* Reusable Shadow Overlay System */
