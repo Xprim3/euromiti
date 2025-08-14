@@ -14,5 +14,14 @@ export default defineConfig({
       },
     },
     chunkSizeWarningLimit: 1000,
+    target: 'es2015', // Better mobile compatibility
+  },
+  server: {
+    host: true,
+    port: 3000,
+  },
+  preview: {
+    host: true,
+    port: 3000,
   },
 })
