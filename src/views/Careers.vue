@@ -844,7 +844,7 @@ html {
 
 :deep(.p-dropdown .p-dropdown-trigger) {
   width: 3rem;
-  border-left: 1px solid #e5e7eb;
+  border-left: 1px solid #e5e7eb !important;
   background-color: white !important;
 }
 
@@ -854,20 +854,20 @@ html {
 }
 
 :deep(.p-dropdown:not(.p-disabled):hover) {
-  border-color: #2563eb;
+  border-color: #2563eb !important;
   background-color: white !important;
 }
 
 :deep(.p-dropdown:not(.p-disabled).p-focus) {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
   background-color: white !important;
 }
 
 /* Dropdown panel styling */
 :deep(.p-dropdown-panel) {
   background-color: white !important;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5e7eb !important;
   border-radius: 0.5rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
@@ -897,10 +897,12 @@ html {
   background-color: #1d4ed8 !important;
 }
 
-/* Force white backgrounds on ALL dropdown elements */
+/* ULTRA AGGRESSIVE OVERRIDES - Force white backgrounds and proper borders */
+:deep(.p-dropdown),
 :deep(.p-dropdown *),
 :deep(.p-dropdown * *) {
   background-color: white !important;
+  background: white !important;
 }
 
 :deep(.p-dropdown .p-dropdown-label),
@@ -931,6 +933,28 @@ html {
 :deep(.p-dropdown .p-dropdown-item.p-highlight:hover) {
   background-color: #1d4ed8 !important;
   background: #1d4ed8 !important;
+}
+
+/* Override any default PrimeVue focus colors */
+:deep(.p-dropdown:focus),
+:deep(.p-dropdown.p-focus),
+:deep(.p-dropdown:not(.p-disabled).p-focus) {
+  border-color: #2563eb !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Remove any green borders that might be coming from PrimeVue defaults */
+:deep(.p-dropdown) {
+  border-color: #e5e7eb !important;
+}
+
+:deep(.p-dropdown:focus) {
+  border-color: #2563eb !important;
+}
+
+:deep(.p-dropdown:hover) {
+  border-color: #2563eb !important;
 }
 
 /* Calendar styling - FIX BLACK BACKGROUNDS */
