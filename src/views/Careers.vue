@@ -933,7 +933,7 @@ html {
   background: #1d4ed8 !important;
 }
 
-/* Calendar styling */
+/* Calendar styling - FIX BLACK BACKGROUNDS */
 :deep(.p-calendar) {
   border-radius: 0.5rem;
   height: 48px;
@@ -958,6 +958,32 @@ html {
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
   background-color: white !important;
+}
+
+/* Calendar icon specific styling - FIX BLACK BACKGROUND */
+:deep(.p-calendar .p-datepicker-trigger) {
+  background-color: white !important;
+  border-left: 1px solid #e5e7eb;
+  color: #6b7280 !important;
+}
+
+:deep(.p-calendar .p-datepicker-trigger *),
+:deep(.p-calendar .p-datepicker-trigger *) {
+  background-color: white !important;
+}
+
+:deep(.p-calendar .p-datepicker-trigger-icon) {
+  background-color: white !important;
+  color: #6b7280 !important;
+}
+
+/* Force calendar icon background to be white */
+:deep(.p-calendar .p-datepicker-trigger),
+:deep(.p-calendar .p-datepicker-trigger button),
+:deep(.p-calendar .p-datepicker-trigger span),
+:deep(.p-calendar .p-datepicker-trigger i) {
+  background-color: white !important;
+  background: white !important;
 }
 
 /* Calendar datepicker styling */
@@ -994,32 +1020,6 @@ html {
 
 :deep(.p-calendar .p-datepicker-calendar td.p-datepicker-today > span:hover) {
   background-color: #1d4ed8 !important;
-}
-
-/* Calendar icon specific styling */
-:deep(.p-calendar .p-datepicker-trigger) {
-  background-color: white !important;
-  border-left: 1px solid #e5e7eb;
-  color: #6b7280 !important;
-}
-
-:deep(.p-calendar .p-datepicker-trigger *),
-:deep(.p-calendar .p-datepicker-trigger *) {
-  background-color: white !important;
-}
-
-:deep(.p-calendar .p-datepicker-trigger-icon) {
-  background-color: white !important;
-  color: #6b7280 !important;
-}
-
-/* Force calendar icon background to be white */
-:deep(.p-calendar .p-datepicker-trigger),
-:deep(.p-calendar .p-datepicker-trigger button),
-:deep(.p-calendar .p-datepicker-trigger span),
-:deep(.p-calendar .p-datepicker-trigger i) {
-  background-color: white !important;
-  background: white !important;
 }
 
 /* File upload styling */
@@ -1214,5 +1214,21 @@ html {
 :deep(.p-dropdown .p-dropdown-item.p-highlight:hover) {
   background-color: #1d4ed8 !important;
   background: #1d4ed8 !important;
+}
+
+/* Force ALL calendar elements to have white backgrounds */
+:deep(.p-calendar),
+:deep(.p-calendar *),
+:deep(.p-calendar * *) {
+  background-color: white !important;
+  background: white !important;
+}
+
+:deep(.p-calendar input),
+:deep(.p-calendar .p-datepicker-trigger),
+:deep(.p-calendar .p-datepicker-trigger *),
+:deep(.p-calendar .p-datepicker-trigger * *) {
+  background-color: white !important;
+  background: white !important;
 }
 </style>
