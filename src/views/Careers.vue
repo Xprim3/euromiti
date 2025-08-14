@@ -142,13 +142,16 @@
                     <div 
                       v-for="job in paginatedJobs" 
                       :key="job.id"
-                      class="p-4 border border-brand-light-gray rounded-lg hover:bg-brand-light/30 hover:border-brand-primary/30 transition-all duration-200 cursor-pointer"
+                      @click="selectJobForApplication(job)"
+                      :class="[
+                        'p-4 border rounded-lg transition-all duration-200 cursor-pointer',
+                        selectedJob === job.title
+                          ? 'border-brand-primary bg-brand-primary/10 shadow-md'
+                          : 'border-brand-light-gray hover:bg-brand-light/30 hover:border-brand-primary/30'
+                      ]"
                     >
                       <div class="flex items-center justify-between mb-3">
                         <h4 class="text-lg font-bold text-brand-black">{{ job.title }}</h4>
-                        <span :class="`px-3 py-1 ${job.categoryColor} font-semibold rounded-full text-sm`">
-                          {{ job.category }}
-                        </span>
                       </div>
                       <div class="flex flex-wrap items-center gap-3 text-sm text-brand-gray mb-3">
                         <div class="flex items-center space-x-2">
@@ -534,8 +537,7 @@ const allJobs = [
     location: 'Ferizaj',
     experience: '3-5 vjet',
     salary: '€800-1200',
-    description: 'Menaxhimi i operacioneve ditore të stacionit dhe supervizimi i stafit.',
-    categoryColor: 'bg-brand-primary/10 text-brand-primary'
+    description: 'Menaxhimi i operacioneve ditore të stacionit dhe supervizimi i stafit.'
   },
   {
     id: 2,
@@ -544,8 +546,7 @@ const allJobs = [
     location: 'Gjilan',
     experience: '1-3 vjet',
     salary: '€600-900',
-    description: 'Mirëmbajtja e pajisjeve të karburantit dhe kontrolli i sigurisë.',
-    categoryColor: 'bg-brand-secondary/10 text-brand-secondary'
+    description: 'Mirëmbajtja e pajisjeve të karburantit dhe kontrolli i sigurisë.'
   },
   {
     id: 3,
@@ -554,8 +555,7 @@ const allJobs = [
     location: 'Ferizaj',
     experience: '0-2 vjet',
     salary: '€400-600',
-    description: 'Shitja e produkteve dhe shërbimi i klientëve në stacion.',
-    categoryColor: 'bg-brand-accent/10 text-brand-accent'
+    description: 'Shitja e produkteve dhe shërbimi i klientëve në stacion.'
   },
   {
     id: 4,
@@ -564,8 +564,7 @@ const allJobs = [
     location: 'Prishtinë',
     experience: '2-4 vjet',
     salary: '€700-1000',
-    description: 'Menaxhimi i regjistrave financiare dhe raportimi.',
-    categoryColor: 'bg-brand-primary/10 text-brand-primary'
+    description: 'Menaxhimi i regjistrave financiare dhe raportimi.'
   },
   {
     id: 5,
@@ -574,8 +573,7 @@ const allJobs = [
     location: 'Gjilan',
     experience: '3-6 vjet',
     salary: '€900-1400',
-    description: 'Zhvillimi i politikave të sigurisë dhe trajnimi i stafit.',
-    categoryColor: 'bg-brand-secondary/10 text-brand-secondary'
+    description: 'Zhvillimi i politikave të sigurisë dhe trajnimi i stafit.'
   },
   {
     id: 6,
@@ -584,8 +582,7 @@ const allJobs = [
     location: 'Prishtinë',
     experience: '5-8 vjet',
     salary: '€1200-1800',
-    description: 'Strategjitë e marketingut dhe zhvillimi i brendit.',
-    categoryColor: 'bg-brand-accent/10 text-brand-accent'
+    description: 'Strategjitë e marketingut dhe zhvillimi i brendit.'
   },
   {
     id: 7,
@@ -594,8 +591,7 @@ const allJobs = [
     location: 'Ferizaj',
     experience: '2-4 vjet',
     salary: '€800-1200',
-    description: 'Zhvillimi i sistemeve dhe mirëmbajtja e infrastrukturës IT.',
-    categoryColor: 'bg-brand-primary/10 text-brand-primary'
+    description: 'Zhvillimi i sistemeve dhe mirëmbajtja e infrastrukturës IT.'
   },
   {
     id: 8,
@@ -604,8 +600,7 @@ const allJobs = [
     location: 'Gjilan',
     experience: '1-2 vjet',
     salary: '€500-700',
-    description: 'Menaxhimi i inventarit dhe organizimi i magazinës.',
-    categoryColor: 'bg-brand-secondary/10 text-brand-secondary'
+    description: 'Menaxhimi i inventarit dhe organizimi i magazinës.'
   },
   {
     id: 9,
@@ -614,8 +609,7 @@ const allJobs = [
     location: 'Ferizaj',
     experience: '2-3 vjet',
     salary: '€600-800',
-    description: 'Mbështetja e klientëve dhe zgjidhja e problemeve.',
-    categoryColor: 'bg-brand-accent/10 text-brand-accent'
+    description: 'Mbështetja e klientëve dhe zgjidhja e problemeve.'
   },
   {
     id: 10,
@@ -624,8 +618,7 @@ const allJobs = [
     location: 'Prishtinë',
     experience: '4-7 vjet',
     salary: '€1000-1500',
-    description: 'Optimizimi i proceseve të prodhimit dhe kontrolli i cilësisë.',
-    categoryColor: 'bg-brand-primary/10 text-brand-primary'
+    description: 'Optimizimi i proceseve të prodhimit dhe kontrolli i cilësisë.'
   }
 ]
 
@@ -684,6 +677,13 @@ const jobOptions = allJobs.map(job => ({
 // Handle file selection for CV upload
 const onFileSelect = (event: any) => {
   form.cvFile = event.files[0]
+}
+
+// Function to select a job for application form
+const selectJobForApplication = (job: any) => {
+  selectedJob.value = job.title
+  // Optionally, you can update the form fields with job details if needed
+  // For now, we just set the selectedJob.value
 }
 
 // Handle form submission
