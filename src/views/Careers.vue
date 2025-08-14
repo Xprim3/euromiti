@@ -777,12 +777,18 @@ html {
   background-color: white !important;
 }
 
+/* AGGRESSIVE DROPDOWN STYLING - FIX BLACK BACKGROUNDS */
 :deep(.p-dropdown) {
   border-radius: 0.5rem;
   border: 1px solid #e5e7eb;
   height: 48px;
   background-color: white !important;
   transition: all 0.2s;
+}
+
+:deep(.p-dropdown *),
+:deep(.p-dropdown *) {
+  background-color: white !important;
 }
 
 :deep(.p-dropdown:not(.p-disabled):hover) {
@@ -810,8 +816,14 @@ html {
   border-left: 1px solid #e5e7eb;
 }
 
+:deep(.p-dropdown .p-dropdown-trigger *),
+:deep(.p-dropdown .p-dropdown-trigger *) {
+  background-color: white !important;
+}
+
 :deep(.p-dropdown .p-dropdown-trigger-icon) {
   color: #6b7280 !important;
+  background-color: white !important;
 }
 
 :deep(.p-dropdown-panel) {
@@ -847,9 +859,15 @@ html {
   color: white !important;
 }
 
+/* AGGRESSIVE CALENDAR STYLING - FIX BLACK BACKGROUNDS */
 :deep(.p-calendar) {
   border-radius: 0.5rem;
   height: 48px;
+  background-color: white !important;
+}
+
+:deep(.p-calendar *),
+:deep(.p-calendar *) {
   background-color: white !important;
 }
 
@@ -871,6 +889,32 @@ html {
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
   background-color: white !important;
+}
+
+/* Calendar icon specific styling */
+:deep(.p-calendar .p-datepicker-trigger) {
+  background-color: white !important;
+  border-left: 1px solid #e5e7eb;
+  color: #6b7280 !important;
+}
+
+:deep(.p-calendar .p-datepicker-trigger *),
+:deep(.p-calendar .p-datepicker-trigger *) {
+  background-color: white !important;
+}
+
+:deep(.p-calendar .p-datepicker-trigger-icon) {
+  background-color: white !important;
+  color: #6b7280 !important;
+}
+
+/* Force calendar icon background to be white */
+:deep(.p-calendar .p-datepicker-trigger),
+:deep(.p-calendar .p-datepicker-trigger button),
+:deep(.p-calendar .p-datepicker-trigger span),
+:deep(.p-calendar .p-datepicker-trigger i) {
+  background-color: white !important;
+  background: white !important;
 }
 
 :deep(.p-calendar .p-datepicker) {
@@ -1023,12 +1067,28 @@ html {
   color: #9ca3af !important;
 }
 
-/* Ensure all form elements have consistent backgrounds */
+/* GLOBAL OVERRIDE - Force white backgrounds on ALL form elements */
 :deep(.p-inputtext),
 :deep(.p-dropdown),
 :deep(.p-calendar),
 :deep(.p-fileupload),
-:deep(.p-checkbox .p-checkbox-box) {
+:deep(.p-checkbox .p-checkbox-box),
+:deep(.p-dropdown *),
+:deep(.p-calendar *),
+:deep(.p-fileupload *),
+:deep(.p-checkbox *) {
+  background-color: white !important;
+}
+
+/* Force white backgrounds on all child elements */
+:deep(.p-dropdown .p-dropdown-label),
+:deep(.p-dropdown .p-dropdown-trigger),
+:deep(.p-dropdown .p-dropdown-trigger *),
+:deep(.p-calendar input),
+:deep(.p-calendar .p-datepicker-trigger),
+:deep(.p-calendar .p-datepicker-trigger *),
+:deep(.p-fileupload .p-fileupload-buttonbar),
+:deep(.p-fileupload .p-fileupload-content) {
   background-color: white !important;
 }
 
@@ -1038,6 +1098,15 @@ html {
 :deep(.p-calendar:not(.p-disabled).p-focus input) {
   border-color: #2563eb !important;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
+  background-color: white !important;
+}
+
+/* Override PrimeVue default theme colors */
+:deep(.p-component) {
+  background-color: white !important;
+}
+
+:deep(.p-component *:not(.p-button):not(.p-dropdown-item.p-highlight):not(.p-calendar .p-datepicker-calendar td.p-datepicker-today > span)) {
   background-color: white !important;
 }
 
