@@ -396,8 +396,8 @@ onUnmounted(() => {
           <div class="flex-shrink-0 xl:hidden">
             <button
               @click="toggleMobileMenu"
-              class="w-10 h-10 flex items-center justify-center bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 shadow-sm border border-gray-200 hover:shadow-md"
-              :class="{ 'bg-blue-50 border-blue-300 shadow-md': isMobileMenuOpen }"
+              class="w-10 h-10 flex items-center justify-center bg-white hover:bg-gray-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 border border-gray-200"
+              :class="{ 'bg-blue-50 border-blue-300': isMobileMenuOpen }"
             >
               <!-- Classic Hamburger Icon -->
               <div class="relative w-5 h-5">
