@@ -1,0 +1,269 @@
+/* Global PrimeVue Theme Overrides - Clean and Maintainable */
+
+/* Base form element styling */
+.p-inputtext,
+.p-dropdown,
+.p-calendar,
+.p-fileupload,
+.p-checkbox .p-checkbox-box {
+  background-color: white !important;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+/* Input text styling */
+.p-inputtext {
+  height: 48px;
+  padding: 0.75rem 1rem;
+  color: #374151;
+}
+
+.p-inputtext:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* Dropdown styling */
+.p-dropdown {
+  height: 48px;
+}
+
+.p-dropdown .p-dropdown-label {
+  padding: 0.75rem 1rem;
+  height: 48px;
+  line-height: 1.5rem;
+  color: #374151;
+}
+
+.p-dropdown .p-dropdown-trigger {
+  width: 3rem;
+  border-left: 1px solid #e5e7eb;
+}
+
+.p-dropdown .p-dropdown-trigger-icon {
+  color: #6b7280;
+}
+
+.p-dropdown:not(.p-disabled):hover {
+  border-color: #2563eb;
+}
+
+.p-dropdown:not(.p-disabled).p-focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* Dropdown panel styling */
+.p-dropdown-panel {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.p-dropdown-items {
+  background-color: white;
+}
+
+.p-dropdown-item {
+  background-color: white;
+  color: #374151;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s;
+}
+
+.p-dropdown-item:hover {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.p-dropdown-item.p-highlight {
+  background-color: #2563eb;
+  color: white;
+}
+
+.p-dropdown-item.p-highlight:hover {
+  background-color: #1d4ed8;
+}
+
+/* Calendar styling */
+.p-calendar {
+  height: 48px;
+}
+
+.p-calendar input {
+  height: 48px;
+  padding: 0.75rem 1rem;
+  color: #374151;
+}
+
+.p-calendar .p-datepicker-trigger {
+  border-left: 1px solid #e5e7eb;
+  color: #6b7280;
+}
+
+.p-calendar:not(.p-disabled):hover input {
+  border-color: #2563eb;
+}
+
+.p-calendar:not(.p-disabled).p-focus input {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* Calendar datepicker styling */
+.p-calendar .p-datepicker {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.p-calendar .p-datepicker-header {
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.p-calendar .p-datepicker-calendar th {
+  background-color: #f9fafb;
+  color: #374151;
+}
+
+.p-calendar .p-datepicker-calendar td > span {
+  background-color: white;
+  color: #374151;
+}
+
+.p-calendar .p-datepicker-calendar td > span:hover {
+  background-color: #f3f4f6;
+}
+
+.p-calendar .p-datepicker-calendar td.p-datepicker-today > span {
+  background-color: #2563eb;
+  color: white;
+}
+
+.p-calendar .p-datepicker-calendar td.p-datepicker-today > span:hover {
+  background-color: #1d4ed8;
+}
+
+/* File upload styling */
+.p-fileupload {
+  height: 48px;
+}
+
+.p-fileupload .p-fileupload-buttonbar {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0;
+}
+
+.p-fileupload .p-button {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  border-radius: 0.5rem;
+  height: 48px;
+  padding: 0.75rem 1rem;
+}
+
+.p-fileupload .p-button:hover {
+  background-color: #e5e7eb;
+  border-color: #d1d5db;
+}
+
+.p-fileupload .p-fileupload-content {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Checkbox styling */
+.p-checkbox .p-checkbox-box {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+.p-checkbox .p-checkbox-box:hover {
+  border-color: #2563eb;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.p-checkbox .p-checkbox-icon {
+  color: white;
+  font-size: 0.75rem;
+}
+
+/* Button styling */
+.p-button {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  height: 56px;
+}
+
+.p-button:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+}
+
+.p-button:disabled {
+  background-color: #9ca3af;
+  border-color: #9ca3af;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Validation styling */
+.p-invalid {
+  border-color: #ef4444;
+}
+
+.p-error {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Placeholder styling */
+.p-placeholder {
+  color: #9ca3af;
+}
+
+/* Form spacing */
+.p-dropdown,
+.p-calendar,
+.p-fileupload,
+.p-inputtext {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Mobile dropdown panel positioning */
+@media (max-width: 768px) {
+  .p-dropdown-panel {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90vw !important;
+    max-width: 400px !important;
+  }
+}

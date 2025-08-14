@@ -5,6 +5,7 @@ import router from './router'
 import pinia from './stores'
 import i18n from './i18n'
 import './style.css'
+import './assets/global.css'
 import App from './App.vue'
 
 const app = createApp(App)
