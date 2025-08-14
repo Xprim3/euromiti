@@ -760,7 +760,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom PrimeVue styling to match brand colors */
+/* Custom PrimeVue styling to match brand colors - FIX BLACK BACKGROUNDS */
 :deep(.p-inputtext) {
   border-radius: 0.5rem;
   border: 1px solid #e5e7eb;
