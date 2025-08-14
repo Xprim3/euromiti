@@ -152,5 +152,62 @@
     "deleted": "Artikulli u fshi me sukses",
     "created": "Artikulli u krijua me sukses",
     "updated": "Artikulli u përditësua me sukses"
+  },
+  "contact": {
+    "title": "Na Kontaktoni",
+    "subtitle": "Do të na pëlqente të dëgjojmë nga ju. Na dërgoni një mesazh dhe do t'ju përgjigjemi sa më shpejt të jetë e mundur.",
+    "hero": {
+      "primaryCTA": "Filloni një Bisedë",
+      "secondaryCTA": "Mësoni Më Shumë"
+    },
+    "phone": {
+      "title": "Na Telefononi",
+      "description": "Flisni direkt me ekipin tonë"
+    },
+    "email": {
+      "title": "Na Dërgoni Email",
+      "description": "Na dërgoni email në çdo kohë"
+    },
+    "location": {
+      "title": "Na Vizitoni",
+      "description": "Ejani të na përshëndetni në zyrat tona",
+      "address": "Tiranë, Shqipëri"
+    },
+    "form": {
+      "title": "Na Dërgoni një Mesazh",
+      "subtitle": "Plotësoni formularin më poshtë dhe do t'ju kontaktojmë së shpejti.",
+      "firstName": "Emri",
+      "firstNamePlaceholder": "Shkruani emrin tuaj",
+      "lastName": "Mbiemri",
+      "lastNamePlaceholder": "Shkruani mbiemrin tuaj",
+      "email": "Email",
+      "emailPlaceholder": "Shkruani adresën tuaj të emailit",
+      "subject": "Subjekti",
+      "subjectPlaceholder": "Zgjidhni një subjekt",
+      "subjects": {
+        "general": "Pyetje e Përgjithshme",
+        "support": "Mbështetje Teknike",
+        "business": "Partneritet Biznesi",
+        "partnership": "Mundësi Partneriteti"
+      },
+      "message": "Mesazhi",
+      "messagePlaceholder": "Na tregoni si mund t'ju ndihmojmë...",
+      "send": "Dërgo Mesazhin",
+      "sending": "Duke dërguar...",
+      "success": "Mesazhi u dërgua me sukses! Do t'ju kontaktojmë së shpejti."
+    },
+    "hours": {
+      "title": "Orari i Punës",
+      "subtitle": "Jemi këtu për t'ju ndihmuar gjatë këtyre orareve",
+      "days": {
+        "monday": "E Hënë",
+        "tuesday": "E Martë",
+        "wednesday": "E Mërkurë",
+        "thursday": "E Enjte",
+        "friday": "E Premte",
+        "saturday": "E Shtunë",
+        "sunday": "E Diel"
+      }
+    }
   }
 }

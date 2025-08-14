@@ -152,5 +152,62 @@
     "deleted": "Stavka uspešno obrisana",
     "created": "Stavka uspešno kreirana",
     "updated": "Stavka uspešno ažurirana"
+  },
+  "contact": {
+    "title": "Kontaktirajte Nas",
+    "subtitle": "Voleli bismo da čujemo od vas. Pošaljite nam poruku i odgovorićemo vam u najkraćem mogućem roku.",
+    "hero": {
+      "primaryCTA": "Započnite Razgovor",
+      "secondaryCTA": "Saznajte Više"
+    },
+    "phone": {
+      "title": "Pozovite Nas",
+      "description": "Razgovarajte direktno sa našim timom"
+    },
+    "email": {
+      "title": "Pošaljite Nam Email",
+      "description": "Pošaljite nam email u bilo kom trenutku"
+    },
+    "location": {
+      "title": "Posetite Nas",
+      "description": "Dođite da se pozdravite u našim kancelarijama",
+      "address": "Tirana, Albanija"
+    },
+    "form": {
+      "title": "Pošaljite Nam Poruku",
+      "subtitle": "Popunite formular ispod i odgovorićemo vam u najkraćem roku.",
+      "firstName": "Ime",
+      "firstNamePlaceholder": "Unesite vaše ime",
+      "lastName": "Prezime",
+      "lastNamePlaceholder": "Unesite vaše prezime",
+      "email": "Email",
+      "emailPlaceholder": "Unesite vašu email adresu",
+      "subject": "Predmet",
+      "subjectPlaceholder": "Izaberite predmet",
+      "subjects": {
+        "general": "Opšti Upit",
+        "support": "Tehnička Podrška",
+        "business": "Poslovno Partnerstvo",
+        "partnership": "Mogućnost Partnerstva"
+      },
+      "message": "Poruka",
+      "messagePlaceholder": "Recite nam kako vam možemo pomoći...",
+      "send": "Pošaljite Poruku",
+      "sending": "Slanje...",
+      "success": "Poruka uspešno poslata! Kontaktiraćemo vas uskoro."
+    },
+    "hours": {
+      "title": "Radno Vreme",
+      "subtitle": "Ovde smo da vam pomognemo tokom ovih sati",
+      "days": {
+        "monday": "Ponedeljak",
+        "tuesday": "Utorak",
+        "wednesday": "Sreda",
+        "thursday": "Četvrtak",
+        "friday": "Petak",
+        "saturday": "Subota",
+        "sunday": "Nedelja"
+      }
+    }
   }
 }

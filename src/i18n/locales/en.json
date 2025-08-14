@@ -152,5 +152,62 @@
     "deleted": "Item deleted successfully",
     "created": "Item created successfully",
     "updated": "Item updated successfully"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+    "hero": {
+      "primaryCTA": "Start a Conversation",
+      "secondaryCTA": "Learn More"
+    },
+    "phone": {
+      "title": "Call Us",
+      "description": "Speak directly with our team"
+    },
+    "email": {
+      "title": "Email Us",
+      "description": "Send us an email anytime"
+    },
+    "location": {
+      "title": "Visit Us",
+      "description": "Come say hello at our office",
+      "address": "Tirana, Albania"
+    },
+    "form": {
+      "title": "Send us a Message",
+      "subtitle": "Fill out the form below and we'll get back to you shortly.",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "Enter your first name",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Enter your last name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email address",
+      "subject": "Subject",
+      "subjectPlaceholder": "Select a subject",
+      "subjects": {
+        "general": "General Inquiry",
+        "support": "Technical Support",
+        "business": "Business Partnership",
+        "partnership": "Partnership Opportunity"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help you...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! We'll get back to you soon."
+    },
+    "hours": {
+      "title": "Business Hours",
+      "subtitle": "We're here to help during these hours",
+      "days": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
+      }
+    }
   }
 }
