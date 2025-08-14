@@ -199,6 +199,7 @@
     "hours": {
       "title": "Radno Vreme",
       "subtitle": "Ovde smo da vam pomognemo tokom ovih sati",
+      "note": "Za hitne stvari van radnog vremena, molimo vas da pozovete:",
       "days": {
         "monday": "Ponedeljak",
         "tuesday": "Utorak",
@@ -207,6 +208,29 @@
         "friday": "Petak",
         "saturday": "Subota",
         "sunday": "Nedelja"
+      }
+    },
+    "locations": {
+      "title": "Naše Poslovne Lokacije",
+      "subtitle": "Posetite nas na bilo kojoj od naših pogodnih lokacija",
+      "imagePlaceholder": "Slika Lokacije",
+      "openInMaps": "Otvori na Mapi",
+      "ferizaj": "Ferizaj",
+      "gjilan": "Gjilan",
+      "ferizajImage": "Slika Ferizaja",
+      "gjilanImage": "Slika Gjilana"
+    },
+    "main": {
+      "title": "Glavna Sedišta",
+      "subtitle": "Naš centralni ured i primarna poslovna lokacija. Ovde se sprovode naše glavne operacije i gde možete doći do našeg osnovnog tima.",
+      "imagePlaceholder": "Glavna Poslovna Slika",
+      "phone": {
+        "title": "Telefon",
+        "description": "Pozovite nas direktno za trenutnu pomoć"
+      },
+      "email": {
+        "title": "Email",
+        "description": "Pošaljite nam poruku i odgovorićemo vam u najkraćem mogućem roku"
       }
     }
   }

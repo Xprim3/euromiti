@@ -199,6 +199,7 @@
     "hours": {
       "title": "Business Hours",
       "subtitle": "We're here to help during these hours",
+      "note": "For urgent matters outside business hours, please call:",
       "days": {
         "monday": "Monday",
         "tuesday": "Tuesday",
@@ -208,6 +209,30 @@
         "saturday": "Saturday",
         "sunday": "Sunday"
       }
-    }
+    },
+    "locations": {
+      "title": "Our Business Locations",
+      "subtitle": "Visit us at any of our convenient locations",
+      "imagePlaceholder": "Location Image",
+      "openInMaps": "Open in Maps",
+      "ferizaj": "Ferizaj",
+      "gjilan": "Gjilan",
+      "ferizajImage": "Ferizaj Image",
+      "gjilanImage": "Gjilan Image"
+    },
+    "main": {
+      "title": "Main Headquarters",
+      "subtitle": "Our central office and primary business location. This is where our main operations are conducted and where you can reach our core team.",
+      "imagePlaceholder": "Main Business Image",
+      "phone": {
+        "title": "Phone",
+        "description": "Call us directly for immediate assistance"
+      },
+      "email": {
+        "title": "Email",
+        "description": "Send us a message and we'll respond promptly"
+      }
+    },
+    "callUs": "Call Us"
   }
 }

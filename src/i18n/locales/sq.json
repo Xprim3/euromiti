@@ -199,6 +199,7 @@
     "hours": {
       "title": "Orari i Punës",
       "subtitle": "Jemi këtu për t'ju ndihmuar gjatë këtyre orareve",
+      "note": "Për çështje urgjente jashtë orarit të punës, ju lutemi telefononi:",
       "days": {
         "monday": "E Hënë",
         "tuesday": "E Martë",
@@ -207,6 +208,29 @@
         "friday": "E Premte",
         "saturday": "E Shtunë",
         "sunday": "E Diel"
+      }
+    },
+    "locations": {
+      "title": "Vendndodhjet e Biznesit Tonë",
+      "subtitle": "Na vizitoni në ndonjë nga vendndodhjet tona të përshtatshme",
+      "imagePlaceholder": "Imazhi i Vendndodhjes",
+      "openInMaps": "Hap në Harta",
+      "ferizaj": "Ferizaj",
+      "gjilan": "Gjilan",
+      "ferizajImage": "Imazhi i Ferizajit",
+      "gjilanImage": "Imazhi i Gjilanit"
+    },
+    "main": {
+      "title": "Selia Kryesore",
+      "subtitle": "Zyra jonë qendrore dhe vendndodhja kryesore e biznesit. Këtu kryhen operacionet tona kryesore dhe ku mund të arrini ekipin tonë bazë.",
+      "imagePlaceholder": "Imazhi Kryesor i Biznesit",
+      "phone": {
+        "title": "Telefon",
+        "description": "Na telefononi direkt për ndihmë të menjëhershme"
+      },
+      "email": {
+        "title": "Email",
+        "description": "Na dërgoni një mesazh dhe do t'ju përgjigjemi së shpejti"
       }
     }
   }
