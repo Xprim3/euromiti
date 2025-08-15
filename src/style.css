@@ -58,6 +58,68 @@ body {
   overflow-y: scroll;
 }
 
+/* Default state - neutral gray borders for all form elements */
+.p-inputtext,
+.p-dropdown,
+.p-calendar,
+.p-fileupload,
+.p-checkbox {
+  border-color: #d1d5db !important;
+  box-shadow: none !important;
+  outline: none !important;
+  outline-offset: 0 !important;
+}
+
+/* Hover state - slightly darker gray */
+.p-inputtext:enabled:hover,
+.p-dropdown:enabled:hover,
+.p-calendar:enabled:hover {
+  border-color: #9ca3af !important;
+}
+
+/* Focus/Active state - brand blue when clicked/focused */
+.p-inputtext:enabled:focus,
+.p-dropdown:enabled:focus,
+.p-calendar:enabled:focus,
+.p-inputtext.p-focus,
+.p-dropdown.p-focus,
+.p-calendar.p-focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.2) !important;
+  outline: none !important;
+}
+
+.p-inputtext:enabled:hover,
+.p-dropdown:enabled:hover,
+.p-calendar:enabled:hover {
+  border-color: #9ca3af !important;
+}
+
+.p-inputtext:enabled:focus,
+.p-dropdown:enabled:focus,
+.p-calendar:enabled:focus,
+.p-inputtext.p-focus,
+.p-dropdown.p-focus,
+.p-calendar.p-focus {
+  border-color: #d1d5db !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Remove any blue focus effects */
+.p-inputtext:focus,
+.p-dropdown:focus,
+.p-calendar:focus,
+.p-inputtext.p-focus,
+.p-dropdown.p-focus,
+.p-calendar.p-focus {
+  border-color: #d1d5db !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+
+
 /* PrimeVue Component Fallback Styling */
 /* Ensure components have proper styling even if theme doesn't load */
 .p-dropdown {
@@ -66,16 +128,7 @@ body {
   color: #374151 !important;
 }
 
-.p-dropdown:not(.p-disabled):hover {
-  border-color: #2563eb !important;
-}
 
-.p-dropdown:not(.p-disabled).p-focus {
-  outline: 0 none;
-  outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.2) !important;
-  border-color: #2563eb !important;
-}
 
 .p-dropdown-panel {
   background: white !important;
@@ -115,10 +168,10 @@ body {
 }
 
 .p-inputtext:enabled:focus {
-  outline: 0 none;
-  outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.2) !important;
-  border-color: #2563eb !important;
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  border-color: #d1d5db !important;
 }
 
 .p-calendar {
