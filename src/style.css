@@ -58,16 +58,21 @@ body {
   overflow-y: scroll;
 }
 
-/* Default state - neutral gray borders for all form elements */
-.p-inputtext,
-.p-dropdown,
-.p-calendar,
-.p-fileupload,
-.p-checkbox {
-  border-color: #d1d5db !important;
-  box-shadow: none !important;
-  outline: none !important;
-  outline-offset: 0 !important;
+/* Minimal styling to prevent black appearance without breaking functionality */
+.p-dropdown {
+  background-color: white !important;
+}
+
+.p-dropdown-panel {
+  background-color: white !important;
+}
+
+.p-dropdown-items {
+  background-color: white !important;
+}
+
+.p-dropdown-item {
+  background-color: white !important;
 }
 
 /* Hover state - slightly darker gray */
