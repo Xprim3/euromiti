@@ -58,8 +58,8 @@ body {
   overflow-y: scroll;
 }
 
-/* Comprehensive Fallback CSS for PrimeVue Components */
-/* Ensures NO black backgrounds anywhere - covers ALL possible components */
+/* Smart Fallback CSS for PrimeVue Components */
+/* Only overrides background and text colors, lets Aura theme handle borders naturally */
 
 /* ===== INPUT FIELDS ===== */
 .p-inputtext,
@@ -68,7 +68,6 @@ body {
 .p-inputtext:enabled:focus,
 .p-inputtext.p-focus {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
   color: #374151 !important;
 }
 
@@ -79,14 +78,12 @@ body {
 .p-dropdown:enabled:focus,
 .p-dropdown.p-focus {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
   color: #374151 !important;
 }
 
 .p-dropdown-panel,
 .p-dropdown-panel .p-dropdown-items {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
 }
 
 .p-dropdown-items .p-dropdown-item,
@@ -125,7 +122,6 @@ body {
 .p-calendar .p-inputtext:enabled:hover,
 .p-calendar .p-inputtext:enabled:focus {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
   color: #374151 !important;
 }
 
@@ -133,7 +129,6 @@ body {
 .p-calendar .p-button:enabled,
 .p-calendar .p-button:enabled:hover {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
   color: #374151 !important;
 }
 
@@ -158,7 +153,6 @@ body {
 .p-datepicker-header .p-button:enabled,
 .p-datepicker-header .p-button:enabled:hover {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
   color: #374151 !important;
 }
 
@@ -176,7 +170,6 @@ body {
 .p-datepicker table td {
   background-color: white !important;
   color: #374151 !important;
-  border: none !important;
 }
 
 .p-datepicker table td > span,
@@ -207,7 +200,6 @@ body {
 .p-paginator .p-paginator-pages .p-paginator-page:enabled {
   background-color: white !important;
   color: #374151 !important;
-  border: 1px solid #d1d5db !important;
 }
 
 .p-paginator .p-paginator-pages .p-paginator-page:hover,
@@ -220,7 +212,6 @@ body {
 .p-paginator .p-paginator-pages .p-paginator-page.p-highlight:enabled {
   background-color: #2563eb !important;
   color: white !important;
-  border-color: #2563eb !important;
 }
 
 .p-paginator .p-paginator-first,
@@ -233,7 +224,6 @@ body {
 .p-paginator .p-paginator-last:enabled {
   background-color: white !important;
   color: #374151 !important;
-  border: 1px solid #d1d5db !important;
 }
 
 .p-paginator .p-paginator-first:hover,
@@ -276,14 +266,12 @@ body {
 .p-button:enabled:hover,
 .p-button:enabled:focus {
   background-color: #2563eb !important;
-  border-color: #2563eb !important;
   color: white !important;
 }
 
 .p-button:hover,
 .p-button:enabled:hover {
   background-color: #1d4ed8 !important;
-  border-color: #1d4ed8 !important;
 }
 
 /* ===== CHECKBOX ===== */
@@ -292,7 +280,6 @@ body {
 .p-checkbox:enabled:hover,
 .p-checkbox:enabled:focus {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
 }
 
 .p-checkbox .p-checkbox-box,
@@ -300,13 +287,11 @@ body {
 .p-checkbox .p-checkbox-box:enabled:hover,
 .p-checkbox .p-checkbox-box:enabled:focus {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
 }
 
 .p-checkbox .p-checkbox-box.p-highlight,
 .p-checkbox .p-checkbox-box.p-highlight:enabled {
   background-color: #2563eb !important;
-  border-color: #2563eb !important;
 }
 
 .p-checkbox .p-checkbox-icon {
@@ -317,12 +302,10 @@ body {
 .p-fileupload,
 .p-fileupload * {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
 }
 
 .p-fileupload .p-button {
   background-color: #2563eb !important;
-  border-color: #2563eb !important;
   color: white !important;
 }
 
@@ -332,14 +315,12 @@ body {
 .p-multiselect:enabled:hover,
 .p-multiselect:enabled:focus {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
   color: #374151 !important;
 }
 
 .p-multiselect-panel,
 .p-multiselect-panel * {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
 }
 
 .p-multiselect-items .p-multiselect-item,
@@ -364,14 +345,12 @@ body {
 .p-toast,
 .p-toast * {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
   color: #374151 !important;
 }
 
 .p-toast .p-toast-message,
 .p-toast .p-toast-message * {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
   color: #374151 !important;
 }
 
@@ -385,7 +364,6 @@ body {
 .p-overlaypanel,
 .p-overlaypanel * {
   background-color: white !important;
-  border: 1px solid #d1d5db !important;
   color: #374151 !important;
 }
 
@@ -397,6 +375,7 @@ body {
 
 /* ===== GENERAL PRIMEVUE OVERRIDE ===== */
 /* Catch any other PrimeVue components that might be black */
+/* Only override backgrounds and text, not borders */
 [class*="p-"] {
   background-color: white !important;
   color: #374151 !important;
