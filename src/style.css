@@ -94,6 +94,11 @@ body {
   color: white !important;
 }
 
+/* Dropdown arrow icon */
+.p-dropdown-trigger-icon {
+  color: #6b7280 !important;
+}
+
 /* Calendar */
 .p-calendar {
   background-color: white !important;
@@ -109,6 +114,72 @@ body {
   background-color: white !important;
   border: 1px solid #d1d5db !important;
   color: #374151 !important;
+}
+
+/* Calendar icon */
+.p-calendar .p-button .p-button-icon {
+  color: #6b7280 !important;
+}
+
+/* Calendar panel and all its elements */
+.p-datepicker {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.p-datepicker-header {
+  background-color: white !important;
+  border-bottom: 1px solid #d1d5db !important;
+}
+
+.p-datepicker-header .p-button {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+  color: #374151 !important;
+}
+
+.p-datepicker-header .p-button .p-button-icon {
+  color: #6b7280 !important;
+}
+
+.p-datepicker table {
+  background-color: white !important;
+}
+
+.p-datepicker table th {
+  background-color: white !important;
+  color: #374151 !important;
+  border: none !important;
+}
+
+.p-datepicker table td {
+  background-color: white !important;
+  color: #374151 !important;
+  border: none !important;
+}
+
+.p-datepicker table td > span {
+  background-color: white !important;
+  color: #374151 !important;
+}
+
+.p-datepicker table td > span:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.p-datepicker table td > span.p-highlight {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
+.p-datepicker table td.p-datepicker-today > span {
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+}
+
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+  background-color: #2563eb !important;
+  color: white !important;
 }
 
 /* Cards */
@@ -146,4 +217,69 @@ body {
 .p-checkbox .p-checkbox-box.p-highlight {
   background-color: #2563eb !important;
   border-color: #2563eb !important;
+}
+
+/* File upload */
+.p-fileupload {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.p-fileupload .p-button {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+  color: white !important;
+}
+
+/* Multi-select */
+.p-multiselect {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+  color: #374151 !important;
+}
+
+.p-multiselect-panel {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.p-multiselect-items .p-multiselect-item {
+  background-color: white !important;
+  color: #374151 !important;
+}
+
+.p-multiselect-items .p-multiselect-item:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.p-multiselect-items .p-multiselect-item.p-highlight {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
+/* Toast */
+.p-toast {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.p-toast .p-toast-message {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.p-toast .p-toast-message-content {
+  background-color: white !important;
+  color: #374151 !important;
+}
+
+/* Overlay panels */
+.p-overlaypanel {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.p-overlaypanel-content {
+  background-color: white !important;
+  color: #374151 !important;
 }
