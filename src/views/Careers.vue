@@ -356,11 +356,11 @@
                         </div>
                         
                         <!-- File Selected Display -->
-                        <div v-if="applicationForm.cv" class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                        <div v-if="applicationForm.cv" class="border border-gray-200 rounded-lg p-4 bg-white">
                           <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
                               <!-- File Icon -->
-                              <div class="w-10 h-10 bg-brand-primary/10 rounded-lg flex items-center justify-center">
+                              <div class="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center">
                                 <svg v-if="getFileExtension(applicationForm.cv.name) === 'pdf'" class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24">
                                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/>
                                 </svg>
@@ -380,7 +380,7 @@
                             <button 
                               type="button"
                               @click="removeFile"
-                              class="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors"
+                              class="p-2 text-gray-400 hover:text-red-500 hover:bg-gray-50 rounded-full transition-colors"
                               title="Hiq CV-në"
                             >
                               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -534,8 +534,6 @@ const fileInput = ref<HTMLInputElement>()
 const currentPage = ref(1)
 const jobsPerPage = 5
 
-
-
 // All jobs data
 const allJobs = [
   {
@@ -638,9 +636,6 @@ const paginatedJobs = computed(() => {
   const end = start + jobsPerPage
   return allJobs.slice(start, end)
 })
-
-
-
 
  // Function to select a job for application form
  const selectJobForApplication = async (job: any) => {
