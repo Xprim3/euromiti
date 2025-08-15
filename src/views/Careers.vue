@@ -336,41 +336,90 @@
                      <small v-if="formErrors.city" class="p-error">{{ formErrors.city }}</small>
                    </div>
 
-                   <!-- Resume Upload -->
-                   <div>
-                     <label class="block text-sm font-medium text-brand-gray mb-2">CV/Resume *</label>
-                     <FileUpload 
-                       mode="basic"
-                       :auto="true"
-                       accept=".pdf,.doc,.docx"
-                       :maxFileSize="5000000"
-                       chooseLabel="Zgjidhni CV-në"
-                       class="w-full"
-                       @select="onFileSelect"
-                       :showCancelButton="false"
-                       :showUploadButton="false"
-                     />
-                     <small class="text-brand-gray text-xs block mt-2">Formate të lejuara: PDF, DOC, DOCX (max 5MB)</small>
-                     <small v-if="formErrors.cv" class="p-error block mt-1">{{ formErrors.cv }}</small>
-                   </div>
+                                       <!-- Resume Upload -->
+                    <div>
+                      <label class="block text-sm font-medium text-brand-gray mb-2">CV/Resume *</label>
+                      
+                      <!-- File Upload Area -->
+                      <div class="relative">
+                        <!-- Upload Button -->
+                        <div v-if="!applicationForm.cv" class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-brand-primary/50 transition-colors cursor-pointer" @click="triggerFileInput">
+                          <div class="flex flex-col items-center gap-3">
+                            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                            </svg>
+                            <div>
+                              <p class="text-sm font-medium text-brand-gray">Klikoni për të zgjedhur CV-në</p>
+                              <p class="text-xs text-gray-500 mt-1">PDF, DOC, DOCX (max 5MB)</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <!-- File Selected Display -->
+                        <div v-if="applicationForm.cv" class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                          <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                              <!-- File Icon -->
+                              <div class="w-10 h-10 bg-brand-primary/10 rounded-lg flex items-center justify-center">
+                                <svg v-if="getFileExtension(applicationForm.cv.name) === 'pdf'" class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/>
+                                </svg>
+                                <svg v-else class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/>
+                                </svg>
+                              </div>
+                              
+                              <!-- File Info -->
+                              <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-brand-black truncate">{{ applicationForm.cv.name }}</p>
+                                <p class="text-xs text-gray-500">{{ formatFileSize(applicationForm.cv.size) }}</p>
+                              </div>
+                            </div>
+                            
+                            <!-- Remove Button -->
+                            <button 
+                              type="button"
+                              @click="removeFile"
+                              class="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors"
+                              title="Hiq CV-në"
+                            >
+                              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                        
+                        <!-- Hidden File Input -->
+                        <input 
+                          ref="fileInput"
+                          type="file" 
+                          accept=".pdf,.doc,.docx"
+                          class="hidden"
+                          @change="onFileSelect"
+                        />
+                      </div>
+                      
+                      <small v-if="formErrors.cv" class="p-error block mt-1">{{ formErrors.cv }}</small>
+                    </div>
 
-                                     <!-- Terms and Submit -->
-                   <div class="space-y-4">
-                     <div class="flex items-start gap-3">
-                       <Checkbox 
-                         v-model="applicationForm.agreeToTerms"
-                         :binary="true"
-                         :class="{ 'p-invalid': formErrors.agreeToTerms }"
-                         class="mt-1 flex-shrink-0"
-                       />
-                       <div class="flex-1 min-w-0">
-                         <label class="text-sm text-brand-gray leading-relaxed">
-                           Pajtohem me <a href="#" class="text-brand-primary hover:underline">kushtet e përdorimit</a> 
-                           dhe <a href="#" class="text-brand-primary hover:underline">politikën e privatësisë</a> *
-                         </label>
-                         <small v-if="formErrors.agreeToTerms" class="p-error block mt-1">{{ formErrors.agreeToTerms }}</small>
-                       </div>
-                     </div>
+                                                           <!-- Terms and Submit -->
+                      <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                                                     <input 
+                             type="checkbox" 
+                             id="agreeToTerms"
+                             v-model="applicationForm.agreeToTerms"
+                             class="mt-1 h-4 w-4 text-brand-primary rounded focus:outline-none focus:ring-0 border-0"
+                           />
+                          <div class="flex-1 min-w-0">
+                            <label for="agreeToTerms" class="text-sm text-brand-gray leading-relaxed cursor-pointer">
+                              Pajtohem me <a href="#" class="text-brand-primary hover:underline">kushtet e përdorimit</a> 
+                              dhe <a href="#" class="text-brand-primary hover:underline">politikën e privatësisë</a> *
+                            </label>
+                            <small v-if="formErrors.agreeToTerms" class="p-error block mt-1">{{ formErrors.agreeToTerms }}</small>
+                          </div>
+                        </div>
 
                      <Button 
                        type="submit"
@@ -471,12 +520,15 @@ import Paginator from 'primevue/paginator'
 import InputText from 'primevue/inputtext'
 import Dropdown from 'primevue/dropdown'
 import Calendar from 'primevue/calendar'
-import FileUpload from 'primevue/fileupload'
-import Checkbox from 'primevue/checkbox'
+
+
 import Toast from 'primevue/toast'
 
 // Reactive state for selected job
 const selectedJob = ref('')
+
+// File input ref
+const fileInput = ref<HTMLInputElement>()
 
 // Pagination state
 const currentPage = ref(1)
@@ -624,18 +676,18 @@ const onPageChange = (event: any) => {
   }
 }
 
- // Application form data
- const applicationForm = ref({
-   firstName: '',
-   lastName: '',
-   genre: '',
-   birthday: null,
-   phone: '',
-   jobOpening: '',
-   city: '',
-   cv: null,
-   agreeToTerms: false
- })
+   // Application form data
+  const applicationForm = ref({
+    firstName: '',
+    lastName: '',
+    genre: '',
+    birthday: null,
+    phone: '',
+    jobOpening: '',
+    city: '',
+    cv: null as File | null,
+    agreeToTerms: false
+  })
 
  // Form validation errors
  const formErrors = ref({
@@ -696,10 +748,55 @@ const isSubmitting = ref(false)
 
 // File upload handler
 const onFileSelect = (event: any) => {
-  if (event.files && event.files.length > 0) {
-    applicationForm.value.cv = event.files[0]
+  if (event.target.files && event.target.files.length > 0) {
+    const file = event.target.files[0]
+    
+    // Check file size (5MB limit)
+    if (file.size > 5 * 1024 * 1024) {
+      alert('File është shumë i madh. Maksimumi është 5MB.')
+      return
+    }
+    
+    // Check file type
+    const allowedTypes = ['.pdf', '.doc', '.docx']
+    const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase()
+    
+    if (!allowedTypes.includes(fileExtension)) {
+      alert('Formati i file nuk është i lejuar. Përdorni PDF, DOC ose DOCX.')
+      return
+    }
+    
+    applicationForm.value.cv = file
     formErrors.value.cv = ''
   }
+}
+
+// Trigger file input click
+const triggerFileInput = () => {
+  fileInput.value?.click()
+}
+
+// Remove selected file
+const removeFile = () => {
+  applicationForm.value.cv = null
+  formErrors.value.cv = ''
+  if (fileInput.value) {
+    fileInput.value.value = ''
+  }
+}
+
+// Get file extension
+const getFileExtension = (filename: string) => {
+  return filename.split('.').pop()?.toLowerCase() || ''
+}
+
+// Format file size
+const formatFileSize = (bytes: number) => {
+  if (bytes === 0) return '0 Bytes'
+  const k = 1024
+  const sizes = ['Bytes', 'KB', 'MB', 'GB']
+  const i = Math.floor(Math.log(bytes) / Math.log(k))
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
 }
 
  // Form validation

@@ -117,14 +117,25 @@ body {
   color: #374151 !important;
 }
 
-/* Minimal checkbox styling to prevent black appearance */
-.p-checkbox .p-checkbox-box {
-  background-color: white !important;
+
+
+
+
+
+
+/* Custom checkbox styling - no borders */
+input[type="checkbox"] {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-.p-checkbox .p-checkbox-box.p-highlight {
-  background-color: #2563eb !important;
-  border-color: #2563eb !important;
+input[type="checkbox"]:focus,
+input[type="checkbox"]:active,
+input[type="checkbox"]:checked {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* File upload styling */
