@@ -58,13 +58,24 @@ body {
   overflow-y: scroll;
 }
 
-/* Minimal styling to prevent black appearance without breaking functionality */
+/* Production-safe styling to prevent black appearance in Vercel */
 .p-dropdown {
   background-color: white !important;
+  color: #374151 !important;
+}
+
+.p-dropdown .p-dropdown-trigger {
+  background-color: white !important;
+  color: #374151 !important;
+}
+
+.p-dropdown .p-dropdown-trigger .p-icon {
+  color: #6b7280 !important;
 }
 
 .p-dropdown-panel {
   background-color: white !important;
+  color: #374151 !important;
 }
 
 .p-dropdown-items {
@@ -73,6 +84,62 @@ body {
 
 .p-dropdown-item {
   background-color: white !important;
+  color: #374151 !important;
+}
+
+.p-dropdown-item:hover {
+  background-color: #f3f4f6 !important;
+  color: #1f2937 !important;
+}
+
+.p-dropdown-item.p-highlight {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
+/* Calendar icon styling */
+.p-calendar {
+  background-color: white !important;
+}
+
+.p-calendar .p-button {
+  background-color: white !important;
+  color: #374151 !important;
+  border-color: #d1d5db !important;
+}
+
+.p-calendar .p-button .p-icon {
+  color: #6b7280 !important;
+}
+
+.p-calendar .p-button:hover {
+  background-color: #f9fafb !important;
+  color: #374151 !important;
+}
+
+/* Minimal checkbox styling to prevent black appearance */
+.p-checkbox .p-checkbox-box {
+  background-color: white !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+/* File upload styling */
+.p-fileupload {
+  background-color: white !important;
+}
+
+.p-fileupload .p-button {
+  background-color: #2563eb !important;
+  color: white !important;
+  border-color: #2563eb !important;
+}
+
+.p-fileupload .p-button .p-icon {
+  color: white !important;
 }
 
 /* Hover state - slightly darker gray */
