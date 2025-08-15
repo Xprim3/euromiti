@@ -229,71 +229,55 @@
                  <!-- Application Form -->
                  <form @submit.prevent="submitApplication" class="space-y-6">
                    <!-- Job Position Selection -->
-                   <div>
-                     <label class="block text-sm font-semibold text-brand-black mb-2">Pozicioni i Aplikimit *</label>
-                     <Dropdown 
-                       v-model="selectedJob"
-                       :options="jobOptions"
-                       optionLabel="displayText"
-                       optionValue="title"
-                       placeholder="Zgjidhni pozicionin për të aplikuar"
-                       class="w-full"
-                       :class="{ 'p-invalid': !selectedJob && formSubmitted }"
-                       required
-                     >
-                       <template #option="slotProps">
-                         <div class="flex flex-col">
-                           <div class="font-semibold text-brand-black">{{ slotProps.option.title }}</div>
-                           <div class="text-sm text-brand-gray">
-                             {{ slotProps.option.category }} • {{ slotProps.option.location }} • {{ slotProps.option.experience }}
-                           </div>
+                   <FormDropdown
+                     v-model="selectedJob"
+                     label="Pozicioni i Aplikimit"
+                     :options="jobOptions"
+                     optionLabel="displayText"
+                     optionValue="title"
+                     placeholder="Zgjidhni pozicionin për të aplikuar"
+                     required
+                     :error="!selectedJob && formSubmitted ? 'Duhet të zgjidhni një pozicion për të aplikuar' : undefined"
+                   >
+                     <template #option="slotProps">
+                       <div class="flex flex-col">
+                         <div class="font-semibold text-brand-black">{{ slotProps.option.title }}</div>
+                         <div class="text-sm text-brand-gray">
+                           {{ slotProps.option.category }} • {{ slotProps.option.location }} • {{ slotProps.option.experience }}
                          </div>
-                       </template>
-                     </Dropdown>
-                     <small v-if="!selectedJob && formSubmitted" class="p-error">Duhet të zgjidhni një pozicion për të aplikuar</small>
-                   </div>
+                       </div>
+                     </template>
+                   </FormDropdown>
 
                    <!-- Personal Information -->
                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     <div>
-                       <label class="block text-sm font-semibold text-brand-black mb-2">Emri *</label>
-                       <InputText 
-                         v-model="form.firstName" 
-                         placeholder="Emri"
-                         class="w-full"
-                         :class="{ 'p-invalid': form.firstName === '' && formSubmitted }"
-                         required
-                       />
-                       <small v-if="form.firstName === '' && formSubmitted" class="p-error">Emri është i detyrueshëm</small>
-                     </div>
-                     <div>
-                       <label class="block text-sm font-semibold text-brand-black mb-2">Mbiemri *</label>
-                       <InputText 
-                         v-model="form.lastName" 
-                         placeholder="Mbiemri"
-                         class="w-full"
-                         :class="{ 'p-invalid': form.lastName === '' && formSubmitted }"
-                         required
-                       />
-                       <small v-if="form.lastName === '' && formSubmitted" class="p-error">Mbiemri është i detyrueshëm</small>
-                     </div>
+                     <FormInput
+                       v-model="form.firstName"
+                       label="Emri"
+                       placeholder="Emri"
+                       required
+                       :error="form.firstName === '' && formSubmitted ? 'Emri është i detyrueshëm' : undefined"
+                     />
+                     <FormInput
+                       v-model="form.lastName"
+                       label="Mbiemri"
+                       placeholder="Mbiemri"
+                       required
+                       :error="form.lastName === '' && formSubmitted ? 'Mbiemri është i detyrueshëm' : undefined"
+                     />
                    </div>
                    
                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     <div>
-                       <label class="block text-sm font-semibold text-brand-black mb-2">Gjinia *</label>
-                       <Dropdown 
-                         v-model="form.gender"
-                         :options="genderOptions"
-                         optionLabel="label"
-                         optionValue="value"
-                         placeholder="Zgjidhni gjininë"
-                         class="w-full"
-                         :class="{ 'p-invalid': form.gender === '' && formSubmitted }"
-                         required
-                       />
-                       <small v-if="form.gender === '' && formSubmitted" class="p-error">Gjinia është e detyrueshme</small>
-                     </div>
+                     <FormDropdown
+                       v-model="form.gender"
+                       label="Gjinia"
+                       :options="genderOptions"
+                       optionLabel="label"
+                       optionValue="value"
+                       placeholder="Zgjidhni gjininë"
+                       required
+                       :error="form.gender === '' && formSubmitted ? 'Gjinia është e detyrueshme' : undefined"
+                     />
                      <div>
                        <label class="block text-sm font-semibold text-brand-black mb-2">Datëlindja *</label>
                        <Calendar 
@@ -310,67 +294,49 @@
                    </div>
                    
                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     <div>
-                       <label class="block text-sm font-semibold text-brand-black mb-2">Email *</label>
-                       <InputText 
-                         v-model="form.email" 
-                         type="email"
-                         placeholder="email@example.com"
-                         class="w-full"
-                         :class="{ 'p-invalid': form.email === '' && formSubmitted }"
-                         required
-                       />
-                       <small v-if="form.email === '' && formSubmitted" class="p-error">Email është i detyrueshëm</small>
-                     </div>
-                     <div>
-                       <label class="block text-sm font-semibold text-brand-black mb-2">Telefoni *</label>
-                       <InputText 
-                         v-model="form.phone" 
-                         placeholder="+355 12 345 678"
-                         class="w-full"
-                         :class="{ 'p-invalid': form.phone === '' && formSubmitted }"
-                         required
-                       />
-                       <small v-if="form.phone === '' && formSubmitted" class="p-error">Telefoni është i detyrueshëm</small>
-                     </div>
+                     <FormInput
+                       v-model="form.email"
+                       label="Email"
+                       type="email"
+                       placeholder="email@example.com"
+                       required
+                       :error="form.email === '' && formSubmitted ? 'Email është i detyrueshëm' : undefined"
+                     />
+                     <FormInput
+                       v-model="form.phone"
+                       label="Telefoni"
+                       placeholder="+355 12 345 678"
+                       required
+                       :error="form.phone === '' && formSubmitted ? 'Telefoni është i detyrueshëm' : undefined"
+                     />
                    </div>
                    
                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     <div>
-                       <label class="block text-sm font-semibold text-brand-black mb-2">Qyteti *</label>
-                       <InputText 
-                         v-model="form.city" 
-                         placeholder="Qyteti ku jetoni"
-                         class="w-full"
-                         :class="{ 'p-invalid': form.city === '' && formSubmitted }"
-                         required
-                       />
-                       <small v-if="form.city === '' && formSubmitted" class="p-error">Qyteti është i detyrueshëm</small>
-                     </div>
-                     <div>
-                       <label class="block text-sm font-semibold text-brand-black mb-2">Vite Përvoje</label>
-                       <Dropdown 
-                         v-model="form.experience"
-                         :options="experienceOptions"
-                         optionLabel="label"
-                         optionValue="value"
-                         placeholder="Zgjidhni përvojën"
-                         class="w-full"
-                       />
-                     </div>
-                   </div>
-                   
-                   <div>
-                     <label class="block text-sm font-semibold text-brand-black mb-2">Niveli i Edukimit</label>
-                     <Dropdown 
-                       v-model="form.education"
-                       :options="educationOptions"
+                     <FormInput
+                       v-model="form.city"
+                       label="Qyteti"
+                       placeholder="Qyteti ku jetoni"
+                       required
+                       :error="form.city === '' && formSubmitted ? 'Qyteti është i detyrueshëm' : undefined"
+                     />
+                     <FormDropdown
+                       v-model="form.experience"
+                       label="Vite Përvoje"
+                       :options="experienceOptions"
                        optionLabel="label"
                        optionValue="value"
-                       placeholder="Zgjidhni nivelin e edukimit"
-                       class="w-full"
+                       placeholder="Zgjidhni përvojën"
                      />
                    </div>
+                   
+                   <FormDropdown
+                     v-model="form.education"
+                     label="Niveli i Edukimit"
+                     :options="educationOptions"
+                     optionLabel="label"
+                     optionValue="value"
+                     placeholder="Zgjidhni nivelin e edukimit"
+                   />
                    
                    <!-- CV Upload -->
                    <div>
@@ -391,29 +357,23 @@
                    </div>
                    
                    <!-- Agreement Checkbox -->
-                   <div class="flex items-start space-x-3">
-                     <Checkbox 
-                       v-model="form.agreement"
-                       :binary="true"
-                       :class="{ 'p-invalid': !form.agreement && formSubmitted }"
-                       required
-                     />
-                     <label class="text-sm text-brand-gray">
-                       Pajtohem me <a href="#" class="text-brand-primary hover:underline">kushtet e përdorimit</a> dhe 
-                       <a href="#" class="text-brand-primary hover:underline">politikën e privatësisë</a> *
-                     </label>
-                   </div>
-                   <small v-if="!form.agreement && formSubmitted" class="p-error block">Duhet të pajtoheni me kushtet</small>
+                   <FormCheckbox
+                     v-model="form.agreement"
+                     label="Pajtohem me <a href='#' class='text-brand-primary hover:underline'>kushtet e përdorimit</a> dhe <a href='#' class='text-brand-primary hover:underline'>politikën e privatësisë</a> *"
+                     required
+                     :error="!form.agreement && formSubmitted ? 'Duhet të pajtoheni me kushtet' : undefined"
+                   />
                    
                    <!-- Submit Button -->
                    <div class="pt-4">
-                     <Button 
-                       type="submit" 
+                     <FormButton
+                       type="submit"
+                       label="Dërgo Aplikimin"
+                       icon="pi pi-send"
                        :disabled="isSubmitting"
                        :loading="isSubmitting"
-                       label="Dërgo Aplikimin"
-                       class="w-full p-button-lg"
-                       icon="pi pi-send"
+                       fullWidth
+                       size="lg"
                      />
                    </div>
                  </form>
@@ -495,12 +455,14 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue'
-import InputText from 'primevue/inputtext'
-import Dropdown from 'primevue/dropdown'
-import Calendar from 'primevue/calendar'
-import FileUpload from 'primevue/fileupload'
-import Checkbox from 'primevue/checkbox'
-import Button from 'primevue/button'
+import { 
+  FormInput, 
+  FormDropdown, 
+  FormButton, 
+  FormCheckbox,
+  Calendar,
+  FileUpload 
+} from '../components/form'
 
 // Reactive state for selected job
 const selectedJob = ref('')
@@ -808,96 +770,7 @@ html {
   transform: scale(1.05);
 }
 
-/* Custom PrimeVue styling to match brand colors - FIX BLACK BACKGROUNDS */
-:deep(.p-inputtext) {
-  border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
-  transition: all 0.2s;
-  height: 48px;
-  padding: 0.75rem 1rem;
-  background-color: white !important;
-  color: #374151 !important;
-}
-
-:deep(.p-inputtext:focus) {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
-  background-color: white !important;
-}
-
-/* Custom PrimeVue styling to match brand colors - FIX BLACK DROPDOWN BACKGROUNDS */
-:deep(.p-dropdown) {
-  border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
-  height: 48px;
-  background-color: white !important;
-  transition: all 0.2s;
-}
-
-:deep(.p-dropdown .p-dropdown-label) {
-  padding: 0.75rem 1rem;
-  height: 48px;
-  line-height: 1.5rem;
-  color: #374151 !important;
-  background-color: white !important;
-}
-
-:deep(.p-dropdown .p-dropdown-trigger) {
-  width: 3rem;
-  border-left: 1px solid #e5e7eb !important;
-  background-color: white !important;
-}
-
-:deep(.p-dropdown .p-dropdown-trigger-icon) {
-  color: #6b7280 !important;
-  background-color: white !important;
-}
-
-:deep(.p-dropdown:not(.p-disabled):hover) {
-  border-color: #2563eb !important;
-  background-color: white !important;
-}
-
-:deep(.p-dropdown:not(.p-disabled).p-focus) {
-  border-color: #2563eb !important;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
-  background-color: white !important;
-}
-
-/* Dropdown panel styling */
-:deep(.p-dropdown-panel) {
-  background-color: white !important;
-  border: 1px solid #e5e7eb !important;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-:deep(.p-dropdown-items) {
-  background-color: white !important;
-}
-
-:deep(.p-dropdown-item) {
-  background-color: white !important;
-  color: #374151 !important;
-  padding: 0.75rem 1rem;
-  transition: all 0.2s;
-}
-
-:deep(.p-dropdown-item:hover) {
-  background-color: #f3f4f6 !important;
-  color: #1f2937 !important;
-}
-
-:deep(.p-dropdown-item.p-highlight) {
-  background-color: #2563eb !important;
-  color: white !important;
-}
-
-:deep(.p-dropdown-item.p-highlight:hover) {
-  background-color: #1d4ed8 !important;
-}
-
-/* ULTRA AGGRESSIVE OVERRIDES - Force white backgrounds and proper borders */
+/* Form components now use our custom FormInput, FormDropdown, etc. with brand colors */
 :deep(.p-dropdown),
 :deep(.p-dropdown *),
 :deep(.p-dropdown * *) {
@@ -925,155 +798,11 @@ html {
   background: #f3f4f6 !important;
 }
 
-:deep(.p-dropdown .p-dropdown-item.p-highlight) {
-  background-color: #2563eb !important;
-  background: #2563eb !important;
-}
+/* Form components now use our custom FormInput, FormDropdown, etc. with brand colors */
 
-:deep(.p-dropdown .p-dropdown-item.p-highlight:hover) {
-  background-color: #1d4ed8 !important;
-  background: #1d4ed8 !important;
-}
+/* Calendar component styling is now handled by our form-components.css */
 
-/* Override any default PrimeVue focus colors */
-:deep(.p-dropdown:focus),
-:deep(.p-dropdown.p-focus),
-:deep(.p-dropdown:not(.p-disabled).p-focus) {
-  border-color: #2563eb !important;
-  outline: none !important;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
-}
-
-/* Remove any green borders that might be coming from PrimeVue defaults */
-:deep(.p-dropdown) {
-  border-color: #e5e7eb !important;
-}
-
-:deep(.p-dropdown:focus) {
-  border-color: #2563eb !important;
-}
-
-:deep(.p-dropdown:hover) {
-  border-color: #2563eb !important;
-}
-
-/* Calendar styling - FIX BLACK BACKGROUNDS */
-:deep(.p-calendar) {
-  border-radius: 0.5rem;
-  height: 48px;
-  background-color: white !important;
-}
-
-:deep(.p-calendar input) {
-  border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
-  height: 48px;
-  padding: 0.75rem 1rem;
-  background-color: white !important;
-  color: #374151 !important;
-}
-
-:deep(.p-calendar:not(.p-disabled):hover input) {
-  border-color: #2563eb;
-  background-color: white !important;
-}
-
-:deep(.p-calendar:not(.p-disabled).p-focus input) {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
-  background-color: white !important;
-}
-
-/* Calendar icon specific styling - FIX BLACK BACKGROUND */
-:deep(.p-calendar .p-datepicker-trigger) {
-  background-color: white !important;
-  border-left: 1px solid #e5e7eb;
-  color: #6b7280 !important;
-}
-
-:deep(.p-calendar .p-datepicker-trigger *),
-:deep(.p-calendar .p-datepicker-trigger *) {
-  background-color: white !important;
-}
-
-:deep(.p-calendar .p-datepicker-trigger-icon) {
-  background-color: white !important;
-  color: #6b7280 !important;
-}
-
-/* Force calendar icon background to be white */
-:deep(.p-calendar .p-datepicker-trigger),
-:deep(.p-calendar .p-datepicker-trigger button),
-:deep(.p-calendar .p-datepicker-trigger span),
-:deep(.p-calendar .p-datepicker-trigger i) {
-  background-color: white !important;
-  background: white !important;
-}
-
-/* Calendar datepicker styling */
-:deep(.p-calendar .p-datepicker) {
-  background-color: white !important;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-:deep(.p-calendar .p-datepicker-header) {
-  background-color: white !important;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-:deep(.p-calendar .p-datepicker-calendar th) {
-  background-color: #f9fafb !important;
-  color: #374151 !important;
-}
-
-:deep(.p-calendar .p-datepicker-calendar td > span) {
-  background-color: white !important;
-  color: #374151 !important;
-}
-
-:deep(.p-calendar .p-datepicker-calendar td > span:hover) {
-  background-color: #f3f4f6 !important;
-}
-
-:deep(.p-calendar .p-datepicker-calendar td.p-datepicker-today > span) {
-  background-color: #2563eb !important;
-  color: white !important;
-}
-
-:deep(.p-calendar .p-datepicker-calendar td.p-datepicker-today > span:hover) {
-  background-color: #1d4ed8 !important;
-}
-
-/* File upload styling */
-:deep(.p-fileupload) {
-  border-radius: 0.5rem;
-  height: 48px;
-  background-color: white !important;
-}
-
-:deep(.p-fileupload .p-fileupload-buttonbar) {
-  background-color: white !important;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  padding: 0;
-}
-
-:deep(.p-fileupload .p-button) {
-  background-color: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  color: #374151;
-  border-radius: 0.5rem;
-  transition: all 0.2s;
-  height: 48px;
-  padding: 0.75rem 1rem;
-}
-
-:deep(.p-fileupload .p-button:hover) {
-  background-color: #e5e7eb;
-  border-color: #d1d5db;
-}
+/* File upload styling is now handled by our form-components.css */
 
 :deep(.p-fileupload .p-fileupload-content) {
   background-color: white !important;
@@ -1097,162 +826,5 @@ html {
   border-color: #2563eb;
 }
 
-:deep(.p-checkbox .p-checkbox-box:hover) {
-  border-color: #2563eb;
-  background-color: white !important;
-}
-
-:deep(.p-checkbox .p-checkbox-box.p-highlight:hover) {
-  background-color: #1d4ed8 !important;
-  border-color: #1d4ed8;
-}
-
-:deep(.p-checkbox .p-checkbox-icon) {
-  color: white !important;
-  font-size: 0.75rem;
-}
-
-/* Button styling */
-:deep(.p-button) {
-  background-color: #2563eb;
-  border-color: #2563eb;
-  border-radius: 0.75rem;
-  font-weight: 600;
-  transition: all 0.3s;
-  height: 56px;
-}
-
-:deep(.p-button:hover) {
-  background-color: #1d4ed8;
-  border-color: #1d4ed8;
-  transform: translateY(-1px);
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
-}
-
-:deep(.p-button:disabled) {
-  background-color: #9ca3af;
-  border-color: #9ca3af;
-  transform: none;
-  box-shadow: none;
-}
-
-/* Validation styling */
-:deep(.p-invalid) {
-  border-color: #ef4444 !important;
-}
-
-:deep(.p-error) {
-  color: #ef4444;
-  font-size: 0.75rem;
-  margin-top: 0.25rem;
-  display: block;
-}
-
-/* Additional form element styling */
-:deep(.p-component) {
-  font-family: inherit;
-}
-
-:deep(.p-placeholder) {
-  color: #9ca3af !important;
-}
-
-/* GLOBAL OVERRIDE - Force white backgrounds on ALL form elements */
-:deep(.p-inputtext),
-:deep(.p-dropdown),
-:deep(.p-calendar),
-:deep(.p-fileupload),
-:deep(.p-checkbox .p-checkbox-box),
-:deep(.p-dropdown *),
-:deep(.p-calendar *),
-:deep(.p-fileupload *),
-:deep(.p-checkbox *) {
-  background-color: white !important;
-}
-
-/* Force white backgrounds on all child elements */
-:deep(.p-dropdown .p-dropdown-label),
-:deep(.p-dropdown .p-dropdown-trigger),
-:deep(.p-dropdown .p-dropdown-trigger *),
-:deep(.p-calendar input),
-:deep(.p-calendar .p-datepicker-trigger),
-:deep(.p-calendar .p-datepicker-trigger *),
-:deep(.p-fileupload .p-fileupload-buttonbar),
-:deep(.p-fileupload .p-fileupload-content) {
-  background-color: white !important;
-}
-
-/* Focus states for all form elements */
-:deep(.p-inputtext:focus),
-:deep(.p-dropdown:not(.p-disabled).p-focus),
-:deep(.p-calendar:not(.p-disabled).p-focus input) {
-  border-color: #2563eb !important;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
-}
-
-/* Mobile dropdown panel positioning */
-@media (max-width: 768px) {
-  :deep(.p-dropdown-panel) {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    width: 90vw !important;
-    max-width: 400px !important;
-  }
-}
-
-/* ULTRA AGGRESSIVE OVERRIDES - Force white backgrounds and consistent borders */
-:deep(.p-dropdown),
-:deep(.p-dropdown *),
-:deep(.p-dropdown * *) {
-  background-color: white !important;
-  background: white !important;
-}
-
-:deep(.p-dropdown .p-dropdown-label),
-:deep(.p-dropdown .p-dropdown-trigger),
-:deep(.p-dropdown .p-dropdown-trigger *),
-:deep(.p-dropdown .p-dropdown-trigger * *) {
-  background-color: white !important;
-  background: white !important;
-}
-
-:deep(.p-dropdown .p-dropdown-panel),
-:deep(.p-dropdown .p-dropdown-items),
-:deep(.p-dropdown .p-dropdown-item) {
-  background-color: white !important;
-  background: white !important;
-}
-
-:deep(.p-dropdown .p-dropdown-item:hover) {
-  background-color: #f3f4f6 !important;
-  background: #f3f4f6 !important;
-}
-
-:deep(.p-dropdown .p-dropdown-item.p-highlight) {
-  background-color: #2563eb !important;
-  background: #2563eb !important;
-}
-
-:deep(.p-dropdown .p-dropdown-item.p-highlight:hover) {
-  background-color: #1d4ed8 !important;
-  background: #1d4ed8 !important;
-}
-
-/* Force ALL calendar elements to have white backgrounds */
-:deep(.p-calendar),
-:deep(.p-calendar *),
-:deep(.p-calendar * *) {
-  background-color: white !important;
-  background: white !important;
-}
-
-:deep(.p-calendar input),
-:deep(.p-calendar .p-datepicker-trigger),
-:deep(.p-calendar .p-datepicker-trigger *),
-:deep(.p-calendar .p-datepicker-trigger * *) {
-  background-color: white !important;
-  background: white !important;
-}
+/* All form styling is now handled by our form-components.css with brand colors */
 </style>

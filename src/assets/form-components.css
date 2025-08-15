@@ -1,0 +1,276 @@
+/* ===================================
+   PRIMEVUE + TAILWIND INTEGRATION
+   Professional Form Components Styling
+   EUROMITI Brand Colors
+   =================================== */
+
+/* ===================================
+   BASE INPUT STYLING
+   =================================== */
+.p-inputtext,
+.p-dropdown,
+.p-calendar,
+.p-password,
+.p-textarea,
+.p-multiselect {
+  @apply h-12 w-full border border-gray-300 rounded-lg bg-white text-gray-700 px-4 py-3 text-sm font-normal;
+  @apply transition-all duration-200 ease-in-out;
+  @apply focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb];
+  @apply hover:border-[#2563eb];
+}
+
+/* ===================================
+   INPUT TEXT COMPONENTS
+   =================================== */
+.p-inputtext {
+  @apply placeholder-gray-400;
+}
+
+.p-inputtext:disabled {
+  @apply bg-gray-50 text-gray-400 cursor-not-allowed;
+}
+
+/* ===================================
+   DROPDOWN COMPONENTS
+   =================================== */
+.p-dropdown .p-dropdown-label {
+  @apply h-12 px-4 py-3 bg-white border-none outline-none;
+}
+
+.p-dropdown .p-dropdown-trigger {
+  @apply w-12 border-l border-gray-300 bg-white;
+  @apply flex items-center justify-center;
+}
+
+.p-dropdown .p-dropdown-trigger-icon {
+  @apply text-gray-500;
+}
+
+.p-dropdown-panel {
+  @apply bg-white border border-gray-300 rounded-lg shadow-lg mt-1;
+}
+
+.p-dropdown-items {
+  @apply py-2;
+}
+
+.p-dropdown-item {
+  @apply px-4 py-3 text-gray-700 hover:bg-gray-50 cursor-pointer;
+}
+
+.p-dropdown-item.p-highlight {
+  @apply bg-[#2563eb] text-white hover:bg-[#1d4ed8];
+}
+
+/* ===================================
+   CALENDAR COMPONENTS
+   =================================== */
+.p-calendar input {
+  @apply h-12 px-4 py-3 bg-white border-none outline-none;
+}
+
+.p-calendar .p-datepicker-trigger {
+  @apply w-12 border-l border-gray-300 bg-white flex items-center justify-center;
+}
+
+.p-calendar .p-datepicker-trigger-icon {
+  @apply text-gray-500;
+}
+
+.p-calendar .p-datepicker {
+  @apply bg-white border border-gray-300 rounded-lg shadow-lg mt-1;
+}
+
+.p-calendar .p-datepicker-header {
+  @apply bg-white border-b border-gray-200 p-3;
+}
+
+.p-calendar .p-datepicker-calendar th {
+  @apply bg-gray-50 text-gray-700 p-2 font-semibold;
+}
+
+.p-calendar .p-datepicker-calendar td > span {
+  @apply bg-white text-gray-700 p-2 rounded transition-colors;
+}
+
+.p-calendar .p-datepicker-calendar td > span:hover {
+  @apply bg-gray-100;
+}
+
+.p-calendar .p-datepicker-calendar td.p-datepicker-today > span {
+  @apply bg-[#2563eb] text-white;
+}
+
+/* ===================================
+   PASSWORD COMPONENTS
+   =================================== */
+.p-password input {
+  @apply h-12 px-4 py-3 bg-white border-none outline-none;
+}
+
+.p-password .p-password-toggle {
+  @apply w-12 border-l border-gray-300 bg-white flex items-center justify-center;
+}
+
+/* ===================================
+   TEXTAREA COMPONENTS
+   =================================== */
+.p-textarea {
+  @apply min-h-32;
+  resize: vertical;
+}
+
+/* ===================================
+   MULTISELECT COMPONENTS
+   =================================== */
+.p-multiselect .p-multiselect-label {
+  @apply h-12 px-4 py-3 bg-white border-none outline-none;
+}
+
+.p-multiselect .p-multiselect-trigger {
+  @apply w-12 border-l border-gray-300 bg-white flex items-center justify-center;
+}
+
+/* ===================================
+   CHECKBOX COMPONENTS
+   =================================== */
+.p-checkbox .p-checkbox-box {
+  @apply w-5 h-5 border border-gray-300 rounded bg-white transition-colors;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  @apply bg-[#2563eb] border-[#2563eb];
+}
+
+.p-checkbox .p-checkbox-box:hover {
+  @apply border-[#2563eb];
+}
+
+.p-checkbox .p-checkbox-icon {
+  @apply text-white text-xs;
+}
+
+/* ===================================
+   FILE UPLOAD COMPONENTS
+   =================================== */
+.p-fileupload .p-fileupload-buttonbar {
+  @apply p-0 bg-white border border-gray-300 rounded-lg;
+}
+
+.p-fileupload .p-button {
+  @apply h-12 bg-gray-100 border border-gray-300 text-gray-700 rounded-lg;
+  @apply transition-colors hover:bg-gray-200;
+}
+
+.p-fileupload .p-fileupload-content {
+  @apply mt-2 bg-white border border-gray-300 rounded-lg p-4;
+}
+
+/* ===================================
+   BUTTON COMPONENTS
+   =================================== */
+.p-button {
+  @apply h-12 px-6 py-3 bg-[#2563eb] text-white font-semibold rounded-lg;
+  @apply transition-all duration-200 ease-in-out;
+  @apply hover:bg-[#1d4ed8] hover:shadow-lg hover:-translate-y-0.5;
+  @apply focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:ring-offset-2;
+}
+
+.p-button:disabled {
+  @apply bg-gray-400 cursor-not-allowed hover:bg-gray-400 hover:shadow-none hover:translate-y-0;
+}
+
+/* Button Variants */
+.p-button.p-button-secondary {
+  @apply bg-[#6b7280] hover:bg-[#4b5563];
+}
+
+.p-button.p-button-success {
+  @apply bg-green-600 hover:bg-green-700;
+}
+
+.p-button.p-button-warning {
+  @apply bg-yellow-600 hover:bg-yellow-700;
+}
+
+.p-button.p-button-danger {
+  @apply bg-red-600 hover:bg-red-700;
+}
+
+/* Button Sizes */
+.p-button.p-button-sm {
+  @apply h-9 px-4 py-2 text-sm;
+}
+
+.p-button.p-button-lg {
+  @apply h-14 px-8 py-4 text-lg;
+}
+
+/* ===================================
+   VALIDATION STYLING
+   =================================== */
+.p-invalid {
+  @apply border-red-500 focus:border-red-500 focus:ring-red-500;
+}
+
+.p-error {
+  @apply text-red-600 text-sm mt-1;
+}
+
+.p-success {
+  @apply border-[#2563eb] focus:border-[#2563eb] focus:ring-[#2563eb];
+}
+
+.p-warning {
+  @apply border-yellow-500 focus:border-yellow-500 focus:ring-yellow-500;
+}
+
+/* ===================================
+   MOBILE OPTIMIZATIONS
+   =================================== */
+@media (max-width: 768px) {
+  .p-dropdown-panel,
+  .p-calendar .p-datepicker {
+    @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+    @apply w-[90vw] max-w-sm z-50;
+  }
+  
+  .p-inputtext,
+  .p-dropdown,
+  .p-calendar,
+  .p-password,
+  .p-textarea,
+  .p-multiselect {
+    @apply h-11 text-base;
+  }
+  
+  .p-button {
+    @apply h-11 w-full;
+  }
+}
+
+/* ===================================
+   ACCESSIBILITY & FOCUS
+   =================================== */
+.p-inputtext:focus-visible,
+.p-dropdown:focus-visible,
+.p-calendar:focus-visible,
+.p-password:focus-visible,
+.p-textarea:focus-visible,
+.p-button:focus-visible {
+  @apply outline-2 outline-[#2563eb] outline-offset-2;
+}
+
+/* ===================================
+   PLACEHOLDER STYLING
+   =================================== */
+.p-placeholder {
+  @apply text-gray-400;
+}
+
+/* ===================================
+   DISABLED STATE STYLING
+   =================================== */
+.p-disabled {
+  @apply opacity-60 cursor-not-allowed;
+}
