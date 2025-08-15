@@ -2,89 +2,340 @@
 @tailwind components;
 @tailwind utilities;
 
-/* PrimeVue Theme Variable Fallbacks */
-/* These ensure the theme loads properly and provides fallbacks */
+/* Professional Tailwind Styling for PrimeVue Components */
+/* Comprehensive component library for your website */
 
-:root {
-  /* Surface colors - fallbacks for theme variables */
-  --surface-ground: #f8f9fa;
-  --surface-section: #ffffff;
-  --surface-card: #ffffff;
-  --surface-overlay: #ffffff;
-  --surface-border: #dee2e6;
-  --surface-hover: #e9ecef;
-  
-  /* Text colors - fallbacks for theme variables */
-  --text-color: #495057;
-  --text-color-secondary: #6c757d;
-  
-  /* Primary colors - fallbacks for theme variables */
-  --primary-color: #2563eb;
-  --primary-color-text: #ffffff;
-  --primary-600: #1d4ed8;
+/* ===== INPUT FIELDS ===== */
+.p-inputtext {
+  @apply bg-white border border-gray-300 text-gray-700 rounded-md px-3 py-2 text-sm;
+  @apply focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none;
+  @apply hover:border-gray-400 transition-colors duration-200;
 }
 
-/* Fallback CSS for PrimeVue Theme Variables */
-/* Ensures inputs stay light even if theme CSS fails to load in production */
-
-/* Fallback for input backgrounds */
-.p-inputtext,
-.p-dropdown,
-.p-multiselect,
-.p-calendar .p-inputtext,
-.p-password .p-inputtext,
-.p-inputtextarea {
-  background-color: var(--surface-ground, white) !important;
-  color: var(--text-color, #374151) !important;
-  border-color: var(--surface-border, #d1d5db) !important;
+/* ===== DROPDOWNS ===== */
+.p-dropdown {
+  @apply bg-white border border-gray-300 text-gray-700 rounded-md;
+  @apply focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none;
+  @apply hover:border-gray-400 transition-colors duration-200;
 }
 
-/* Fallback for dropdown panels */
-.p-dropdown-panel,
-.p-multiselect-panel,
+.p-dropdown-panel {
+  @apply bg-white border border-gray-300 rounded-md shadow-lg;
+  @apply border-0 shadow-xl ring-1 ring-black ring-opacity-5;
+}
+
+.p-dropdown-items .p-dropdown-item {
+  @apply bg-white text-gray-700 px-3 py-2 text-sm;
+  @apply hover:bg-gray-50 hover:text-gray-900 transition-colors duration-150;
+}
+
+.p-dropdown-items .p-dropdown-item.p-highlight {
+  @apply bg-blue-600 text-white;
+}
+
+.p-dropdown-trigger-icon {
+  @apply text-gray-500;
+}
+
+/* ===== CALENDAR ===== */
+.p-calendar {
+  @apply bg-white;
+}
+
+.p-calendar .p-inputtext {
+  @apply bg-white border border-gray-300 text-gray-700 rounded-md px-3 py-2 text-sm;
+  @apply focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none;
+}
+
+.p-calendar .p-button {
+  @apply bg-white border border-gray-300 text-gray-700 rounded-md;
+  @apply hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200;
+}
+
+.p-calendar .p-button .p-button-icon {
+  @apply text-gray-500;
+}
+
+/* Calendar panel */
 .p-datepicker {
-  background-color: var(--surface-overlay, white) !important;
-  border-color: var(--surface-border, #d1d5db) !important;
+  @apply bg-white border border-gray-300 rounded-md shadow-lg;
+  @apply border-0 shadow-xl ring-1 ring-black ring-opacity-5;
 }
 
-/* Fallback for dropdown items */
-.p-dropdown-items .p-dropdown-item,
-.p-multiselect-items .p-multiselect-item {
-  background-color: var(--surface-ground, white) !important;
-  color: var(--text-color, #374151) !important;
+.p-datepicker-header {
+  @apply bg-white border-b border-gray-300 px-4 py-3;
 }
 
-.p-dropdown-items .p-dropdown-item:hover,
-.p-multiselect-items .p-multiselect-item:hover {
-  background-color: var(--surface-hover, #f9fafb) !important;
+.p-datepicker-header .p-button {
+  @apply bg-white border border-gray-300 text-gray-700 rounded-md;
+  @apply hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200;
 }
 
-/* Fallback for calendar elements */
+.p-datepicker-header .p-button .p-button-icon {
+  @apply text-gray-500;
+}
+
 .p-datepicker table th,
 .p-datepicker table td {
-  background-color: var(--surface-ground, white) !important;
-  color: var(--text-color, #374151) !important;
+  @apply bg-white text-gray-700;
 }
 
 .p-datepicker table td > span {
-  background-color: var(--surface-ground, white) !important;
-  color: var(--text-color, #374151) !important;
+  @apply bg-white text-gray-700;
+  @apply hover:bg-gray-50 transition-colors duration-150;
 }
 
-.p-datepicker table td > span:hover {
-  background-color: var(--surface-hover, #f9fafb) !important;
+.p-datepicker table td > span.p-highlight {
+  @apply bg-blue-600 text-white;
 }
 
-/* Fallback for buttons */
+/* ===== PAGINATION ===== */
+.p-paginator {
+  @apply bg-white text-gray-700 flex items-center justify-center space-x-2;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page {
+  @apply bg-white text-gray-700 border border-gray-300 rounded-md px-3 py-2 text-sm;
+  @apply hover:bg-gray-50 hover:text-gray-900 hover:border-gray-400 transition-all duration-200;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  @apply bg-blue-600 text-white border-blue-600;
+}
+
+.p-paginator .p-paginator-first,
+.p-paginator .p-paginator-prev,
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-last {
+  @apply bg-white text-gray-700 border border-gray-300 rounded-md px-3 py-2 text-sm;
+  @apply hover:bg-gray-50 hover:text-gray-900 hover:border-gray-400 transition-all duration-200;
+}
+
+.p-paginator .p-paginator-first .p-paginator-icon,
+.p-paginator .p-paginator-prev .p-paginator-icon,
+.p-paginator .p-paginator-next .p-paginator-icon,
+.p-paginator .p-paginator-last .p-paginator-icon {
+  @apply text-gray-500;
+}
+
+/* ===== CARDS ===== */
+.p-card {
+  @apply bg-white border border-gray-200 rounded-lg shadow-sm;
+  @apply hover:shadow-md transition-shadow duration-200;
+}
+
+.p-card .p-card-body,
+.p-card .p-card-content {
+  @apply bg-white text-gray-700 p-6;
+}
+
+.p-card .p-card-title {
+  @apply bg-white text-gray-900 text-xl font-semibold mb-2;
+}
+
+.p-card .p-card-subtitle {
+  @apply bg-white text-gray-600 text-sm;
+}
+
+/* ===== BUTTONS ===== */
 .p-button {
-  background-color: var(--primary-color, #2563eb) !important;
-  border-color: var(--primary-color, #2563eb) !important;
-  color: var(--primary-color-text, white) !important;
+  @apply bg-blue-600 border-blue-600 text-white rounded-md px-4 py-2 text-sm font-medium;
+  @apply hover:bg-blue-700 hover:border-blue-700 transition-colors duration-200;
+  @apply focus:ring-2 focus:ring-blue-200 focus:outline-none;
 }
 
-.p-button:hover {
-  background-color: var(--primary-600, #1d4ed8) !important;
-  border-color: var(--primary-600, #1d4ed8) !important;
+.p-button.p-button-outlined {
+  @apply bg-transparent text-blue-600 border-blue-600;
+  @apply hover:bg-blue-50;
+}
+
+.p-button.p-button-text {
+  @apply bg-transparent text-blue-600 border-transparent;
+  @apply hover:bg-blue-50;
+}
+
+.p-button.p-button-secondary {
+  @apply bg-gray-600 border-gray-600 text-white;
+  @apply hover:bg-gray-700 hover:border-gray-700;
+}
+
+.p-button.p-button-success {
+  @apply bg-green-600 border-green-600 text-white;
+  @apply hover:bg-green-700 hover:border-green-700;
+}
+
+.p-button.p-button-warning {
+  @apply bg-yellow-600 border-yellow-600 text-white;
+  @apply hover:bg-yellow-700 hover:border-yellow-700;
+}
+
+.p-button.p-button-danger {
+  @apply bg-red-600 border-red-600 text-white;
+  @apply hover:bg-red-700 hover:border-red-700;
+}
+
+.p-button.p-button-info {
+  @apply bg-cyan-600 border-cyan-600 text-white;
+  @apply hover:bg-cyan-700 hover:border-cyan-700;
+}
+
+/* ===== CHECKBOX ===== */
+.p-checkbox {
+  @apply bg-white border border-gray-300 rounded;
+}
+
+.p-checkbox .p-checkbox-box {
+  @apply bg-white border border-gray-300 rounded;
+  @apply hover:border-gray-400 transition-colors duration-200;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  @apply bg-blue-600 border-blue-600;
+}
+
+.p-checkbox .p-checkbox-icon {
+  @apply text-white;
+}
+
+/* ===== RADIO BUTTONS ===== */
+.p-radiobutton {
+  @apply bg-white;
+}
+
+.p-radiobutton .p-radiobutton-box {
+  @apply bg-white border border-gray-300;
+  @apply hover:border-gray-400 transition-colors duration-200;
+}
+
+.p-radiobutton .p-radiobutton-box.p-highlight {
+  @apply border-blue-600;
+}
+
+.p-radiobutton .p-radiobutton-icon {
+  @apply bg-blue-600;
+}
+
+/* ===== SWITCH/TOGGLE ===== */
+.p-inputswitch {
+  @apply bg-gray-300;
+}
+
+.p-inputswitch.p-inputswitch-checked {
+  @apply bg-blue-600;
+}
+
+.p-inputswitch .p-inputswitch-slider {
+  @apply bg-white;
+}
+
+/* ===== SLIDER ===== */
+.p-slider {
+  @apply bg-gray-200;
+}
+
+.p-slider .p-slider-handle {
+  @apply bg-blue-600 border-blue-600;
+  @apply hover:bg-blue-700 hover:border-blue-700;
+}
+
+.p-slider .p-slider-range {
+  @apply bg-blue-600;
+}
+
+/* ===== PROGRESS BAR ===== */
+.p-progressbar {
+  @apply bg-gray-200 rounded-full;
+}
+
+.p-progressbar .p-progressbar-value {
+  @apply bg-blue-600 rounded-full;
+}
+
+/* ===== SPINNER ===== */
+.p-progressspinner {
+  @apply text-blue-600;
+}
+
+.p-progressspinner .p-progressspinner-circle {
+  @apply stroke-blue-600;
+}
+
+/* ===== FILE UPLOAD ===== */
+.p-fileupload {
+  @apply bg-white border border-gray-300 rounded-md;
+}
+
+.p-fileupload .p-button {
+  @apply bg-blue-600 border-blue-600 text-white;
+}
+
+/* ===== MULTI-SELECT ===== */
+.p-multiselect {
+  @apply bg-white border border-gray-300 text-gray-700 rounded-md;
+  @apply focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none;
+  @apply hover:border-gray-400 transition-colors duration-200;
+}
+
+.p-multiselect-panel {
+  @apply bg-white border border-gray-300 rounded-md shadow-lg;
+  @apply border-0 shadow-xl ring-1 ring-black ring-opacity-5;
+}
+
+.p-multiselect-items .p-multiselect-item {
+  @apply bg-white text-gray-700 px-3 py-2 text-sm;
+  @apply hover:bg-gray-50 hover:text-gray-900 transition-colors duration-150;
+}
+
+.p-multiselect-items .p-multiselect-item.p-highlight {
+  @apply bg-blue-600 text-white;
+}
+
+/* ===== TOAST ===== */
+.p-toast {
+  @apply bg-white border border-gray-300 text-gray-700 rounded-lg shadow-lg;
+}
+
+.p-toast .p-toast-message {
+  @apply bg-white border border-gray-300 text-gray-700;
+}
+
+.p-toast .p-toast-message-content {
+  @apply bg-white text-gray-700;
+}
+
+/* ===== OVERLAY PANELS ===== */
+.p-overlaypanel {
+  @apply bg-white border border-gray-300 text-gray-700 rounded-lg shadow-lg;
+}
+
+.p-overlaypanel-content {
+  @apply bg-white text-gray-700;
+}
+
+/* ===== TEXTAREA ===== */
+.p-inputtextarea {
+  @apply bg-white border border-gray-300 text-gray-700 rounded-md px-3 py-2 text-sm;
+  @apply focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none;
+  @apply hover:border-gray-400 transition-colors duration-200;
+}
+
+/* ===== PASSWORD ===== */
+.p-password {
+  @apply bg-white;
+}
+
+.p-password .p-inputtext {
+  @apply bg-white border border-gray-300 text-gray-700 rounded-md px-3 py-2 text-sm;
+  @apply focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none;
+}
+
+.p-password .p-button {
+  @apply bg-white border border-gray-300 text-gray-700 rounded-md;
+  @apply hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200;
+}
+
+.p-password .p-button .p-button-icon {
+  @apply text-gray-500;
 }
 
 /* Global mobile double-tap zoom prevention */

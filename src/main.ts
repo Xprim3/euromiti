@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import PrimeVue from 'primevue/config'
-import Lara from '@primevue/themes/lara'
 
 import router from './router'
 import pinia from './stores'
@@ -11,13 +10,8 @@ import App from './App.vue'
 
 const app = createApp(App)
 
-// Use PrimeVue with Lara theme
-// The theme preset should handle CSS loading automatically
-app.use(PrimeVue, {
-  theme: {
-    preset: Lara
-  }
-})
+// Use PrimeVue without theme preset to restore functionality
+app.use(PrimeVue)
 
 app.use(router)
 app.use(pinia)
