@@ -228,115 +228,160 @@
                  
                  <!-- Application Form -->
                  <form @submit.prevent="submitApplication" class="space-y-6">
-                   <!-- Job Position Selection -->
-                   <FormDropdown
-                     v-model="selectedJob"
-                     label="Pozicioni i Aplikimit"
-                     :options="jobOptions"
-                     optionLabel="displayText"
-                     optionValue="title"
-                     placeholder="Zgjidhni pozicionin për të aplikuar"
-                     required
-                     :error="!selectedJob && formSubmitted ? 'Duhet të zgjidhni një pozicion për të aplikuar' : undefined"
-                   >
-                     <template #option="slotProps">
-                       <div class="flex flex-col">
-                         <div class="font-semibold text-brand-black">{{ slotProps.option.title }}</div>
-                         <div class="text-sm text-brand-gray">
-                           {{ slotProps.option.category }} • {{ slotProps.option.location }} • {{ slotProps.option.experience }}
-                         </div>
-                       </div>
-                     </template>
-                   </FormDropdown>
+                                     <!-- Job Position Selection -->
+                  <div>
+                    <label class="block text-sm font-semibold text-brand-black mb-2">
+                      Pozicioni i Aplikimit <span class="text-red-500">*</span>
+                    </label>
+                    <Dropdown
+                      v-model="selectedJob"
+                      :options="jobOptions"
+                      optionLabel="displayText"
+                      optionValue="title"
+                      placeholder="Zgjidhni pozicionin për të aplikuar"
+                      class="w-full"
+                      :class="{ 'p-invalid': !selectedJob && formSubmitted }"
+                    >
+                      <template #option="slotProps">
+                        <div class="flex flex-col">
+                          <div class="font-semibold text-brand-black">{{ slotProps.option.title }}</div>
+                          <div class="text-sm text-brand-gray">
+                            {{ slotProps.option.category }} • {{ slotProps.option.location }} • {{ slotProps.option.experience }}
+                          </div>
+                        </div>
+                      </template>
+                    </Dropdown>
+                    <small v-if="!selectedJob && formSubmitted" class="p-error">Duhet të zgjidhni një pozicion për të aplikuar</small>
+                  </div>
 
-                   <!-- Personal Information -->
-                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     <FormInput
-                       v-model="form.firstName"
-                       label="Emri"
-                       placeholder="Emri"
-                       required
-                       :error="form.firstName === '' && formSubmitted ? 'Emri është i detyrueshëm' : undefined"
-                     />
-                     <FormInput
-                       v-model="form.lastName"
-                       label="Mbiemri"
-                       placeholder="Mbiemri"
-                       required
-                       :error="form.lastName === '' && formSubmitted ? 'Mbiemri është i detyrueshëm' : undefined"
-                     />
-                   </div>
+                                     <!-- Personal Information -->
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label class="block text-sm font-semibold text-brand-black mb-2">
+                        Emri <span class="text-red-500">*</span>
+                      </label>
+                      <InputText
+                        v-model="form.firstName"
+                        placeholder="Emri"
+                        class="w-full"
+                        :class="{ 'p-invalid': form.firstName === '' && formSubmitted }"
+                      />
+                      <small v-if="form.firstName === '' && formSubmitted" class="p-error">Emri është i detyrueshëm</small>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-semibold text-brand-black mb-2">
+                        Mbiemri <span class="text-red-500">*</span>
+                      </label>
+                      <InputText
+                        v-model="form.lastName"
+                        placeholder="Mbiemri"
+                        class="w-full"
+                        :class="{ 'p-invalid': form.lastName === '' && formSubmitted }"
+                      />
+                      <small v-if="form.lastName === '' && formSubmitted" class="p-error">Mbiemri është i detyrueshëm</small>
+                    </div>
+                  </div>
                    
-                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     <FormDropdown
-                       v-model="form.gender"
-                       label="Gjinia"
-                       :options="genderOptions"
-                       optionLabel="label"
-                       optionValue="value"
-                       placeholder="Zgjidhni gjininë"
-                       required
-                       :error="form.gender === '' && formSubmitted ? 'Gjinia është e detyrueshme' : undefined"
-                     />
-                     <div>
-                       <label class="block text-sm font-semibold text-brand-black mb-2">Datëlindja *</label>
-                       <Calendar 
-                         v-model="form.birthday" 
-                         placeholder="Zgjidhni datën e lindjes"
-                         class="w-full"
-                         :class="{ 'p-invalid': !form.birthday && formSubmitted }"
-                         required
-                         showIcon
-                         dateFormat="dd/mm/yy"
-                       />
-                       <small v-if="!form.birthday && formSubmitted" class="p-error">Data e lindjes është e detyrueshme</small>
-                     </div>
-                   </div>
+                                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label class="block text-sm font-semibold text-brand-black mb-2">
+                          Gjinia <span class="text-red-500">*</span>
+                        </label>
+                        <Dropdown
+                          v-model="form.gender"
+                          :options="genderOptions"
+                          optionLabel="label"
+                          optionValue="value"
+                          placeholder="Zgjidhni gjininë"
+                          class="w-full"
+                          :class="{ 'p-invalid': form.gender === '' && formSubmitted }"
+                        />
+                        <small v-if="form.gender === '' && formSubmitted" class="p-error">Gjinia është e detyrueshme</small>
+                      </div>
+                      <div>
+                        <label class="block text-sm font-semibold text-brand-black mb-2">Datëlindja *</label>
+                        <Calendar 
+                          v-model="form.birthday" 
+                          placeholder="Zgjidhni datën e lindjes"
+                          class="w-full"
+                          :class="{ 'p-invalid': !form.birthday && formSubmitted }"
+                          required
+                          showIcon
+                          dateFormat="dd/mm/yy"
+                        />
+                        <small v-if="!form.birthday && formSubmitted" class="p-error">Data e lindjes është e detyrueshme</small>
+                      </div>
+                    </div>
                    
-                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     <FormInput
-                       v-model="form.email"
-                       label="Email"
-                       type="email"
-                       placeholder="email@example.com"
-                       required
-                       :error="form.email === '' && formSubmitted ? 'Email është i detyrueshëm' : undefined"
-                     />
-                     <FormInput
-                       v-model="form.phone"
-                       label="Telefoni"
-                       placeholder="+355 12 345 678"
-                       required
-                       :error="form.phone === '' && formSubmitted ? 'Telefoni është i detyrueshëm' : undefined"
-                     />
-                   </div>
+                                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label class="block text-sm font-semibold text-brand-black mb-2">
+                          Email <span class="text-red-500">*</span>
+                        </label>
+                        <InputText
+                          v-model="form.email"
+                          type="email"
+                          placeholder="email@example.com"
+                          class="w-full"
+                          :class="{ 'p-invalid': form.email === '' && formSubmitted }"
+                        />
+                        <small v-if="form.email === '' && formSubmitted" class="p-error">Email është i detyrueshëm</small>
+                      </div>
+                      <div>
+                        <label class="block text-sm font-semibold text-brand-black mb-2">
+                          Telefoni <span class="text-red-500">*</span>
+                        </label>
+                        <InputText
+                          v-model="form.phone"
+                          placeholder="+355 12 345 678"
+                          class="w-full"
+                          :class="{ 'p-invalid': form.phone === '' && formSubmitted }"
+                        />
+                        <small v-if="form.phone === '' && formSubmitted" class="p-error">Telefoni është i detyrueshëm</small>
+                      </div>
+                    </div>
                    
-                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                     <FormInput
-                       v-model="form.city"
-                       label="Qyteti"
-                       placeholder="Qyteti ku jetoni"
-                       required
-                       :error="form.city === '' && formSubmitted ? 'Qyteti është i detyrueshëm' : undefined"
-                     />
-                     <FormDropdown
-                       v-model="form.experience"
-                       label="Vite Përvoje"
-                       :options="experienceOptions"
-                       optionLabel="label"
-                       optionValue="value"
-                       placeholder="Zgjidhni përvojën"
-                     />
-                   </div>
+                                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label class="block text-sm font-semibold text-brand-black mb-2">
+                          Qyteti <span class="text-red-500">*</span>
+                        </label>
+                        <InputText
+                          v-model="form.city"
+                          placeholder="Qyteti ku jetoni"
+                          class="w-full"
+                          :class="{ 'p-invalid': form.city === '' && formSubmitted }"
+                        />
+                        <small v-if="form.city === '' && formSubmitted" class="p-error">Qyteti është i detyrueshëm</small>
+                      </div>
+                      <div>
+                        <label class="block text-sm font-semibold text-brand-black mb-2">
+                          Vite Përvoje
+                        </label>
+                        <Dropdown
+                          v-model="form.experience"
+                          :options="experienceOptions"
+                          optionLabel="label"
+                          optionValue="value"
+                          placeholder="Zgjidhni përvojën"
+                          class="w-full"
+                        />
+                      </div>
+                    </div>
                    
-                   <FormDropdown
-                     v-model="form.education"
-                     label="Niveli i Edukimit"
-                     :options="educationOptions"
-                     optionLabel="label"
-                     optionValue="value"
-                     placeholder="Zgjidhni nivelin e edukimit"
-                   />
+                                       <div>
+                      <label class="block text-sm font-semibold text-brand-black mb-2">
+                        Niveli i Edukimit
+                      </label>
+                      <Dropdown
+                        v-model="form.education"
+                        :options="educationOptions"
+                        optionLabel="label"
+                        optionValue="value"
+                        placeholder="Zgjidhni nivelin e edukimit"
+                        class="w-full"
+                      />
+                    </div>
                    
                    <!-- CV Upload -->
                    <div>
@@ -356,24 +401,33 @@
                      <small class="text-xs text-brand-gray mt-1 block">Formatet e pranuara: PDF, Word (.doc, .docx), madhësia maksimale: 5MB</small>
                    </div>
                    
-                   <!-- Agreement Checkbox -->
-                   <FormCheckbox
-                     v-model="form.agreement"
-                     label="Pajtohem me <a href='#' class='text-brand-primary hover:underline'>kushtet e përdorimit</a> dhe <a href='#' class='text-brand-primary hover:underline'>politikën e privatësisë</a> *"
-                     required
-                     :error="!form.agreement && formSubmitted ? 'Duhet të pajtoheni me kushtet' : undefined"
-                   />
-                   
-                   <!-- Submit Button -->
+                                       
+                                                               <!-- Agreement Checkbox -->
+                      <div class="flex items-center space-x-3">
+                        <input
+                          type="checkbox"
+                          v-model="form.agreement"
+                          class="w-4 h-4 text-brand-primary border border-gray-400 rounded cursor-pointer flex-shrink-0"
+                          :class="{ 'border-red-500': !form.agreement && formSubmitted }"
+                          style="accent-color: #2563eb;"
+                        />
+                        <div class="flex-1">
+                          <label class="text-sm text-brand-black cursor-pointer leading-relaxed">
+                            Pajtohem me <a href='#' class='text-brand-primary hover:underline'>kushtet e përdorimit</a> dhe <a href='#' class='text-brand-primary hover:underline'>politikën e privatësisë</a> <span class="text-red-500">*</span>
+                          </label>
+                          <small v-if="!form.agreement && formSubmitted" class="p-error block mt-1">Duhet të pajtoheni me kushtet</small>
+                        </div>
+                      </div>
+                    
+                    <!-- Submit Button -->
                    <div class="pt-4">
-                     <FormButton
+                     <Button
                        type="submit"
                        label="Dërgo Aplikimin"
                        icon="pi pi-send"
                        :disabled="isSubmitting"
                        :loading="isSubmitting"
-                       fullWidth
-                       size="lg"
+                       class="w-full h-14 text-lg"
                      />
                    </div>
                  </form>
@@ -456,13 +510,12 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue'
 import { 
-  FormInput, 
-  FormDropdown, 
-  FormButton, 
-  FormCheckbox,
+  InputText,
+  Dropdown,
+  Button,
   Calendar,
   FileUpload 
-} from '../components/form'
+} from 'primevue'
 
 // Reactive state for selected job
 const selectedJob = ref('')
@@ -770,61 +823,5 @@ html {
   transform: scale(1.05);
 }
 
-/* Form components now use our custom FormInput, FormDropdown, etc. with brand colors */
-:deep(.p-dropdown),
-:deep(.p-dropdown *),
-:deep(.p-dropdown * *) {
-  background-color: white !important;
-  background: white !important;
-}
-
-:deep(.p-dropdown .p-dropdown-label),
-:deep(.p-dropdown .p-dropdown-trigger),
-:deep(.p-dropdown .p-dropdown-trigger *),
-:deep(.p-dropdown .p-dropdown-trigger * *) {
-  background-color: white !important;
-  background: white !important;
-}
-
-:deep(.p-dropdown .p-dropdown-panel),
-:deep(.p-dropdown .p-dropdown-items),
-:deep(.p-dropdown .p-dropdown-item) {
-  background-color: white !important;
-  background: white !important;
-}
-
-:deep(.p-dropdown .p-dropdown-item:hover) {
-  background-color: #f3f4f6 !important;
-  background: #f3f4f6 !important;
-}
-
-/* Form components now use our custom FormInput, FormDropdown, etc. with brand colors */
-
-/* Calendar component styling is now handled by our form-components.css */
-
-/* File upload styling is now handled by our form-components.css */
-
-:deep(.p-fileupload .p-fileupload-content) {
-  background-color: white !important;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-/* Checkbox styling */
-:deep(.p-checkbox .p-checkbox-box) {
-  border-radius: 0.25rem;
-  border: 1px solid #e5e7eb;
-  width: 1.25rem;
-  height: 1.25rem;
-  background-color: white !important;
-  transition: all 0.2s;
-}
-
-:deep(.p-checkbox .p-checkbox-box.p-highlight) {
-  background-color: #2563eb;
-  border-color: #2563eb;
-}
-
-/* All form styling is now handled by our form-components.css with brand colors */
+/* All form styling is now handled by PrimeVue's default theme */
 </style>

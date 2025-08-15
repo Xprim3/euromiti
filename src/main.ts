@@ -6,7 +6,7 @@ import pinia from './stores'
 import i18n from './i18n'
 import './style.css'
 import './assets/global.css'
-import './assets/form-components.css'
+
 import App from './App.vue'
 
 const app = createApp(App)
