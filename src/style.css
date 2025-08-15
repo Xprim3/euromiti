@@ -2,6 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
+/* PrimeVue Theme Variable Fallbacks */
+/* These ensure the theme loads properly and provides fallbacks */
+
+:root {
+  /* Surface colors - fallbacks for theme variables */
+  --surface-ground: #f8f9fa;
+  --surface-section: #ffffff;
+  --surface-card: #ffffff;
+  --surface-overlay: #ffffff;
+  --surface-border: #dee2e6;
+  --surface-hover: #e9ecef;
+  
+  /* Text colors - fallbacks for theme variables */
+  --text-color: #495057;
+  --text-color-secondary: #6c757d;
+  
+  /* Primary colors - fallbacks for theme variables */
+  --primary-color: #2563eb;
+  --primary-color-text: #ffffff;
+  --primary-600: #1d4ed8;
+}
+
+/* Fallback CSS for PrimeVue Theme Variables */
+/* Ensures inputs stay light even if theme CSS fails to load in production */
+
+/* Fallback for input backgrounds */
+.p-inputtext,
+.p-dropdown,
+.p-multiselect,
+.p-calendar .p-inputtext,
+.p-password .p-inputtext,
+.p-inputtextarea {
+  background-color: var(--surface-ground, white) !important;
+  color: var(--text-color, #374151) !important;
+  border-color: var(--surface-border, #d1d5db) !important;
+}
+
+/* Fallback for dropdown panels */
+.p-dropdown-panel,
+.p-multiselect-panel,
+.p-datepicker {
+  background-color: var(--surface-overlay, white) !important;
+  border-color: var(--surface-border, #d1d5db) !important;
+}
+
+/* Fallback for dropdown items */
+.p-dropdown-items .p-dropdown-item,
+.p-multiselect-items .p-multiselect-item {
+  background-color: var(--surface-ground, white) !important;
+  color: var(--text-color, #374151) !important;
+}
+
+.p-dropdown-items .p-dropdown-item:hover,
+.p-multiselect-items .p-multiselect-item:hover {
+  background-color: var(--surface-hover, #f9fafb) !important;
+}
+
+/* Fallback for calendar elements */
+.p-datepicker table th,
+.p-datepicker table td {
+  background-color: var(--surface-ground, white) !important;
+  color: var(--text-color, #374151) !important;
+}
+
+.p-datepicker table td > span {
+  background-color: var(--surface-ground, white) !important;
+  color: var(--text-color, #374151) !important;
+}
+
+.p-datepicker table td > span:hover {
+  background-color: var(--surface-hover, #f9fafb) !important;
+}
+
+/* Fallback for buttons */
+.p-button {
+  background-color: var(--primary-color, #2563eb) !important;
+  border-color: var(--primary-color, #2563eb) !important;
+  color: var(--primary-color-text, white) !important;
+}
+
+.p-button:hover {
+  background-color: var(--primary-600, #1d4ed8) !important;
+  border-color: var(--primary-600, #1d4ed8) !important;
+}
+
 /* Global mobile double-tap zoom prevention */
 /* Prevents unwanted zoom on double-tap while maintaining manual pinch-zoom */
 

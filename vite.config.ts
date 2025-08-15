@@ -5,11 +5,12 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   build: {
+    cssCodeSplit: false, // Disable CSS code splitting to preserve theme variables
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['vue', 'vue-router', 'pinia'],
-          ui: ['primevue', '@primeuix/themes'],
+          ui: ['primevue', '@primevue/themes'],
         },
       },
     },
