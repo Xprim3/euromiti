@@ -231,6 +231,10 @@
       "email": {
         "title": "Email",
         "description": "Pošaljite nam poruku i odgovorićemo vam u najkraćem mogućem roku"
+      },
+      "location": {
+        "title": "Lokacija",
+        "description": "Posetite naš glavni ured"
       }
     }
   }

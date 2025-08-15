@@ -231,6 +231,10 @@
       "email": {
         "title": "Email",
         "description": "Send us a message and we'll respond promptly"
+      },
+      "location": {
+        "title": "Location",
+        "description": "Visit our main office"
       }
     },
     "callUs": "Call Us"

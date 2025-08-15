@@ -231,6 +231,10 @@
       "email": {
         "title": "Email",
         "description": "Na dërgoni një mesazh dhe do t'ju përgjigjemi së shpejti"
+      },
+      "location": {
+        "title": "Vendndodhja",
+        "description": "Vizitoni zyrën tonë kryesore"
       }
     }
   }

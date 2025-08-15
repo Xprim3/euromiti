@@ -9,8 +9,8 @@ export default {
       colors: {
         // Brand Colors
         'brand': {
-          primary: '#1e40af',        // Deep Blue
-          secondary: '#059669',      // Green
+          primary: '#2563eb',        // Brand Blue
+          secondary: '#6b7280',      // Brand Gray
           accent: '#dc2626',         // Red
           warning: '#d97706',        // Orange
           white: '#ffffff',

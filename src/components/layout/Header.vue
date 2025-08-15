@@ -524,33 +524,5 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* Hamburger animation classes */
-.rotate-45 {
-  transform: rotate(45deg);
-}
-
-.-rotate-45 {
-  transform: rotate(-45deg);
-}
-
-.translate-y-1\.5 {
-  transform: translateY(6px);
-}
-
-.-translate-y-1\.5 {
-  transform: translateY(-6px);
-}
-
-.opacity-0 {
-  opacity: 0;
-}
-
-/* Smooth transitions */
-.transition-all {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.transition-transform {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* All styling now handled by Tailwind CSS classes */
 </style>

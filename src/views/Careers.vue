@@ -1,5 +1,7 @@
 <template>
   <div class="bg-brand-white">
+    <!-- Toast for notifications -->
+    <Toast />
     <!-- Hero Section -->
     <div class="relative h-[300px] md:h-[400px] bg-cover bg-center bg-no-repeat" style="background-image: url('/Media/careers-hero.jpg'); background-size: cover; background-position: center;">
       <!-- Dark Overlay -->
@@ -21,14 +23,14 @@
     </div>
 
     <!-- Company Culture Section -->
-    <div id="culture" class="py-16 md:py-24 bg-brand-white">
+    <div id="culture" class="py-12 md:py-16 lg:py-24 bg-brand-white">
       <div class="max-w-7xl mx-auto px-4 md:px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-6">Pse EUROMITI?</h2>
-          <p class="text-xl text-brand-gray max-w-3xl mx-auto">Ne ofrojmë një mjedis pune dinamik dhe profesionist ku çdo punonjës ka mundësi të rritet dhe të zhvillohet</p>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-brand-black mb-4 md:mb-6">Pse EUROMITI?</h2>
+          <p class="text-lg md:text-xl text-brand-gray max-w-3xl mx-auto px-4">Ne ofrojmë një mjedis pune dinamik dhe profesionist ku çdo punonjës ka mundësi të rritet dhe të zhvillohet</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <!-- Growth Opportunities -->
           <div class="text-center group">
             <div class="w-20 h-20 bg-brand-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -66,14 +68,14 @@
     </div>
 
     <!-- Benefits Section -->
-    <div class="py-16 md:py-24 bg-brand-light">
+    <div class="py-12 md:py-16 lg:py-24 bg-brand-light">
       <div class="max-w-7xl mx-auto px-4 md:px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-6">Përfitimet</h2>
-          <p class="text-xl text-brand-gray max-w-3xl mx-auto">Ne vlerësojmë kontributin e punonjësve tanë dhe ofrojmë përfitime konkurruese</p>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-brand-black mb-4 md:mb-6">Përfitimet</h2>
+          <p class="text-lg md:text-xl text-brand-gray max-w-3xl mx-auto px-4">Ne vlerësojmë kontributin e punonjësve tanë dhe ofrojmë përfitime konkurruese</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           <!-- Health Insurance -->
           <div class="bg-brand-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
             <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -124,268 +126,219 @@
          <!-- Combined Jobs & Application Section -->
      <div id="positions" class="py-16 md:py-24 bg-brand-white">
        <div class="max-w-7xl mx-auto px-4 md:px-6">
-         <div class="text-center mb-12">
-           <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-6">Pozicionet e Hapura & Aplikimi</h2>
-           <p class="text-xl text-brand-gray max-w-3xl mx-auto">Zbuloni mundësitë e punësimit dhe aplikoni direkt për pozicionin që ju përshtat</p>
-         </div>
+                   <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-6">Pozicionet e Hapura</h2>
+            <p class="text-xl text-brand-gray max-w-3xl mx-auto">Zbuloni mundësitë e punësimit në EUROMITI</p>
+          </div>
          
-         <!-- Combined Card with Jobs Left & Form Right -->
-         <div class="bg-brand-white border border-brand-light-gray rounded-2xl overflow-hidden shadow-xl">
-           <div class="grid grid-cols-1 lg:grid-cols-2">
-             <!-- Left Side - Job Listings -->
-             <div class="lg:border-r border-brand-light-gray">
-               <div class="p-6 md:p-8">
-                 <h3 class="text-2xl font-bold text-brand-black mb-6">Pozicionet e Hapura</h3>
-                 
-                 <!-- Job List -->
-                  <div class="space-y-4">
-                    <div 
-                      v-for="job in paginatedJobs" 
-                      :key="job.id"
-                      @click="selectJobForApplication(job)"
-                      :class="[
-                        'p-4 border rounded-lg transition-all duration-200 cursor-pointer',
-                        selectedJob === job.title
-                          ? 'border-brand-primary bg-brand-primary/10 shadow-md'
-                          : 'border-brand-light-gray hover:bg-brand-light/30 hover:border-brand-primary/30'
-                      ]"
-                    >
-                      <div class="flex items-center justify-between mb-3">
-                        <h4 class="text-lg font-bold text-brand-black">{{ job.title }}</h4>
-                      </div>
-                      <div class="flex flex-wrap items-center gap-3 text-sm text-brand-gray mb-3">
-                        <div class="flex items-center space-x-2">
-                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                          </svg>
-                          <span>{{ job.location }}</span>
+                   <!-- Side-by-Side Layout: Jobs Left, Application Form Right -->
+          <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
+            
+            <!-- Left Side: Job Listings -->
+            <div class="bg-brand-white border border-brand-light-gray rounded-2xl overflow-hidden shadow-xl">
+              <div class="p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-brand-black mb-6">Pozicionet e Hapura</h3>
+                
+                                 <!-- Job List with PrimeVue Cards -->
+                 <div class="space-y-4">
+                   <Card 
+                     v-for="job in paginatedJobs" 
+                     :key="job.id"
+                     @click="selectJobForApplication(job)"
+                     :class="[
+                       'cursor-pointer transition-all duration-200 hover:shadow-lg',
+                       selectedJob === job.title
+                         ? 'ring-2 ring-brand-primary ring-opacity-50 shadow-lg'
+                         : 'hover:border-brand-primary/30'
+                     ]"
+                   >
+                     <template #content>
+                       <div class="p-3 md:p-4">
+                                                 <div class="mb-3 md:mb-4">
+                          <h4 class="text-lg md:text-xl font-bold text-brand-black leading-tight">{{ job.title }}</h4>
                         </div>
-                        <div class="flex items-center space-x-2">
-                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6.5"></path>
-                          </svg>
-                          <span>{{ job.experience }}</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                          </svg>
-                          <span>{{ job.salary }}</span>
-                        </div>
-                      </div>
-                      <p class="text-brand-gray text-sm mb-3">{{ job.description }}</p>
-                    </div>
-                  </div>
-                  
-                  <!-- Pagination -->
-                  <div class="mt-6 flex justify-center">
-                    <nav class="flex items-center space-x-2">
-                      <button 
-                        @click="changePage(Math.max(1, currentPage - 1))"
-                        :disabled="currentPage === 1"
-                        class="px-3 py-2 text-sm font-medium text-brand-gray bg-brand-white border border-brand-light-gray rounded-lg hover:bg-brand-light/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-                      >
-                        ←
-                      </button>
-                      
-                      <button 
-                        v-for="page in visiblePages" 
-                        :key="page"
-                        @click="changePage(page)"
-                        :class="[
-                          'px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200',
-                          currentPage === page 
-                            ? 'bg-brand-primary text-brand-white' 
-                            : 'text-brand-gray bg-brand-white border border-brand-light-gray hover:bg-brand-light/50'
-                        ]"
-                      >
-                        {{ page }}
-                      </button>
-                      
-                      <button 
-                        @click="changePage(Math.min(totalPages, currentPage + 1))"
-                        :disabled="currentPage === totalPages"
-                        class="px-3 py-2 text-sm font-medium text-brand-gray bg-brand-white border border-brand-light-gray rounded-lg hover:bg-brand-light/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-                      >
-                        →
-                      </button>
-                    </nav>
-                  </div>
-                  
-                  <!-- Info Text -->
-                  <div class="mt-6 text-center">
-                    <p class="text-sm text-brand-gray">
-                      Zgjidhni pozicionin që ju përshtat dhe plotësoni formularin në anën e djathtë për të aplikuar
-                    </p>
-                  </div>
-               </div>
-             </div>
-             
-             <!-- Right Side - Application Form -->
-             <div class="bg-brand-light/30">
-               <div class="p-6 md:p-8">
-                 <h3 class="text-2xl font-bold text-brand-black mb-6">Apliko për Pozicionin</h3>
-                 
-                 <!-- Application Form -->
-                 <form @submit.prevent="submitApplication" class="space-y-6">
-                                     <!-- Job Position Selection -->
-                  <div>
-                    <label class="block text-sm font-semibold text-brand-black mb-2">
-                      Pozicioni i Aplikimit <span class="text-red-500">*</span>
-                    </label>
-                    <Dropdown
-                      v-model="selectedJob"
-                      :options="jobOptions"
-                      optionLabel="displayText"
-                      optionValue="title"
-                      placeholder="Zgjidhni pozicionin për të aplikuar"
-                      class="w-full"
-                      :class="{ 'p-invalid': !selectedJob && formSubmitted }"
-                    >
-                      <template #option="slotProps">
-                        <div class="flex flex-col">
-                          <div class="font-semibold text-brand-black">{{ slotProps.option.title }}</div>
-                          <div class="text-sm text-brand-gray">
-                            {{ slotProps.option.category }} • {{ slotProps.option.location }} • {{ slotProps.option.experience }}
-                          </div>
-                        </div>
-                      </template>
-                    </Dropdown>
-                    <small v-if="!selectedJob && formSubmitted" class="p-error">Duhet të zgjidhni një pozicion për të aplikuar</small>
-                  </div>
+                         
+                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-sm text-brand-gray mb-3 md:mb-4">
+                           <div class="flex items-center gap-2">
+                             <svg class="w-4 h-4 text-brand-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                             </svg>
+                             <span class="font-medium truncate">{{ job.location }}</span>
+                           </div>
+                           <div class="flex items-center gap-2">
+                             <svg class="w-4 h-4 text-brand-secondary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6.5"></path>
+                             </svg>
+                             <span class="font-medium truncate">{{ job.experience }}</span>
+                           </div>
+                           <div class="flex items-center gap-2">
+                             <svg class="w-4 h-4 text-brand-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                             </svg>
+                             <span class="font-medium truncate">{{ job.salary }}</span>
+                           </div>
+                         </div>
+                         
+                         <p class="text-brand-gray text-sm leading-relaxed">{{ job.description }}</p>
+                       </div>
+                     </template>
+                     
+                     
+                   </Card>
+                 </div>
+                
+                                 <!-- PrimeVue Pagination -->
+                 <div class="mt-6 flex justify-center">
+                   <Paginator 
+                     v-model:first="paginatorFirst"
+                     :rows="jobsPerPage"
+                     :totalRecords="allJobs.length"
+                     @page="onPageChange"
+                     :template="{ 
+                       '480px': 'PrevPageLink PageLinks NextPageLink',
+                       '768px': 'FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink',
+                       '1024px': 'FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown'
+                     }"
+                     class="border-0"
+                   />
+                 </div>
+                
+                <!-- Info Text -->
+                <div class="mt-6 text-center">
+                  <p class="text-sm text-brand-gray">
+                    Zgjidhni pozicionin që ju përshtat për të aplikuar
+                  </p>
+                </div>
+              </div>
+            </div>
 
-                                     <!-- Personal Information -->
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label class="block text-sm font-semibold text-brand-black mb-2">
-                        Emri <span class="text-red-500">*</span>
-                      </label>
-                      <InputText
-                        v-model="form.firstName"
-                        placeholder="Emri"
-                        class="w-full"
-                        :class="{ 'p-invalid': form.firstName === '' && formSubmitted }"
-                      />
-                      <small v-if="form.firstName === '' && formSubmitted" class="p-error">Emri është i detyrueshëm</small>
-                    </div>
-                    <div>
-                      <label class="block text-sm font-semibold text-brand-black mb-2">
-                        Mbiemri <span class="text-red-500">*</span>
-                      </label>
-                      <InputText
-                        v-model="form.lastName"
-                        placeholder="Mbiemri"
-                        class="w-full"
-                        :class="{ 'p-invalid': form.lastName === '' && formSubmitted }"
-                      />
-                      <small v-if="form.lastName === '' && formSubmitted" class="p-error">Mbiemri është i detyrueshëm</small>
-                    </div>
-                  </div>
-                   
-                                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label class="block text-sm font-semibold text-brand-black mb-2">
-                          Gjinia <span class="text-red-500">*</span>
-                        </label>
-                        <Dropdown
-                          v-model="form.gender"
-                          :options="genderOptions"
-                          optionLabel="label"
-                          optionValue="value"
-                          placeholder="Zgjidhni gjininë"
-                          class="w-full"
-                          :class="{ 'p-invalid': form.gender === '' && formSubmitted }"
-                        />
-                        <small v-if="form.gender === '' && formSubmitted" class="p-error">Gjinia është e detyrueshme</small>
-                      </div>
-                      <div>
-                        <label class="block text-sm font-semibold text-brand-black mb-2">Datëlindja *</label>
-                        <Calendar 
-                          v-model="form.birthday" 
-                          placeholder="Zgjidhni datën e lindjes"
-                          class="w-full"
-                          :class="{ 'p-invalid': !form.birthday && formSubmitted }"
-                          required
-                          showIcon
-                          dateFormat="dd/mm/yy"
-                        />
-                        <small v-if="!form.birthday && formSubmitted" class="p-error">Data e lindjes është e detyrueshme</small>
-                      </div>
-                    </div>
-                   
-                                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label class="block text-sm font-semibold text-brand-black mb-2">
-                          Email <span class="text-red-500">*</span>
-                        </label>
-                        <InputText
-                          v-model="form.email"
-                          type="email"
-                          placeholder="email@example.com"
-                          class="w-full"
-                          :class="{ 'p-invalid': form.email === '' && formSubmitted }"
-                        />
-                        <small v-if="form.email === '' && formSubmitted" class="p-error">Email është i detyrueshëm</small>
-                      </div>
-                      <div>
-                        <label class="block text-sm font-semibold text-brand-black mb-2">
-                          Telefoni <span class="text-red-500">*</span>
-                        </label>
-                        <InputText
-                          v-model="form.phone"
-                          placeholder="+355 12 345 678"
-                          class="w-full"
-                          :class="{ 'p-invalid': form.phone === '' && formSubmitted }"
-                        />
-                        <small v-if="form.phone === '' && formSubmitted" class="p-error">Telefoni është i detyrueshëm</small>
-                      </div>
-                    </div>
-                   
-                                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label class="block text-sm font-semibold text-brand-black mb-2">
-                          Qyteti <span class="text-red-500">*</span>
-                        </label>
-                        <InputText
-                          v-model="form.city"
-                          placeholder="Qyteti ku jetoni"
-                          class="w-full"
-                          :class="{ 'p-invalid': form.city === '' && formSubmitted }"
-                        />
-                        <small v-if="form.city === '' && formSubmitted" class="p-error">Qyteti është i detyrueshëm</small>
-                      </div>
-                      <div>
-                        <label class="block text-sm font-semibold text-brand-black mb-2">
-                          Vite Përvoje
-                        </label>
-                        <Dropdown
-                          v-model="form.experience"
-                          :options="experienceOptions"
-                          optionLabel="label"
-                          optionValue="value"
-                          placeholder="Zgjidhni përvojën"
-                          class="w-full"
-                        />
-                      </div>
-                    </div>
-                   
-                                       <div>
-                      <label class="block text-sm font-semibold text-brand-black mb-2">
-                        Niveli i Edukimit
-                      </label>
-                      <Dropdown
-                        v-model="form.education"
-                        :options="educationOptions"
-                        optionLabel="label"
-                        optionValue="value"
-                        placeholder="Zgjidhni nivelin e edukimit"
-                        class="w-full"
-                      />
-                    </div>
-                   
-                   <!-- CV Upload -->
+            <!-- Right Side: Application Form -->
+            <div class="bg-brand-white border border-brand-light-gray rounded-2xl overflow-hidden shadow-xl">
+              <div class="p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-brand-black mb-6">Apliko Tani</h3>
+                
+                
+                
+                                                  <!-- Application Form -->
+                 <form @submit.prevent="submitApplication" class="space-y-4 lg:space-y-6">
+                   <!-- Job Opening Dropdown - Moved to TOP -->
                    <div>
-                     <label class="block text-sm font-semibold text-brand-black mb-2">CV (PDF/Word) *</label>
+                     <label class="block text-sm font-medium text-brand-gray mb-2">Pozicioni i Hapur *</label>
+                     <Dropdown 
+                       v-model="applicationForm.jobOpening"
+                       :options="jobOpeningOptions"
+                       placeholder="Zgjidhni pozicionin"
+                       class="w-full"
+                       :class="{ 'p-invalid': formErrors.jobOpening }"
+                       appendTo="body"
+                       scrollHeight="200px"
+                       @change="onJobOpeningChange"
+                       :key="`dropdown-${selectedJob}`"
+                       optionLabel="label"
+                       optionValue="value"
+                     />
+                     <small v-if="formErrors.jobOpening" class="p-error">{{ formErrors.jobOpening }}</small>
+                   </div>
+
+                   <!-- Name -->
+                   <div>
+                     <label class="block text-sm font-medium text-brand-gray mb-2">Emri *</label>
+                     <InputText 
+                       v-model="applicationForm.firstName"
+                       placeholder="Shkruani emrin tuaj"
+                       class="w-full"
+                       :class="{ 'p-invalid': formErrors.firstName }"
+                     />
+                     <small v-if="formErrors.firstName" class="p-error">{{ formErrors.firstName }}</small>
+                   </div>
+                   
+                   <!-- Surname -->
+                   <div>
+                     <label class="block text-sm font-medium text-brand-gray mb-2">Mbiemri *</label>
+                     <InputText 
+                       v-model="applicationForm.lastName"
+                       placeholder="Shkruani mbiemrin tuaj"
+                       class="w-full"
+                       :class="{ 'p-invalid': formErrors.lastName }"
+                     />
+                     <small v-if="formErrors.lastName" class="p-error">{{ formErrors.lastName }}</small>
+                   </div>
+
+                   <!-- Genre -->
+                   <div>
+                     <label class="block text-sm font-medium text-brand-gray mb-2">Gjinia *</label>
+                     <Dropdown 
+                       v-model="applicationForm.genre"
+                       :options="genreOptions"
+                       placeholder="Zgjidhni gjininë"
+                       class="w-full"
+                       :class="{ 'p-invalid': formErrors.genre }"
+                       appendTo="body"
+                       scrollHeight="200px"
+                       optionLabel="label"
+                       optionValue="value"
+                     />
+                     <small v-if="formErrors.genre" class="p-error">{{ formErrors.genre }}</small>
+                   </div>
+
+                   <!-- Birthday -->
+                   <div>
+                     <label class="block text-sm font-medium text-brand-gray mb-2">Datëlindja *</label>
+                                           <Calendar 
+                        v-model="applicationForm.birthday"
+                        placeholder="Zgjidhni datëlindjen"
+                        class="w-full"
+                        :class="{ 'p-invalid': formErrors.birthday }"
+                        appendTo="body"
+                        :showIcon="true"
+                        dateFormat="dd/mm/yy"
+                        :maxDate="new Date()"
+                        :touchUI="false"
+                        :showButtonBar="false"
+                        :showClearButton="false"
+                        :showWeek="false"
+                        :showOtherMonths="false"
+                        :hideOnDateTimeSelect="true"
+                        :inline="false"
+                        :panelClass="'p-calendar-panel-compact'"
+                      />
+                     <small v-if="formErrors.birthday" class="p-error">{{ formErrors.birthday }}</small>
+                   </div>
+
+                   <!-- Phone Number -->
+                   <div>
+                     <label class="block text-sm font-medium text-brand-gray mb-2">Numri i Telefonit *</label>
+                     <InputText 
+                       v-model="applicationForm.phone"
+                       placeholder="+355 12 345 678"
+                       class="w-full"
+                       :class="{ 'p-invalid': formErrors.phone }"
+                     />
+                     <small v-if="formErrors.phone" class="p-error">{{ formErrors.phone }}</small>
+                   </div>
+
+
+
+                   <!-- City Picker -->
+                   <div>
+                     <label class="block text-sm font-medium text-brand-gray mb-2">Qyteti *</label>
+                     <Dropdown 
+                       v-model="applicationForm.city"
+                       :options="cityOptions"
+                       placeholder="Zgjidhni qytetin"
+                       class="w-full"
+                       :class="{ 'p-invalid': formErrors.city }"
+                       appendTo="body"
+                       scrollHeight="200px"
+                       optionLabel="label"
+                       optionValue="value"
+                     />
+                     <small v-if="formErrors.city" class="p-error">{{ formErrors.city }}</small>
+                   </div>
+
+                   <!-- Resume Upload -->
+                   <div>
+                     <label class="block text-sm font-medium text-brand-gray mb-2">CV/Resume *</label>
                      <FileUpload 
                        mode="basic"
                        :auto="true"
@@ -393,60 +346,58 @@
                        :maxFileSize="5000000"
                        chooseLabel="Zgjidhni CV-në"
                        class="w-full"
-                       :class="{ 'p-invalid': !form.cvFile && formSubmitted }"
                        @select="onFileSelect"
-                       required
+                       :showCancelButton="false"
+                       :showUploadButton="false"
                      />
-                     <small v-if="!form.cvFile && formSubmitted" class="p-error">CV është e detyrueshme</small>
-                     <small class="text-xs text-brand-gray mt-1 block">Formatet e pranuara: PDF, Word (.doc, .docx), madhësia maksimale: 5MB</small>
+                     <small class="text-brand-gray text-xs block mt-2">Formate të lejuara: PDF, DOC, DOCX (max 5MB)</small>
+                     <small v-if="formErrors.cv" class="p-error block mt-1">{{ formErrors.cv }}</small>
                    </div>
-                   
-                                       
-                                                               <!-- Agreement Checkbox -->
-                      <div class="flex items-center space-x-3">
-                        <input
-                          type="checkbox"
-                          v-model="form.agreement"
-                          class="w-4 h-4 text-brand-primary border border-gray-400 rounded cursor-pointer flex-shrink-0"
-                          :class="{ 'border-red-500': !form.agreement && formSubmitted }"
-                          style="accent-color: #2563eb;"
-                        />
-                        <div class="flex-1">
-                          <label class="text-sm text-brand-black cursor-pointer leading-relaxed">
-                            Pajtohem me <a href='#' class='text-brand-primary hover:underline'>kushtet e përdorimit</a> dhe <a href='#' class='text-brand-primary hover:underline'>politikën e privatësisë</a> <span class="text-red-500">*</span>
-                          </label>
-                          <small v-if="!form.agreement && formSubmitted" class="p-error block mt-1">Duhet të pajtoheni me kushtet</small>
-                        </div>
-                      </div>
-                    
-                    <!-- Submit Button -->
-                   <div class="pt-4">
-                     <Button
+
+                                     <!-- Terms and Submit -->
+                   <div class="space-y-4">
+                     <div class="flex items-start gap-3">
+                       <Checkbox 
+                         v-model="applicationForm.agreeToTerms"
+                         :binary="true"
+                         :class="{ 'p-invalid': formErrors.agreeToTerms }"
+                         class="mt-1 flex-shrink-0"
+                       />
+                       <div class="flex-1 min-w-0">
+                         <label class="text-sm text-brand-gray leading-relaxed">
+                           Pajtohem me <a href="#" class="text-brand-primary hover:underline">kushtet e përdorimit</a> 
+                           dhe <a href="#" class="text-brand-primary hover:underline">politikën e privatësisë</a> *
+                         </label>
+                         <small v-if="formErrors.agreeToTerms" class="p-error block mt-1">{{ formErrors.agreeToTerms }}</small>
+                       </div>
+                     </div>
+
+                     <Button 
                        type="submit"
                        label="Dërgo Aplikimin"
                        icon="pi pi-send"
-                       :disabled="isSubmitting"
+                       size="large"
+                       severity="primary"
+                       class="w-full"
                        :loading="isSubmitting"
-                       class="w-full h-14 text-lg"
                      />
                    </div>
-                 </form>
-               </div>
-             </div>
-           </div>
-         </div>
+                </form>
+              </div>
+            </div>
+          </div>
        </div>
      </div>
 
     <!-- Application Process -->
-    <div class="py-16 md:py-24 bg-brand-light">
+    <div class="py-12 md:py-16 lg:py-24 bg-brand-light">
       <div class="max-w-7xl mx-auto px-4 md:px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-6">Si të Aplikoni</h2>
-          <p class="text-xl text-brand-gray max-w-3xl mx-auto">Procesi i thjeshtë dhe transparent për të aplikuar në EUROMITI</p>
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-brand-black mb-4 md:mb-6">Si të Aplikoni</h2>
+          <p class="text-lg md:text-xl text-brand-gray max-w-3xl mx-auto px-4">Procesi i thjeshtë dhe transparent për të aplikuar në EUROMITI</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           <!-- Step 1 -->
           <div class="text-center">
             <div class="w-16 h-16 bg-brand-primary text-brand-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">1</div>
@@ -479,27 +430,31 @@
     </div>
 
     <!-- Contact HR Section -->
-    <div class="py-16 md:py-24 bg-brand-white">
+    <div class="py-12 md:py-16 lg:py-24 bg-brand-white">
       <div class="max-w-7xl mx-auto px-4 md:px-6">
-        <div class="bg-gradient-to-r from-brand-primary/10 to-brand-secondary/10 rounded-2xl p-8 md:p-12 text-center">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-6">Keni Pyetje?</h2>
-          <p class="text-xl text-brand-gray max-w-2xl mx-auto mb-8">
+        <div class="bg-gradient-to-r from-brand-primary/10 to-brand-secondary/10 rounded-2xl p-6 md:p-8 lg:p-12 text-center">
+          <h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-brand-black mb-4 md:mb-6">Keni Pyetje?</h2>
+          <p class="text-lg md:text-xl text-brand-gray max-w-2xl mx-auto mb-6 md:mb-8 px-4">
             Ekipi ynë i Burrave të Burrave është këtu për t'ju ndihmuar me çdo pyetje që keni për mundësitë e punësimit
           </p>
           
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:hr@euromiti.al" class="inline-flex items-center px-8 py-4 bg-brand-primary hover:bg-brand-primary/90 text-brand-white font-bold text-lg rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-              Kontaktoni HR
-            </a>
-            <a href="tel:+35512345678" class="inline-flex items-center px-8 py-4 bg-brand-secondary hover:bg-brand-secondary/90 text-brand-white font-bold text-lg rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-              </svg>
-              Na Telefononi
-            </a>
+            <Button 
+              label="Kontaktoni HR"
+              icon="pi pi-envelope"
+              size="large"
+              severity="primary"
+              class="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold shadow-lg hover:shadow-xl w-full sm:w-auto"
+              @click="contactHR"
+            />
+            <Button 
+              label="Na Telefononi"
+              icon="pi pi-phone"
+              size="large"
+              severity="secondary"
+              class="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold shadow-lg hover:shadow-xl w-full sm:w-auto"
+              @click="callHR"
+            />
           </div>
         </div>
       </div>
@@ -508,14 +463,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue'
-import { 
-  InputText,
-  Dropdown,
-  Button,
-  Calendar,
-  FileUpload 
-} from 'primevue'
+import { ref, computed, nextTick, watch } from 'vue'
+import Card from 'primevue/card'
+import Button from 'primevue/button'
+import Paginator from 'primevue/paginator'
+
+import InputText from 'primevue/inputtext'
+import Dropdown from 'primevue/dropdown'
+import Calendar from 'primevue/calendar'
+import FileUpload from 'primevue/fileupload'
+import Checkbox from 'primevue/checkbox'
+import Toast from 'primevue/toast'
 
 // Reactive state for selected job
 const selectedJob = ref('')
@@ -524,24 +482,7 @@ const selectedJob = ref('')
 const currentPage = ref(1)
 const jobsPerPage = 5
 
-// Form data
-const form = reactive({
-  firstName: '',
-  lastName: '',
-  gender: '',
-  birthday: null as Date | null,
-  email: '',
-  phone: '',
-  city: '',
-  experience: '',
-  education: '',
-  agreement: false,
-  cvFile: null as File | null
-})
 
-// Form submission state
-const isSubmitting = ref(false)
-const formSubmitted = ref(false) // New state for form submission
 
 // All jobs data
 const allJobs = [
@@ -638,122 +579,42 @@ const allJobs = [
 ]
 
 // Computed properties for pagination
-const totalPages = computed(() => Math.ceil(allJobs.length / jobsPerPage))
+const paginatorFirst = computed(() => (currentPage.value - 1) * jobsPerPage)
+
 const paginatedJobs = computed(() => {
   const start = (currentPage.value - 1) * jobsPerPage
   const end = start + jobsPerPage
   return allJobs.slice(start, end)
 })
-const visiblePages = computed(() => {
-  const pages = []
-  const start = Math.max(1, currentPage.value - 2)
-  const end = Math.min(totalPages.value, currentPage.value + 2)
-  
-  for (let i = start; i <= end; i++) {
-    pages.push(i)
-  }
-  return pages
-})
 
-// Options for dropdowns
-const genderOptions = [
-  { label: 'Zgjidhni gjininë', value: '' },
-  { label: 'Mashkull', value: 'male' },
-  { label: 'Femër', value: 'female' },
-  { label: 'Tjetër', value: 'other' }
-]
 
-const experienceOptions = [
-  { label: 'Zgjidhni përvojën', value: '' },
-  { label: '0-1 vjet', value: '0-1' },
-  { label: '1-3 vjet', value: '1-3' },
-  { label: '3-5 vjet', value: '3-5' },
-  { label: '5+ vjet', value: '5+' }
-]
 
-const educationOptions = [
-  { label: 'Zgjidhni nivelin e edukimit', value: '' },
-  { label: 'Shkolla e Mesme', value: 'high-school' },
-  { label: 'Bachelor', value: 'bachelor' },
-  { label: 'Master', value: 'master' },
-  { label: 'PhD', value: 'phd' }
-]
 
-// Job options for the position dropdown
-const jobOptions = allJobs.map(job => ({
-  title: job.title,
-  category: job.category,
-  location: job.location,
-  experience: job.experience,
-  salary: job.salary,
-  displayText: `${job.title} (${job.category} - ${job.location} - ${job.experience})`
-}))
+ // Function to select a job for application form
+ const selectJobForApplication = async (job: any) => {
+   console.log('Selecting job:', job.title)
+   selectedJob.value = job.title
+   applicationForm.value.jobOpening = job.title
+   // Clear any previous form errors for job opening
+   formErrors.value.jobOpening = ''
+   console.log('Form job opening set to:', applicationForm.value.jobOpening)
+   
+   // Ensure DOM updates before proceeding
+   await nextTick()
+   console.log('After nextTick - Form job opening:', applicationForm.value.jobOpening)
+ }
+ 
+ // Function to handle job opening dropdown change
+ const onJobOpeningChange = (event: any) => {
+   if (event.value) {
+     selectedJob.value = event.value
+     applicationForm.value.jobOpening = event.value
+   }
+ }
 
-// Handle file selection for CV upload
-const onFileSelect = (event: any) => {
-  form.cvFile = event.files[0]
-}
-
-// Function to select a job for application form
-const selectJobForApplication = (job: any) => {
-  selectedJob.value = job.title
-  // Optionally, you can update the form fields with job details if needed
-  // For now, we just set the selectedJob.value
-}
-
-// Handle form submission
-const submitApplication = async () => {
-  formSubmitted.value = true // Mark form as submitted
-
-  if (!selectedJob.value) {
-    alert('Ju lutem zgjidhni një pozicion për të aplikuar.')
-    return
-  }
-  
-  if (!form.agreement) {
-    alert('Ju lutem pajtohuni me kushtet e përdorimit dhe politikën e privatësisë.')
-    return
-  }
-
-  if (!form.cvFile) {
-    alert('Ju lutem zgjidhni një CV për të aplikuar.')
-    return
-  }
-
-  isSubmitting.value = true
-  
-  try {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    // Success message
-    alert(`Aplikimi u dërgua me sukses për pozicionin: ${selectedJob.value}`)
-    
-    // Reset form
-    Object.keys(form).forEach(key => {
-      if (key === 'agreement') {
-        (form as any)[key] = false
-      } else if (key === 'cvFile') {
-        (form as any)[key] = null
-      } else if (key === 'birthday') {
-        (form as any)[key] = null
-      } else {
-        (form as any)[key] = ''
-      }
-    })
-    selectedJob.value = ''
-    formSubmitted.value = false // Reset formSubmitted
-    
-  } catch (error) {
-    alert('Ndodhi një gabim. Ju lutem provoni përsëri.')
-  } finally {
-    isSubmitting.value = false
-  }
-}
-
-// Handle page change with smooth scrolling
-const changePage = (page: number) => {
-  currentPage.value = page
+// Handle PrimeVue pagination
+const onPageChange = (event: any) => {
+  currentPage.value = Math.floor(event.first / jobsPerPage) + 1
   // Smooth scroll to top of job listings on mobile
   if (window.innerWidth <= 768) {
     const jobSection = document.getElementById('positions')
@@ -762,66 +623,220 @@ const changePage = (page: number) => {
     }
   }
 }
+
+ // Application form data
+ const applicationForm = ref({
+   firstName: '',
+   lastName: '',
+   genre: '',
+   birthday: null,
+   phone: '',
+   jobOpening: '',
+   city: '',
+   cv: null,
+   agreeToTerms: false
+ })
+
+ // Form validation errors
+ const formErrors = ref({
+   firstName: '',
+   lastName: '',
+   genre: '',
+   birthday: '',
+   phone: '',
+   jobOpening: '',
+   city: '',
+   cv: '',
+   agreeToTerms: ''
+ })
+
+// Form submission state
+const isSubmitting = ref(false)
+
+ // Dropdown options
+ const genreOptions = [
+   { label: 'Mashkull', value: 'male' },
+   { label: 'Femër', value: 'female' },
+   { label: 'Tjetër', value: 'other' }
+ ]
+ 
+       const jobOpeningOptions = computed(() => {
+     console.log('Computing job options from allJobs:', allJobs.length)
+     return allJobs.map(job => ({
+       label: job.title,
+       value: job.title
+     }))
+   })
+ 
+   const cityOptions = [
+    { label: 'Prishtinë', value: 'prishtine' },
+    { label: 'Prizren', value: 'prizren' },
+    { label: 'Pejë', value: 'peje' },
+    { label: 'Gjakovë', value: 'gjakove' },
+    { label: 'Gjilan', value: 'gjilan' },
+    { label: 'Ferizaj', value: 'ferizaj' },
+    { label: 'Mitrovicë', value: 'mitrovice' },
+    { label: 'Vushtrri', value: 'vushtrri' },
+    { label: 'Deçan', value: 'decan' },
+    { label: 'Istog', value: 'istog' },
+    { label: 'Klinë', value: 'kline' },
+    { label: 'Lipjan', value: 'lipjan' },
+    { label: 'Obiliq', value: 'obiliq' },
+    { label: 'Podujevë', value: 'podujeve' },
+    { label: 'Rahovec', value: 'rahovec' },
+    { label: 'Shtime', value: 'shtime' },
+    { label: 'Shtërpcë', value: 'shtterpce' },
+    { label: 'Skenderaj', value: 'skenderaj' },
+    { label: 'Suharekë', value: 'suhareke' },
+    { label: 'Viti', value: 'viti' },
+    { label: 'Zubin Potok', value: 'zubin-potok' },
+    { label: 'Zveçan', value: 'zvecan' },
+    { label: 'Tjetër', value: 'other' }
+  ]
+
+// File upload handler
+const onFileSelect = (event: any) => {
+  if (event.files && event.files.length > 0) {
+    applicationForm.value.cv = event.files[0]
+    formErrors.value.cv = ''
+  }
+}
+
+ // Form validation
+ const validateForm = () => {
+   const errors: any = {}
+   
+   if (!applicationForm.value.firstName.trim()) {
+     errors.firstName = 'Emri është i detyrueshëm'
+   }
+   
+   if (!applicationForm.value.lastName.trim()) {
+     errors.lastName = 'Mbiemri është i detyrueshëm'
+   }
+   
+   if (!applicationForm.value.genre) {
+     errors.genre = 'Gjinia është e detyrueshme'
+   }
+   
+   if (!applicationForm.value.birthday) {
+     errors.birthday = 'Datëlindja është e detyrueshme'
+   }
+   
+   if (!applicationForm.value.phone.trim()) {
+     errors.phone = 'Telefoni është i detyrueshëm'
+   }
+   
+   if (!applicationForm.value.jobOpening) {
+     errors.jobOpening = 'Pozicioni i hapur është i detyrueshëm'
+   }
+   
+   if (!applicationForm.value.city) {
+     errors.city = 'Qyteti është i detyrueshëm'
+   }
+   
+   if (!applicationForm.value.cv) {
+     errors.cv = 'CV-ja është e detyrueshme'
+   }
+   
+   if (!applicationForm.value.agreeToTerms) {
+     errors.agreeToTerms = 'Duhet të pajtoheni me kushtet'
+   }
+   
+   formErrors.value = errors
+   return Object.keys(errors).length === 0
+ }
+
+// Form submission
+const submitApplication = async () => {
+  if (!validateForm()) {
+    return
+  }
+  
+     if (!applicationForm.value.jobOpening) {
+     // Show error that no job is selected
+     alert('Ju lutemi zgjidhni një pozicion për të aplikuar.')
+     return
+   }
+  
+  isSubmitting.value = true
+  
+  try {
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    
+         // Success - reset form
+     applicationForm.value = {
+       firstName: '',
+       lastName: '',
+       genre: '',
+       birthday: null,
+       phone: '',
+       jobOpening: '',
+       city: '',
+       cv: null,
+       agreeToTerms: false
+     }
+    
+    // Show success message (you can implement Toast here)
+    alert('Aplikimi u dërgua me sukses! Do t\'ju kontaktojmë së shpejti.')
+    
+  } catch (error) {
+    // Show error message
+    alert('Ndodhi një gabim. Ju lutemi provoni përsëri.')
+  } finally {
+    isSubmitting.value = false
+  }
+}
+
+ // Watch for changes in the form
+ watch(() => applicationForm.value.jobOpening, (newVal, oldVal) => {
+   console.log('Job opening changed from:', oldVal, 'to:', newVal)
+ })
+ 
+ // Contact functions
+ const contactHR = () => {
+   window.open('mailto:hr@euromiti.al', '_self')
+ }
+ 
+ const callHR = () => {
+   window.open('tel:+35512345678', '_self')
+ }
 </script>
 
-<style scoped>
-/* Custom animations for career page */
-.group:hover .group-hover\:scale-110 {
-  transform: scale(1.1);
+ <style scoped>
+ /* All styling now handled by Tailwind CSS classes */
+ </style>
+
+<style>
+/* Compact calendar styling */
+.p-calendar-panel-compact .p-datepicker {
+  font-size: 0.875rem;
+  padding: 0.5rem;
 }
 
-/* Smooth scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
+.p-calendar-panel-compact .p-datepicker table {
+  font-size: 0.875rem;
 }
 
-/* Custom career page specific styling */
-.career-hero {
-  background-size: cover;
-  background-position: center;
+.p-calendar-panel-compact .p-datepicker table th,
+.p-calendar-panel-compact .p-datepicker table td {
+  padding: 0.25rem;
+  min-width: 2rem;
+  height: 2rem;
 }
 
-/* Job card hover effects */
-.job-card {
-  transition: all 0.2s;
+.p-calendar-panel-compact .p-datepicker-header {
+  padding: 0.5rem;
+  font-size: 0.875rem;
 }
 
-.job-card:hover {
-  transform: translateY(-2px);
+.p-calendar-panel-compact .p-datepicker-title {
+  font-size: 1rem;
 }
 
-/* Form section styling */
-.form-section {
-  background-color: rgba(243, 244, 246, 0.3);
+.p-calendar-panel-compact .p-datepicker-prev,
+.p-calendar-panel-compact .p-datepicker-next {
+  width: 2rem;
+  height: 2rem;
 }
-
-/* Custom button styling for career page */
-.career-cta {
-  transition: all 0.3s;
-}
-
-.career-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
-}
-
-/* Benefits card hover effects */
-.benefits-card {
-  transition: all 0.3s;
-}
-
-.benefits-card:hover {
-  transform: translateY(-8px);
-}
-
-/* Process step styling */
-.process-step {
-  transition: all 0.3s;
-}
-
-.process-step:hover {
-  transform: scale(1.05);
-}
-
-/* All form styling is now handled by PrimeVue's default theme */
 </style>
