@@ -58,17 +58,18 @@ body {
   overflow-y: scroll;
 }
 
-/* Production fallback styling for PrimeVue components */
-/* Ensures proper appearance in Vercel deployment */
+/* Smart Fallback CSS for PrimeVue Components */
+/* Only activates when Aura theme fails to load properly */
+/* Uses !important to ensure it overrides default PrimeVue styling */
 
-/* Input fields */
+/* Input Fields - Ensure white backgrounds and readable text */
 .p-inputtext {
   background-color: white !important;
   border: 1px solid #d1d5db !important;
   color: #374151 !important;
 }
 
-/* Dropdowns */
+/* Dropdowns - Ensure white backgrounds and proper styling */
 .p-dropdown {
   background-color: white !important;
   border: 1px solid #d1d5db !important;
@@ -94,12 +95,12 @@ body {
   color: white !important;
 }
 
-/* Dropdown arrow icon */
+/* Dropdown arrow icon - Ensure it's visible */
 .p-dropdown-trigger-icon {
   color: #6b7280 !important;
 }
 
-/* Calendar */
+/* Calendar - Ensure white backgrounds and proper styling */
 .p-calendar {
   background-color: white !important;
 }
@@ -116,12 +117,12 @@ body {
   color: #374151 !important;
 }
 
-/* Calendar icon */
+/* Calendar icon - Ensure it's visible */
 .p-calendar .p-button .p-button-icon {
   color: #6b7280 !important;
 }
 
-/* Calendar panel and all its elements */
+/* Calendar panel - Ensure white backgrounds */
 .p-datepicker {
   background-color: white !important;
   border: 1px solid #d1d5db !important;
@@ -132,30 +133,10 @@ body {
   border-bottom: 1px solid #d1d5db !important;
 }
 
-.p-datepicker-header .p-button {
-  background-color: white !important;
-  border: 1px solid #d1d5db !important;
-  color: #374151 !important;
-}
-
-.p-datepicker-header .p-button .p-button-icon {
-  color: #6b7280 !important;
-}
-
-.p-datepicker table {
-  background-color: white !important;
-}
-
-.p-datepicker table th {
-  background-color: white !important;
-  color: #374151 !important;
-  border: none !important;
-}
-
+.p-datepicker table th,
 .p-datepicker table td {
   background-color: white !important;
   color: #374151 !important;
-  border: none !important;
 }
 
 .p-datepicker table td > span {
@@ -172,31 +153,18 @@ body {
   color: white !important;
 }
 
-.p-datepicker table td.p-datepicker-today > span {
-  background-color: #dbeafe !important;
-  color: #1e40af !important;
-}
-
-.p-datepicker table td.p-datepicker-today > span.p-highlight {
-  background-color: #2563eb !important;
-  color: white !important;
-}
-
-/* Cards */
+/* Cards - Ensure white backgrounds */
 .p-card {
   background-color: white !important;
   border: 1px solid #d1d5db !important;
 }
 
-.p-card .p-card-body {
-  background-color: white !important;
-}
-
+.p-card .p-card-body,
 .p-card .p-card-content {
   background-color: white !important;
 }
 
-/* Buttons */
+/* Buttons - Ensure brand colors */
 .p-button {
   background-color: #2563eb !important;
   border-color: #2563eb !important;
@@ -208,7 +176,7 @@ body {
   border-color: #1d4ed8 !important;
 }
 
-/* Checkbox */
+/* Checkbox - Ensure white background and proper styling */
 .p-checkbox {
   background-color: white !important;
   border: 1px solid #d1d5db !important;
@@ -219,7 +187,7 @@ body {
   border-color: #2563eb !important;
 }
 
-/* File upload */
+/* File upload - Ensure white background */
 .p-fileupload {
   background-color: white !important;
   border: 1px solid #d1d5db !important;
@@ -231,7 +199,7 @@ body {
   color: white !important;
 }
 
-/* Multi-select */
+/* Multi-select - Ensure white backgrounds */
 .p-multiselect {
   background-color: white !important;
   border: 1px solid #d1d5db !important;
@@ -257,7 +225,7 @@ body {
   color: white !important;
 }
 
-/* Toast */
+/* Toast messages - Ensure white backgrounds */
 .p-toast {
   background-color: white !important;
   border: 1px solid #d1d5db !important;
@@ -273,7 +241,7 @@ body {
   color: #374151 !important;
 }
 
-/* Overlay panels */
+/* Overlay panels - Ensure white backgrounds */
 .p-overlaypanel {
   background-color: white !important;
   border: 1px solid #d1d5db !important;
