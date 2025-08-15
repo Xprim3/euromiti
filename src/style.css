@@ -57,3 +57,93 @@ html {
 body {
   overflow-y: scroll;
 }
+
+/* Production fallback styling for PrimeVue components */
+/* Ensures proper appearance in Vercel deployment */
+
+/* Input fields */
+.p-inputtext {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+  color: #374151 !important;
+}
+
+/* Dropdowns */
+.p-dropdown {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+  color: #374151 !important;
+}
+
+.p-dropdown-panel {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.p-dropdown-items .p-dropdown-item {
+  background-color: white !important;
+  color: #374151 !important;
+}
+
+.p-dropdown-items .p-dropdown-item:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.p-dropdown-items .p-dropdown-item.p-highlight {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
+/* Calendar */
+.p-calendar {
+  background-color: white !important;
+}
+
+.p-calendar .p-inputtext {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+  color: #374151 !important;
+}
+
+.p-calendar .p-button {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+  color: #374151 !important;
+}
+
+/* Cards */
+.p-card {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.p-card .p-card-body {
+  background-color: white !important;
+}
+
+.p-card .p-card-content {
+  background-color: white !important;
+}
+
+/* Buttons */
+.p-button {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+  color: white !important;
+}
+
+.p-button:hover {
+  background-color: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+}
+
+/* Checkbox */
+.p-checkbox {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+}
